@@ -1,0 +1,16 @@
+.link {
+    font-size: 11px;
+    line-height: 11px;
+    color: var(--blue-color);
+    text-decoration: none;
+    margin-top: 14px;
+}
+
+.link:active,
+.link:visited {
+    color: var(--blue-color);
+}
+
+.link:hover {
+    color: var(--hover-blue-color);
+}

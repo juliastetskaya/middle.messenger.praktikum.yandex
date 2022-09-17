@@ -1,0 +1,26 @@
+{
+    "text": "Вход",
+    "button": {
+        "text": "Авторизоваться",
+        "type": "submit"
+    },
+    "linkText": "Нет аккаунта?",
+    "fields": [
+        {
+            "type": "text",
+            "name": "login",
+            "label": "Логин",
+            "placeholder": "Логин",
+            "errorMessage": "Неверный логин"
+        },
+        {
+            "type": "password",
+            "name": "password",
+            "class": "password",
+            "label": "Пароль",
+            "placeholder": "Пароль",
+            "errorMessage": "Слишком короткий пароль"
+
+        }
+    ]
+}

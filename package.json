@@ -9,17 +9,12 @@
     "postcss-import": "^15.0.0"
   },
   "scripts": {
-    "dev": "parcel index.hbs",
-    "build": "parcel build index.hbs"
+    "dev": "parcel src/pages/*.hbs --no-cache",
+    "build": "parcel build src/pages/*.hbs"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliastetskaya/middle.messenger.praktikum.yandex.git"
   },
-  "author": "Julia Stetskaya <juliastetskaya@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/juliastetskaya/middle.messenger.praktikum.yandex/issues"
-  },
-  "homepage": "https://github.com/juliastetskaya/middle.messenger.praktikum.yandex#readme"
+  "author": "Julia Stetskaya <juliastetskaya@gmail.com>"
 }

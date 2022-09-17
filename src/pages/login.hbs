@@ -1,0 +1,26 @@
+---
+styles:
+    - '../styles/components/link.css'
+    - '../styles/components/button.css'
+    - '../styles/components/input-field.css'
+    - '../styles/components/login.css'
+---
+
+{{!< index}}
+
+<main>
+    <div class="login-panel">
+        <div class="login-panel__container">
+            <h1 class="login-panel__title">{{ login.text }}</h1>
+            <form action="#" class="login-panel__form">
+                <div class="login-panel__input-block">
+                    {{#each login.fields}}
+                        {{> input-field}}
+                    {{/each}}
+                </div>
+                {{> button login.button class="login-panel__button" }}
+            </form>
+            {{> link text=login.linkText href="/" class="login-panel__link" }}
+        </div>
+    </div>
+</main>

@@ -1,0 +1,42 @@
+.login-panel {
+    min-height: 100vh;
+    display: flex;
+}
+
+.login-panel__container {
+    width: 340px;
+    height: 460px;
+    background-color: var(--white-color);
+    margin: auto;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-panel__input-block {
+    width: 100%;
+}
+
+.login-panel__title {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.login-panel__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 23px;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.login-panel .input {
+    margin-top: 18px;
+}
