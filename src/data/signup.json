@@ -1,0 +1,64 @@
+{
+    "text": "Регистрация",
+    "button": {
+        "text": "Зарегистрироваться",
+        "type": "submit"
+    },
+    "link": {
+        "text": "Войти",
+        "href": "/signin"
+    },
+    "fields": [
+        {
+            "type": "email",
+            "name": "email",
+            "label": "Почта",
+            "placeholder": "Почта",
+            "errorMessage": "Некорректная почта"
+        },
+        {
+            "type": "text",
+            "name": "login",
+            "label": "Логин",
+            "placeholder": "Логин",
+            "errorMessage": "Неверный логин"
+        },
+        {
+            "type": "text",
+            "name": "first_name",
+            "label": "Имя",
+            "placeholder": "Имя",
+            "errorMessage": "Имя должно быть больше двух символов"
+        },
+        {
+            "type": "text",
+            "name": "second_name",
+            "label": "Фамилия",
+            "placeholder": "Фамилия",
+            "errorMessage": "Фамилия должна быть больше двух символов"
+        },
+        {
+            "type": "tel",
+            "name": "phone",
+            "label": "Телефон",
+            "placeholder": "Телефон",
+            "errorMessage": "Некорректный телефон"
+        },
+        {
+            "type": "password",
+            "name": "password",
+            "class": "password",
+            "label": "Пароль",
+            "placeholder": "Пароль",
+            "errorMessage": "Слишком короткий пароль"
+        },
+        {
+            "type": "password",
+            "name": "password_check",
+            "class": "password",
+            "label": "Пароль (еще раз)",
+            "placeholder": "Пароль",
+            "errorMessage": "Пароли не совпадают"
+        }
+    ]
+}

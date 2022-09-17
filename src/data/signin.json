@@ -4,7 +4,10 @@
         "text": "Авторизоваться",
         "type": "submit"
     },
-    "linkText": "Нет аккаунта?",
+    "link": {
+        "text": "Нет аккаунта?",
+        "href": "/"
+    },
     "fields": [
         {
             "type": "text",
@@ -20,7 +23,6 @@
             "label": "Пароль",
             "placeholder": "Пароль",
             "errorMessage": "Слишком короткий пароль"
-
         }
     ]
 }
