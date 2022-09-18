@@ -11,7 +11,7 @@
     justify-content: center;
 }
 
-.avatar:hover .change-placeholder {
+.profile-panel__avatar:hover .change-placeholder {
     display: flex;
 }
 
