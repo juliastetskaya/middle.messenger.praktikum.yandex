@@ -21,7 +21,7 @@
     align-items: center;
 }
 
-.panel__input-block {
+.panel__input-list {
     width: 100%;
 }
 
@@ -43,4 +43,8 @@
 
 .panel .input {
     margin-top: 18px;
+}
+
+.panel .input__field {
+    border-bottom: 1px solid var(--blue-color);
 }

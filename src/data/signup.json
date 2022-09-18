@@ -1,12 +1,11 @@
 {
     "text": "Регистрация",
     "button": {
-        "text": "Зарегистрироваться",
-        "type": "submit"
+        "text": "Зарегистрироваться"
     },
     "link": {
         "text": "Войти",
-        "href": "/signin"
+        "href": "../pages/signin.hbs"
     },
     "fields": [
         {

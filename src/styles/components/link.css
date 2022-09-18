@@ -14,3 +14,15 @@
 .link:hover {
     color: var(--hover-blue-color);
 }
+
+.quit {
+    color: var(--red-color);
+}
+
+.quit:visited {
+    color: var(--red-color);
+}
+
+.quit:hover {
+    color: #ce0000;
+}

@@ -1,0 +1,8 @@
+.left-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    background-color: var(--main-bg-color);
+    border-right: 1px solid var(--lighter-grey-color);
+}

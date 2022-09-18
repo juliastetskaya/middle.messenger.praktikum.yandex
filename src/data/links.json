@@ -1,0 +1,17 @@
+{
+    "links": [
+        {
+            "text": "Изменить данные",
+            "href": "../pages/profile-change.hbs"
+        },
+        {
+            "text": "Изменить пароль",
+            "href": "/"
+        },
+        {
+            "text": "Выйти",
+            "href": "/",
+            "class": "quit"
+        }
+    ]
+}

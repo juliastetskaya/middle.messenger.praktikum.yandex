@@ -1,12 +1,11 @@
 {
     "text": "Вход",
     "button": {
-        "text": "Авторизоваться",
-        "type": "submit"
+        "text": "Авторизоваться"
     },
     "link": {
         "text": "Нет аккаунта?",
-        "href": "/"
+        "href": "../pages/signup.hbs"
     },
     "fields": [
         {

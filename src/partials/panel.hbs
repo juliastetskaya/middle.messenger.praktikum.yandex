@@ -2,12 +2,12 @@
     <div class="panel__container">
         <h1 class="panel__title">{{ text }}</h1>
         <form action="#" class="panel__form">
-            <div class="panel__input-block">
+            <ul class="panel__input-list">
                 {{#each fields}}
                     {{> input-field}}
                 {{/each}}
-            </div>
-            {{> button button class="panel__button" }}
+            </ul>
+            {{> button button type="submit" class="panel__button" }}
         </form>
         {{> link text=link.text href=link.href class="panel__link" }}
     </div>

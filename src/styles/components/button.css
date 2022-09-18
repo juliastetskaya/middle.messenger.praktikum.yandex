@@ -6,7 +6,7 @@
     border-radius: 8px;
     padding: 11px 0;
     letter-spacing: 0.5px;
-    margin-top: 60px;
+    margin: 60px auto 0;
 }
 
 .button:hover {
