@@ -3,10 +3,8 @@
     "button": {
         "text": "Зарегистрироваться"
     },
-    "link": {
-        "text": "Войти",
-        "href": "../pages/signin.hbs"
-    },
+    "linkText": "Войти",
+    "linkHref": "../pages/signin.hbs",
     "fields": [
         {
             "type": "email",

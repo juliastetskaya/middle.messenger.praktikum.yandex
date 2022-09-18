@@ -1,14 +1,6 @@
-<div class="panel">
-    <div class="panel__container">
-        <h1 class="panel__title">{{ text }}</h1>
-        <form action="#" class="panel__form">
-            <ul class="panel__input-list">
-                {{#each fields}}
-                    {{> input-field}}
-                {{/each}}
-            </ul>
-            {{> button button type="submit" class="panel__button" }}
-        </form>
-        {{> link text=link.text href=link.href class="panel__link" }}
-    </div>
+<div class="panel__container">
+    <h1 class="panel__title">{{ text }}</h1>
+    {{> panel-form }}
+    {{> button button type="submit" class="panel__button" }}
+    {{> link class="panel__link" }}
 </div>

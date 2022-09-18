@@ -3,10 +3,8 @@
     "button": {
         "text": "Авторизоваться"
     },
-    "link": {
-        "text": "Нет аккаунта?",
-        "href": "../pages/signup.hbs"
-    },
+    "linkText": "Нет аккаунта?",
+    "linkHref": "../pages/signup.hbs",
     "fields": [
         {
             "type": "text",

@@ -20,3 +20,14 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+.page-main {
+    height: 100vh;
+}
+
+.page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

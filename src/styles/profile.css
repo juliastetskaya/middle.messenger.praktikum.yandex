@@ -1,4 +1,5 @@
 @import "./components/avatar.css";
+@import "./components//avatar-panel.css";
 @import "./components/input-field.css";
 @import "./components/left-panel.css";
 @import "./components/link.css";
@@ -24,6 +25,7 @@
 }
 
 .profile-panel__content {
+    position: relative;
     width: 510px;
     display: flex;
     flex-direction: column;
@@ -44,7 +46,7 @@
 .profile-panel__form .input__label {
     font-size: 13px;
     line-height: 13px;
-    color: var(--black-color);
+    color: var(--light-black-color);
 }
 
 .profile-panel__form .input__field {
@@ -64,6 +66,7 @@
 
 .profile-panel__form {
     margin-top: 50px;
+    min-height: 194px;
 }
 
 .profile-panel__links {
@@ -83,15 +86,6 @@
     border-bottom: 1px solid var(--lighter-grey-color);
 }
 
-.change-profile {
-    display: flex;
-    flex-direction: column;
-}
-
-.change-profile .profile-panel__form {
-    margin-top: 88px;
-}
-
 .profile-panel__button {
-    margin-top: 45px;
+    margin-top: 60px;
 }
