@@ -1,4 +1,6 @@
 @import "./colors.css";
+@import "./components//error-page.css";
+@import "./components/link.css";
 
 *,
 ::after,

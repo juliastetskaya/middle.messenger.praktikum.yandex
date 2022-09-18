@@ -31,7 +31,7 @@
     flex-direction: column;
 }
 
-.profile-panel__form .input {
+.profile-form .input {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -39,17 +39,17 @@
     padding: 4px 0;
 }
 
-.profile-panel__form .input:not(:last-child) {
+.profile-form .input:not(:last-child) {
     border-bottom: 1px solid var(--lighter-grey-color);
 }
 
-.profile-panel__form .input__label {
+.profile-form .input__label {
     font-size: 13px;
     line-height: 13px;
     color: var(--light-black-color);
 }
 
-.profile-panel__form .input__field {
+.profile-form .input__field {
     flex: 0.7;
     margin-left: 10px;
     text-align: end;
@@ -64,9 +64,13 @@
     margin-top: 22px;
 }
 
+.profile-form {
+    margin-top: 86px;
+    min-height: 194px;
+}
+
 .profile-panel__form {
     margin-top: 50px;
-    min-height: 194px;
 }
 
 .profile-panel__links {
