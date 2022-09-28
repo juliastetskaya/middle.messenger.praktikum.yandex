@@ -1,7 +1,6 @@
 @import "./colors.css";
 @import "./profile.css";
 
-@import "./components//avatar-panel.css";
 @import "./components/avatar.css";
 @import "./components/button.css";
 @import "./components//error-page.css";
@@ -13,6 +12,7 @@
 @import "./components/chat.css";
 @import "./components/message.css";
 @import "./components/start.css";
+@import "./components/avatar-panel.css";
 
 *,
 ::after,
