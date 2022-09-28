@@ -30,6 +30,13 @@
     background-color: var(--white-color);
 }
 
+.input__error {
+    font-size: 8px;
+    line-height: 8px;
+    color: var(--error-message-color);
+    margin-top: 7px;
+}
+
 .password {
     font-size: 16px;
     letter-spacing: 1.3px;
@@ -38,11 +45,4 @@
 
 .disabled {
     display: none;
-}
-
-.input__error {
-    font-size: 8px;
-    line-height: 8px;
-    color: var(--error-message-color);
-    margin-top: 7px;
 }

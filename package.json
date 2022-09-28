@@ -20,8 +20,6 @@
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@parcel/transformer-css": "^2.7.0",
-    "lightningcss": "^1.15.1",
     "parcel": "2.6.0",
     "postcss-import": "^15.0.0"
   }

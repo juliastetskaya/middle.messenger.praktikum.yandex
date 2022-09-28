@@ -1,8 +1,8 @@
 @import "./button.css";
 @import "./link.css";
-@import "./input-field.css";
+@import "./input.css";
 
-.panel__container {
+.panel {
     width: 340px;
     min-height: 450px;
     background-color: var(--white-color);
@@ -15,35 +15,13 @@
     align-items: center;
 }
 
-.panel__input-list {
-    width: 100%;
-}
-
 .panel__title {
     font-size: 20px;
     line-height: 20px;
     font-weight: 500;
-    margin-top: 20px;
 }
 
-.panel__form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 23px;
-    flex: 1;
-    justify-content: space-between;
-}
-
-.panel__button {
-    margin-top: 60px;
-}
-
-.panel__container .input {
-    margin-top: 18px;
-}
-
-.panel__container .input__field {
+.panel__form .form__item {
+    margin-top: 17px;
     border-bottom: 1px solid var(--blue-color);
 }
