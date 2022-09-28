@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "parcel src/pages/*.hbs --no-cache",
-    "build": "parcel build src/pages/*.hbs",
-    "start": "node ./server.js"
+    "build": "parcel build src/pages/*.hbs --public-url ./",
+    "start": "npm run build && node ./server.js"
   },
   "repository": {
     "type": "git",

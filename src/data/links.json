@@ -10,7 +10,7 @@
         },
         {
             "linkText": "Выйти",
-            "linkHref": "/",
+            "linkHref": "../pages/index.hbs",
             "class": "quit"
         }
     ]
