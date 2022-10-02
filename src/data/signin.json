@@ -1,0 +1,25 @@
+{
+    "text": "Вход",
+    "button": {
+        "text": "Авторизоваться"
+    },
+    "linkText": "Нет аккаунта?",
+    "linkHref": "../pages/signup.hbs",
+    "fields": [
+        {
+            "type": "text",
+            "name": "login",
+            "label": "Логин",
+            "placeholder": "Логин",
+            "errorMessage": "Неверный логин"
+        },
+        {
+            "type": "password",
+            "name": "password",
+            "class": "password",
+            "label": "Пароль",
+            "placeholder": "Пароль",
+            "errorMessage": "Слишком короткий пароль"
+        }
+    ]
+}

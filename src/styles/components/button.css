@@ -1,0 +1,15 @@
+.button {
+    width: 280px;
+    color: var(--white-color);
+    background-color: var(--blue-color);
+    border: none;
+    border-radius: 8px;
+    padding: 11px 0;
+    letter-spacing: 0.5px;
+    margin: 0 auto;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--hover-blue-color);
+}

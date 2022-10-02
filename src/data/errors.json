@@ -1,0 +1,18 @@
+{
+    "four": {
+        "title": "404",
+        "text": "Не туда попали",
+        "link": {
+            "linkText": "Назад к чатам",
+            "linkHref": "../pages/index.hbs"
+        }
+    },
+    "five": {
+        "title": "500",
+        "text": "Мы уже фиксим",
+        "link": {
+            "linkText": "Назад к чатам",
+            "linkHref": "../pages/index.hbs"
+        }
+    }
+}

@@ -1,0 +1,94 @@
+.profile {
+    height: 100vh;
+    display: flex;
+    background-color: var(--white-color);
+}
+
+.profile__panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__content {
+    position: relative;
+    width: 510px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__form {
+    min-height: 194px;
+}
+
+.profile__form .input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+
+.profile__form .form__item:not(:last-child) {
+    border-bottom: 1px solid var(--lighter-grey-color);
+}
+
+.profile__form .input__label {
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--light-black-color);
+}
+
+.profile__form .input__field {
+    flex: 0.7;
+    margin-left: 10px;
+    text-align: end;
+}
+
+.profile__title {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.profile__links .link {
+    font-size: 13px;
+    line-height: 13px;
+}
+
+.profile__links .link-list__item {
+    padding: 10px 0;
+}
+
+.profile__links .link-list__item:not(:last-child) {
+    border-bottom: 1px solid var(--lighter-grey-color);
+}
+
+.profile-page .profile__button,
+.password-change .profile__button {
+    margin-top: 60px;
+}
+
+.profile-page .profile__title {
+    margin-top: 20px;
+}
+
+.profile-page .profile__form {
+    margin-top: 50px;
+}
+
+.profile-page .link-list {
+    margin-top: 40px;
+}
+
+.profile-change .profile__form,
+.password-change .profile__form {
+    margin-top: 88px;
+}
+
+.profile-change .profile__button {
+    margin-top: 50px;
+}

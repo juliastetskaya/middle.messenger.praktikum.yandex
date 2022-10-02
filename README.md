@@ -1,3 +1,12 @@
-## Ссылки
+## Описание
 
-Ссылка на Pull request первого спринта https://github.com/juliastetskaya/middle.messenger.praktikum.yandex/pull/1
+Мессенджер для общения с друзьями и коллегами
+
+## Задеплоенная версия
+
+https://grand-basbousa-d4cc02.netlify.app/index.html
+
+## Команды для установки
+
+- `npm start` — запуск версии для разработчика
+- `npm run build` — сборка стабильной версии

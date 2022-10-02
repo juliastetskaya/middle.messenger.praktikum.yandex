@@ -1,0 +1,21 @@
+.start-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-page .link-list {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.start-page .link-list__item {
+    margin-top: 10px;
+}
+
+.start-page .link {
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+}

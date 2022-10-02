@@ -1,0 +1,63 @@
+@import "./colors.css";
+@import "./profile.css";
+
+@import "./components/avatar.css";
+@import "./components/button.css";
+@import "./components//error-page.css";
+@import "./components/form.css";
+@import "./components/input.css";
+@import "./components/left-menu.css";
+@import "./components/link.css";
+@import "./components/panel.css";
+@import "./components/chat.css";
+@import "./components/message.css";
+@import "./components/start.css";
+@import "./components/avatar-panel.css";
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 13px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page-main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup .panel__title,
+.signin .panel__title {
+    margin-top: 20px;
+}
+
+.signup .form,
+.signin .form {
+    margin-top: 24px;
+}
+
+.signup .panel__button,
+.signin .panel__button {
+    margin-top: 62px;
+}
+
+.signup .panel__link,
+.signin .panel__link {
+    margin-top: 14px;
+}
