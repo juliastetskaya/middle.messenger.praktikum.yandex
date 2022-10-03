@@ -23,13 +23,12 @@
     line-height: 16px;
     font-weight: 500;
     text-decoration: underline;
-
     width: 110px;
     text-align: center;
     margin-bottom: 16px;
 }
 
-.overlay { 
+.overlay {
     position: absolute;
     opacity: 0;
     width: 100%;

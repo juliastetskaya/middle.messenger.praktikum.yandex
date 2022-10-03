@@ -1,16 +1,16 @@
 :root {
     --main-bg-color: #fbfbfb;
     --error-message-color: #ff2f2f;
-    --white-color: #ffffff;
+    --white-color: #fff;
     --blue-color: #3369f3;
     --light-blue-color: #e4edfd;
-    --grey-color: #999999;
-    --light-grey-color: #eeeeee;
+    --grey-color: #999;
+    --light-grey-color: #eee;
     --lighter-grey-color: #eaeaea;
     --darkish-grey-color: #efefef;
-    --black-color: #000000;
+    --black-color: #000;
     --light-black-color: #1e1e1e;
     --hover-blue-color: #1945b8;
-    --red-color: #ff0000;
+    --red-color: #f00;
     --dark-color: #ce0000;
 }

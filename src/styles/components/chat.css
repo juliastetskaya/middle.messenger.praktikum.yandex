@@ -35,9 +35,8 @@
     position: absolute;
     width: 5px;
     height: 5px;
-    border-right: 1px solid #999;
-    border-top: 1px solid #999;
-    position: absolute;
+    border-right: 1px solid var(--grey-color);
+    border-top: 1px solid var(--grey-color);
     top: 4px;
     left: 60px;
     transform: rotate(45deg);
@@ -55,7 +54,7 @@
     padding: 8px 10px;
     box-sizing: border-box;
     background-color: var(--darkish-grey-color);
-    background-image: url('../static/search-icon.svg');
+    background-image: url("../static/search-icon.svg");
     background-repeat: no-repeat;
     background-position: 108px 8px;
 }
