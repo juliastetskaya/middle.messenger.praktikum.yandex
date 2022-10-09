@@ -1,0 +1,84 @@
+.chat-menu {
+    position: absolute;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 14%);
+    border-radius: 12px;
+    padding: 15px 15px 15px 52px;
+    background-color: var(--white-color);
+}
+
+.chat-menu .link,
+.chat-menu .link:visited {
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--light-black-color);
+}
+
+.chat-menu .link:hover {
+    opacity: 0.8;
+}
+
+.chat-menu__item {
+    position: relative;
+    padding: 4px 0;
+}
+
+.chat-menu__item:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.user-menu {
+    display: none;
+    top: 65px;
+    right: -9px;
+}
+
+.user-menu .chat-menu__item:nth-child(1)::before,
+.user-menu .chat-menu__item:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -37px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    border: 1px solid var(--blue-color);
+    border-radius: 50%;
+}
+
+.user-menu .chat-menu__item:nth-child(1)::before {
+    background: url("../static/plus.svg") no-repeat center;
+}
+
+.user-menu .chat-menu__item:nth-child(2)::before {
+    background: url("../static/cross.svg") no-repeat center;
+}
+
+.message-menu {
+    display: none;
+    bottom: 65px;
+    left: -10px;
+}
+
+.message-menu .chat-menu__item:nth-child(1)::before,
+.message-menu .chat-menu__item:nth-child(2)::before,
+.message-menu .chat-menu__item:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -37px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.message-menu .chat-menu__item:nth-child(1)::before {
+    background: url("../static/photo.svg") no-repeat center;
+}
+
+.message-menu .chat-menu__item:nth-child(2)::before {
+    background: url("../static/file.svg") no-repeat center;
+}
+
+.message-menu .chat-menu__item:nth-child(3)::before {
+    background: url("../static/location.svg") no-repeat center;
+}

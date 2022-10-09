@@ -6,5 +6,13 @@
         <input class="chat__search-field" type="text" placeholder={{chats.searchPlaceholder}}>
         {{> chat-list chats}}
     </div>
-    <div class="right-side">{{chats.rightSidePlaceholder}}</div>
+    {{!-- <div class="right-side disabled">{{chats.rightSidePlaceholder}}</div> --}}
+    <div class="right-side">
+        {{> chat-title chats}}
+        {{> messages-area chats}}
+        {{> chat-message chats}}
+    </div>
+    <div class="overlay"></div>
+    {{!-- {{> user-change chats.addUser}} --}}
+    {{!-- {{> user-change chats.removeUser}} --}}
 </div>

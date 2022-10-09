@@ -1,6 +1,5 @@
 .panel {
     width: 340px;
-    min-height: 450px;
     background-color: var(--white-color);
     box-shadow: 0 0 6px rgba(0, 0, 0, 14%);
     border-radius: 12px;
@@ -19,4 +18,9 @@
 .panel__form .form__item {
     margin-top: 17px;
     border-bottom: 1px solid var(--blue-color);
+}
+
+.panel .signin,
+.panel .signup {
+    min-height: 450px;
 }

@@ -13,9 +13,9 @@
 
 .right-side {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    flex: 1;
+    width: 100%;
     background-color: var(--white-color);
     font-size: 12px;
     line-height: 12px;

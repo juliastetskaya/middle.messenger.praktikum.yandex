@@ -1,8 +1,7 @@
 .avatar-panel {
-    display: none;
+    /* display: none; */
     position: absolute;
-    height: 0;
-    min-height: 257px;
+    height: 257px;
     margin: auto;
     left: 0;
     right: 0;
@@ -12,13 +11,13 @@
     justify-content: space-between;
 }
 
-.avatar-panel__title {
+.avatar-panel .panel__title {
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
 }
 
-.avatar-panel__link {
+.avatar-panel .panel__link {
     font-size: 12px;
     line-height: 16px;
     font-weight: 500;

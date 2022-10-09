@@ -12,6 +12,13 @@
 @import "./components/message.css";
 @import "./components/start.css";
 @import "./components/avatar-panel.css";
+@import "./components/chat-title.css";
+@import "./components/chat-menu.css";
+@import "./components/chat-message.css";
+@import "./components/messages-area.css";
+@import "./components/text-message.css";
+@import "./components/image-message.css";
+@import "./components/user-panel.css";
 
 *,
 ::after,
