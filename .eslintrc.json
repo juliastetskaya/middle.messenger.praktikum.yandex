@@ -1,8 +1,15 @@
 {
-    "extends": "airbnb",
+    "extends": ["airbnb", "airbnb-typescript"],
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],
     "rules": {
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "max-len": ["error", { "code": 120 }],
+        "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+        "no-param-reassign": ["error", { "props": false }],
+        "no-unused-vars": ["error", { "args": "none" }]
+    },
+    "env": {
+        "browser": true
     }
 }
