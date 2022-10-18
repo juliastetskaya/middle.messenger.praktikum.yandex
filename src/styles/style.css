@@ -1,10 +1,7 @@
-@import "./colors.css";
+/* @import "./colors.css";
 @import "./profile.css";
 @import "./components/avatar.css";
-@import "./components/button.css";
 @import "./components//error-page.css";
-@import "./components/form.css";
-@import "./components/input.css";
 @import "./components/left-menu.css";
 @import "./components/link.css";
 @import "./components/panel.css";
@@ -18,7 +15,7 @@
 @import "./components/messages-area.css";
 @import "./components/text-message.css";
 @import "./components/image-message.css";
-@import "./components/user-panel.css";
+@import "./components/user-panel.css"; */
 
 *,
 ::after,

@@ -1,8 +1,6 @@
 {
     "text": "Вход",
-    "button": {
-        "text": "Авторизоваться"
-    },
+    "buttonText": "Авторизоваться",
     "linkText": "Нет аккаунта?",
     "linkHref": "../pages/signup.hbs",
     "fields": [
