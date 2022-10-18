@@ -1,8 +1,6 @@
 {
     "text": "Регистрация",
-    "button": {
-        "text": "Зарегистрироваться"
-    },
+    "buttonText": "Зарегистрироваться",
     "linkText": "Войти",
     "linkHref": "../pages/signin.hbs",
     "fields": [

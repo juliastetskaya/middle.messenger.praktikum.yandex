@@ -6,9 +6,10 @@ import {
     linkText,
     linkHref,
     fields,
-} from '../../data/signin.json';
+} from '../../data/signup.json';
 
-export class SigninPage extends Block {
+
+export class SignupPage extends Block {
     constructor() {
         super({
             text,
@@ -16,22 +17,13 @@ export class SigninPage extends Block {
             linkText,
             linkHref,
             fields,
-        });
+        })
     }
-
-    // componentDidUpdate(oldProps: any, newProps: any): boolean {
-    //     if (oldProps.buttonText !== newProps.buttonText) {
-    //         this.children.button.setProps({
-    //             text: newProps.buttonText
-    //         })
-    //     }
-    //     return super.componentDidUpdate(oldProps, newProps);
-    // }
 
     render() {
         return `
             {{{ Panel
-                class='signin'
+                class='signup'
                 text=text
                 buttonText=buttonText
                 linkText=linkText

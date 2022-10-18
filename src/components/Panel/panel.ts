@@ -1,10 +1,15 @@
 import Block from '../../core/Block';
+import InputProps from '../Input';
 
 import './panel.css';
 
 export type PanelProps = {
     class?: string;
     text: string;
+    buttonText: string;
+    linkText: string;
+    linkHref: string;
+    fields: InputProps[];
 };
 
 export class Panel extends Block {
@@ -13,7 +18,6 @@ export class Panel extends Block {
     }
     
     render() {
-        console.log('+++++PROPS', this.props);
         return `
             <div class="panel {{class}}">
                 <h1 class="panel__title">{{ text }}</h1>

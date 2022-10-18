@@ -7,7 +7,6 @@ interface BlockConstructable<Props = any> {
 
 export default function registerComponent<Props extends any>(Component: BlockConstructable<Props>) {
     Handlebars.registerHelper(Component.name, function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
-        console.log('HASH', hash);
         if (!data.root.children) {
             data.root.children = {};
         }
@@ -30,7 +29,6 @@ export default function registerComponent<Props extends any>(Component: BlockCon
         children[component.id] = component;
 
         if (ref) {
-            console.log('ref', ref);
             refs[ref] = component.getContent();
         }
 

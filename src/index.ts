@@ -1,6 +1,8 @@
+// import Signin from './blocks/Signin';
+import SignupPage from './blocks/Signup';
+
 import Panel from './components/Panel';
 import Button from './components/Button';
-import Signin from './blocks/Signin';
 import Form from './components/Form';
 import Input from './components/Input';
 import Link from './components/Link';
@@ -22,14 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //         click: () => console.log('Clicked!')
     //     }
     // });
-    const signinPage = new Signin();
+    const signupPage = new SignupPage();
     
     // const button = new Button({
     //     text: 'Hello!',
     //     type: 'button',
     // });
 
-    renderDOM('#app', signinPage);
+    renderDOM('#app', signupPage);
     // setTimeout(() => {
     //     signinPage.setProps({
     //         buttonText: 'Click me, please!!'

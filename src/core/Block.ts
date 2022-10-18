@@ -105,8 +105,6 @@ class Block<P = any> {
     _render() {
         const fragment = this._compile();
 
-        console.log('FRAGMENT', fragment.firstElementChild);
-
         const newElement = fragment.firstElementChild as HTMLElement;
 
         if (this._element) {
