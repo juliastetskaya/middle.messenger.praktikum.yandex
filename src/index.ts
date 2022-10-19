@@ -1,12 +1,14 @@
 import StartPage from './blocks/Start';
 import SigninPage from './blocks/Signin';
 import SignupPage from './blocks/Signup';
+import ErrorPage from './blocks/ErrorPage';
 
 import Panel from './components/Panel';
 import Button from './components/Button';
 import Form from './components/Form';
 import Input from './components/Input';
 import Link from './components/Link';
+import Error from './components/Error';
 import LinkList from './components/LinkList';
 import { registerComponent, renderDOM, Block } from './core';
 
@@ -20,6 +22,7 @@ registerComponent(Button);
 registerComponent(Form);
 registerComponent(Input);
 registerComponent(Link);
+registerComponent(Error);
 registerComponent(LinkList);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('SIGN UP');
             page = new SignupPage();
             break;
+        case PATHS[404]:
+            page = new ErrorPage(pathname);
+            break;
+        case PATHS[500]:
+            page = new ErrorPage(pathname);
         default:
             console.log('DEFAULT');
             break;
