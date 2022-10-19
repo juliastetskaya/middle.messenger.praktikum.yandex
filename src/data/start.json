@@ -2,35 +2,35 @@
     "links": [
         {
             "linkText": "Авторизация",
-            "linkHref": "../pages/signin.hbs"
+            "linkHref": "/signin.html"
         },
         {
             "linkText": "Регистрация",
-            "linkHref": "../pages/signup.hbs"
+            "linkHref": "/signup.html"
         },
         {
             "linkText": "Страница профиля",
-            "linkHref": "../pages/profile-page.hbs"
+            "linkHref": "/profile-page.html"
         },
         {
             "linkText": "Страница изменения профиля",
-            "linkHref": "../pages/profile-change.hbs"
+            "linkHref": "/profile-change.html"
         },
         {
             "linkText": "Страница изменения пароля",
-            "linkHref": "../pages/password-change.hbs"
+            "linkHref": "/password-change.html"
         },
         {
             "linkText": "Страница с чатами",
-            "linkHref": "../pages/chat-page.hbs"
+            "linkHref": "/chat-page.html"
         },
         {
             "linkText": "404-я страница",
-            "linkHref": "../pages/404.hbs"
+            "linkHref": "/404.html"
         },
         {
             "linkText": "500-я страница",
-            "linkHref": "../pages/500.hbs"
+            "linkHref": "/500.html"
         }
     ]
 }

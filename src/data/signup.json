@@ -2,7 +2,7 @@
     "text": "Регистрация",
     "buttonText": "Зарегистрироваться",
     "linkText": "Войти",
-    "linkHref": "../pages/signin.hbs",
+    "linkHref": "/signin.html",
     "fields": [
         {
             "type": "email",

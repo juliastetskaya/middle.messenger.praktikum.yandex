@@ -1,6 +1,8 @@
 import Block from '../../core/Block';
 import { InputProps } from '../../components/Input';
 
+import './form.css';
+
 interface FormProps {
     class?: string;
     fields: InputProps[];

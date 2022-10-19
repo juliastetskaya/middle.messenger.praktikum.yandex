@@ -2,7 +2,7 @@
     "text": "Вход",
     "buttonText": "Авторизоваться",
     "linkText": "Нет аккаунта?",
-    "linkHref": "../pages/signup.hbs",
+    "linkHref": "/signup.html",
     "fields": [
         {
             "type": "text",
