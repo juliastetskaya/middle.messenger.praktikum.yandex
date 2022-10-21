@@ -17,6 +17,7 @@ export class Button extends Block {
     }
 
     render() {
+        console.log('props', this.props);
         return `
             <button class="button {{class}}" type={{type}}>
                 {{text}}

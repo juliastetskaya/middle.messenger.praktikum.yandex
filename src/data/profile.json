@@ -42,15 +42,15 @@
     "links": [
         {
             "linkText": "Изменить данные",
-            "linkHref": "../pages/profile-change.hbs"
+            "linkHref": "/profile-change.html"
         },
         {
             "linkText": "Изменить пароль",
-            "linkHref": "../pages/password-change.hbs"
+            "linkHref": "/password-change.html"
         },
         {
             "linkText": "Выйти",
-            "linkHref": "../pages/index.hbs",
+            "linkHref": "/",
             "class": "quit"
         }
     ],
