@@ -3,12 +3,12 @@
         "title": "404",
         "text": "Не туда попали",
         "linkText": "Назад к чатам",
-        "linkHref": "../pages/index.hbs"
+        "linkHref": "/"
     },
     "five": {
         "title": "500",
         "text": "Мы уже фиксим",
         "linkText": "Назад к чатам",
-        "linkHref": "../pages/index.hbs"
+        "linkHref": "/"
     }
 }

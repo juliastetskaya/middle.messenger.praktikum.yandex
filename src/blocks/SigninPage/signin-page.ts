@@ -30,14 +30,16 @@ export class SigninPage extends Block {
 
     render() {
         return `
-            {{{ Panel
-                class='signin'
-                text=text
-                buttonText=buttonText
-                linkText=linkText
-                linkHref=linkHref
-                fields=fields
-            }}}
+            <div class='container'>
+                {{{ Panel
+                    class='signin'
+                    text=text
+                    buttonText=buttonText
+                    linkText=linkText
+                    linkHref=linkHref
+                    fields=fields
+                }}}
+            </div>
         `;
     }
 }

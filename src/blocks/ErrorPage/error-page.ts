@@ -27,12 +27,14 @@ export class ErrorPage extends Block {
 
     render() {
         return `
-            {{{ Error
-                text=text
-                title=title
-                linkText=linkText
-                linkHref=linkHref
-            }}}
+            <div class='container'>
+                {{{ Error
+                    text=text
+                    title=title
+                    linkText=linkText
+                    linkHref=linkHref
+                }}}
+            </div>
         `;
     }
 }

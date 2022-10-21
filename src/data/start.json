@@ -10,7 +10,7 @@
         },
         {
             "linkText": "Страница профиля",
-            "linkHref": "/profile-page.html"
+            "linkHref": "/profile.html"
         },
         {
             "linkText": "Страница изменения профиля",

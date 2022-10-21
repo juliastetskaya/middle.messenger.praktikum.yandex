@@ -1,6 +1,58 @@
 {
     "name": "Иван",
-    "saveButton": {
-        "text": "Сохранить"
-    }
+    "saveButton": "Сохранить",
+    "fields": [
+        {
+            "type": "email",
+            "name": "email",
+            "label": "Почта",
+            "placeholder": "pochta@yandex.ru"
+        },
+        {
+            "type": "text",
+            "name": "login",
+            "label": "Логин",
+            "placeholder": "ivanivanov"
+        },
+        {
+            "type": "text",
+            "name": "first_name",
+            "label": "Имя",
+            "placeholder": "Иван"
+        },
+        {
+            "type": "text",
+            "name": "second_name",
+            "label": "Фамилия",
+            "placeholder": "Иванов"
+        },
+        {
+            "type": "text",
+            "name": "chat_name",
+            "label": "Имя в чате",
+            "placeholder": "Иван"
+        },
+        {
+            "type": "tel",
+            "name": "phone",
+            "label": "Телефон",
+            "placeholder": "+7(909)9673030"
+        }
+    ],
+    "links": [
+        {
+            "linkText": "Изменить данные",
+            "linkHref": "../pages/profile-change.hbs"
+        },
+        {
+            "linkText": "Изменить пароль",
+            "linkHref": "../pages/password-change.hbs"
+        },
+        {
+            "linkText": "Выйти",
+            "linkHref": "../pages/index.hbs",
+            "class": "quit"
+        }
+    ],
+    "placeholder": "Поменять аватар"
 }

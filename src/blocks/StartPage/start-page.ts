@@ -12,7 +12,7 @@ export class StartPage extends Block {
 
     render() {
         return `
-            <div class="start-page">
+            <div class="start-page container">
                 <h1>СПИСОК СТРАНИЦ</h1>
                 {{{ LinkList links=links }}}
             </div>

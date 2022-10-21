@@ -17,7 +17,7 @@ export class LinkList extends Block {
             <ul class="link-list {{class}}">
                 {{#each links}}
                     <li class="link-list__item">
-                        {{{ Link linkText=linkText linkHref=linkHref }}}
+                        {{{ Link linkText=linkText linkHref=linkHref class=class }}}
                     </li>
                 {{/each}}
             </ul>

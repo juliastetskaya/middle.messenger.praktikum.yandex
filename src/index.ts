@@ -1,6 +1,7 @@
-import StartPage from './blocks/Start';
-import SigninPage from './blocks/Signin';
-import SignupPage from './blocks/Signup';
+import StartPage from './blocks/StartPage';
+import SigninPage from './blocks/SigninPage';
+import SignupPage from './blocks/SignupPage';
+import ProfilePage from './blocks/ProfilePage';
 import ErrorPage from './blocks/ErrorPage';
 
 import Panel from './components/Panel';
@@ -9,7 +10,10 @@ import Form from './components/Form';
 import Input from './components/Input';
 import Link from './components/Link';
 import Error from './components/Error';
+import LeftMenu from './components/LeftMenu';
 import LinkList from './components/LinkList';
+import Avatar from './components/Avatar';
+import AvatarPanel from './components/AvatarPanel';
 import { registerComponent, renderDOM, Block } from './core';
 
 import { PATHS } from './constants';
@@ -23,7 +27,10 @@ registerComponent(Form);
 registerComponent(Input);
 registerComponent(Link);
 registerComponent(Error);
+registerComponent(Avatar);
+registerComponent(LeftMenu);
 registerComponent(LinkList);
+registerComponent(AvatarPanel);
 
 document.addEventListener('DOMContentLoaded', () => {
     // const button = new Button({
@@ -49,6 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
         case PATHS[500]:
             page = new ErrorPage(pathname);
+            break;
+        case PATHS.PROFILE:
+            page = new ProfilePage();
+            break;
         default:
             console.log('DEFAULT');
             break;

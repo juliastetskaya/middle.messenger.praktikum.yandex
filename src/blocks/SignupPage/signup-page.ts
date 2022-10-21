@@ -22,14 +22,16 @@ export class SignupPage extends Block {
 
     render() {
         return `
-            {{{ Panel
-                class='signup'
-                text=text
-                buttonText=buttonText
-                linkText=linkText
-                linkHref=linkHref
-                fields=fields
-            }}}
+            <div class='container'>
+                {{{ Panel
+                    class='signup'
+                    text=text
+                    buttonText=buttonText
+                    linkText=linkText
+                    linkHref=linkHref
+                    fields=fields
+                }}}
+            </div>
         `;
     }
 }
