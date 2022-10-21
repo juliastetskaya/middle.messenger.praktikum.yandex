@@ -4,6 +4,7 @@ import SignupPage from './blocks/SignupPage';
 import ProfilePage from './blocks/ProfilePage';
 import ErrorPage from './blocks/ErrorPage';
 import ProfileChangePage from './blocks/ProfileChangePage';
+import PasswordChangePage from './blocks/PasswordChangePage';
 
 import Panel from './components/Panel';
 import Button from './components/Button';
@@ -63,6 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
         case PATHS.PROFILE_CHANGE:
             page = new ProfileChangePage();
+            break;
+        case PATHS.PASSWORD_CHANGE:
+            page = new PasswordChangePage();
             break;
         default:
             console.log('DEFAULT');

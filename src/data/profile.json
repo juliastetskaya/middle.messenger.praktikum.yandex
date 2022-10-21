@@ -54,5 +54,25 @@
             "class": "quit"
         }
     ],
+    "passwordFields": [
+        {
+            "type": "password",
+            "name": "oldPassword",
+            "label": "Старый пароль",
+            "placeholder": "•••••••••"
+        },
+        {
+            "type": "password",
+            "name": "newPassword",
+            "label": "Новый пароль",
+            "placeholder": "•••••••••••"
+        },
+        {
+            "type": "password",
+            "name": "newPassword",
+            "label": "Повторите новый пароль",
+            "placeholder": "•••••••••••"
+        }
+    ],
     "placeholder": "Поменять аватар"
 }
