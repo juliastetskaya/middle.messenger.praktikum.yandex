@@ -27,7 +27,7 @@
 }
 
 .user-menu {
-    display: none;
+    /* display: none; */
     top: 65px;
     right: -9px;
 }
@@ -46,15 +46,15 @@
 }
 
 .user-menu .chat-menu__item:nth-child(1)::before {
-    background: url("../static/plus.svg") no-repeat center;
+    background: url("../../static/plus.svg") no-repeat center;
 }
 
 .user-menu .chat-menu__item:nth-child(2)::before {
-    background: url("../static/cross.svg") no-repeat center;
+    background: url("../../static/cross.svg") no-repeat center;
 }
 
 .message-menu {
-    display: none;
+    /* display: none; */
     bottom: 65px;
     left: -10px;
 }
@@ -72,13 +72,13 @@
 }
 
 .message-menu .chat-menu__item:nth-child(1)::before {
-    background: url("../static/photo.svg") no-repeat center;
+    background: url("../../static/photo.svg") no-repeat center;
 }
 
 .message-menu .chat-menu__item:nth-child(2)::before {
-    background: url("../static/file.svg") no-repeat center;
+    background: url("../../static/file.svg") no-repeat center;
 }
 
 .message-menu .chat-menu__item:nth-child(3)::before {
-    background: url("../static/location.svg") no-repeat center;
+    background: url("../../static/location.svg") no-repeat center;
 }

@@ -1,19 +1,14 @@
 import { PATHS } from "../../constants";
 import Block from "../../core/Block";
 
-import { four, five } from '../../data/errors.json';
+import data from '../../data/errors';
 
 
 export class ErrorPage extends Block {
     constructor(pathname: string) {
-        const data = pathname === PATHS[404] ? four : five;
-        const { title, text, linkText, linkHref } = data;
-        super({
-            text,
-            title,
-            linkText,
-            linkHref,
-        });
+        const { four, five } = data;
+        const currentData = pathname === PATHS[404] ? four : five;
+        super({ ...currentData });
     }
 
     // componentDidUpdate(oldProps: any, newProps: any): boolean {

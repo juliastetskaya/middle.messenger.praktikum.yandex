@@ -1,27 +1,13 @@
 import Block from "../../core/Block";
 
-import { name, fields, links, placeholder } from '../../data/profile.json';
+import data from '../../data/profile';
 
 import './profile.css';
 
 export class ProfilePage extends Block {
     constructor() {
-        super({
-            name,
-            fields,
-            links,
-            placeholder,
-        });
+        super({ ...data });
     }
-
-    // componentDidUpdate(oldProps: any, newProps: any): boolean {
-    //     if (oldProps.buttonText !== newProps.buttonText) {
-    //         this.children.button.setProps({
-    //             text: newProps.buttonText
-    //         })
-    //     }
-    //     return super.componentDidUpdate(oldProps, newProps);
-    // }
 
     render() {
         return `

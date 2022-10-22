@@ -1,5 +1,7 @@
 import Block from '../../core/Block';
 
+import avatar from '../../static/avatar.svg';
+
 import './avatar.css';
 
 interface AvatarProps {
@@ -15,7 +17,7 @@ export class Avatar extends Block {
     render() {
         return `
             <div class="avatar {{class}}">
-                <img src="../../static/avatar.svg" alt="avatar image">
+                <img src=${avatar} alt="avatar image">
                 <div class="change-placeholder">{{placeholder}}</div>
             </div>
         `;

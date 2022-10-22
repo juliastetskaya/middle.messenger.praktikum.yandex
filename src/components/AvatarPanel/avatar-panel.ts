@@ -1,17 +1,12 @@
 import Block from '../../core/Block';
 
-import { title, linkText, linkHref, textButton } from '../../data/avatar.json';
+import data from '../../data/avatar';
 
 import './avatar-panel.css';
 
 export class AvatarPanel extends Block {
     constructor() {
-        super({
-            title,
-            linkText,
-            linkHref,
-            textButton,
-        });
+        super({ ...data });
     }
 
     render() {

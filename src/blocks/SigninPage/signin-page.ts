@@ -1,32 +1,11 @@
 import Block from "../../core/Block";
 
-import {
-    text,
-    buttonText,
-    linkText,
-    linkHref,
-    fields,
-} from '../../data/signin.json';
+import data from '../../data/signin';
 
 export class SigninPage extends Block {
     constructor() {
-        super({
-            text,
-            buttonText,
-            linkText,
-            linkHref,
-            fields,
-        });
+        super({ ...data });
     }
-
-    // componentDidUpdate(oldProps: any, newProps: any): boolean {
-    //     if (oldProps.buttonText !== newProps.buttonText) {
-    //         this.children.button.setProps({
-    //             text: newProps.buttonText
-    //         })
-    //     }
-    //     return super.componentDidUpdate(oldProps, newProps);
-    // }
 
     render() {
         return `

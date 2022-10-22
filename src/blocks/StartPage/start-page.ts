@@ -2,12 +2,12 @@ import Block from "../../core/Block";
 
 import './start.css';
 
-import { links } from '../../data/start.json';
+import data from '../../data/start';
 
 
 export class StartPage extends Block {
     constructor() {
-        super({ links });
+        super({ ...data });
     }
 
     render() {

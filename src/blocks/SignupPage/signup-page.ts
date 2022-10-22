@@ -1,23 +1,11 @@
 import Block from "../../core/Block";
 
-import {
-    text,
-    buttonText,
-    linkText,
-    linkHref,
-    fields,
-} from '../../data/signup.json';
+import data from '../../data/signup';
 
 
 export class SignupPage extends Block {
     constructor() {
-        super({
-            text,
-            buttonText,
-            linkText,
-            linkHref,
-            fields,
-        })
+        super({ ...data });
     }
 
     render() {

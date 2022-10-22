@@ -1,13 +1,10 @@
 import Block from "../../core/Block";
 
-import { saveButton, passwordFields } from '../../data/profile.json';
+import data from '../../data/profile';
 
 export class PasswordChangePage extends Block {
     constructor() {
-        super({
-            saveButton,
-            fields: passwordFields,
-        });
+        super({ ...data });
     }
 
     render() {
@@ -17,7 +14,7 @@ export class PasswordChangePage extends Block {
                 <div class="profile__panel">
                     <div class="profile__content password-change">
                         {{{ Avatar }}}
-                        {{{ Form class="profile__form" fields=fields }}}
+                        {{{ Form class="profile__form" fields=passwordFields }}}
                         {{{ Button type="button" class="profile__button" text=saveButton }}}
                     </div>
                 </div>

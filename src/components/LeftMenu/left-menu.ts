@@ -1,5 +1,7 @@
 import Block from '../../core/Block';
 
+import arrow from '../../static/arrow_button.svg';
+
 import './left-menu.css';
 
 export class LeftMenu extends Block {
@@ -8,11 +10,10 @@ export class LeftMenu extends Block {
     }
     
     render() {
-        console.log('props', this.props);
         return `
             <div class="left-menu">
-                <a href="./profile.html">
-                    <img src='../../static/arrow_button.svg' alt="arrow button">
+                <a href="/profile.html">
+                    <img src=${arrow} alt="arrow button">
                 </a>
             </div>
         `;

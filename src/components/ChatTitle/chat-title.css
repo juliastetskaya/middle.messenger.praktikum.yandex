@@ -23,7 +23,7 @@
     margin: 0 0 0 auto;
     background-color: transparent;
     background-repeat: no-repeat;
-    background-image: url("../static/dots.svg");
+    background-image: url("../../static/dots.svg");
     background-position: center;
     border-radius: 50%;
 }

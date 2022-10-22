@@ -1,13 +1,10 @@
 import Block from "../../core/Block";
 
-import { saveButton, fields } from '../../data/profile.json';
+import data from '../../data/profile';
 
 export class ProfileChangePage extends Block {
     constructor() {
-        super({
-            saveButton,
-            fields,
-        });
+        super({ ...data });
     }
 
     render() {

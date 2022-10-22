@@ -54,7 +54,7 @@
     padding: 8px 10px;
     box-sizing: border-box;
     background-color: var(--darkish-grey-color);
-    background-image: url("../static/search-icon.svg");
+    background-image: url("../../static/search-icon.svg");
     background-repeat: no-repeat;
     background-position: 108px 8px;
 }
@@ -77,5 +77,5 @@
     width: 290px;
     height: 1px;
     background-color: var(--lighter-grey-color);
-    margin: 0 0 2px 10px;
+    margin: 0 10px 2px;
 }
