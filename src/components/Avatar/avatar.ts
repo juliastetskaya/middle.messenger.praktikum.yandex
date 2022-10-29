@@ -1,6 +1,6 @@
-import Block from '../../core/Block';
+import Block from 'core/Block';
 
-import avatar from '../../static/avatar.svg';
+import avatar from 'static/avatar.svg';
 
 import './avatar.css';
 

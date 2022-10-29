@@ -1,4 +1,4 @@
-import Block from '../../core/Block';
+import Block from 'core/Block';
 
 import './input.css';
 
@@ -8,11 +8,12 @@ export type InputProps = {
     label: string;
     placeholder: string;
     errorMessage: string;
+    onInput: () => void;
 };
 
 export class Input extends Block {
-    constructor(props: InputProps) {
-        super(props);
+    constructor({ onInput, ...rest }: InputProps) {
+        super({ events: { input: onInput }, ...rest });
     }
 
     render() {
@@ -20,7 +21,7 @@ export class Input extends Block {
             <div class="input">
                 <label class="input__label" for={{name}}>{{label}}</label>
                 <input class="input__field" type={{type}} id={{name}} name={{name}} placeholder={{placeholder}}>
-                <p class="input__error disabled">{{errorMessage}}</p>
+                {{#if errorMessage}}<p class="input__error">{{errorMessage}}</p>{{/if}}
             </div>
         `;
     }

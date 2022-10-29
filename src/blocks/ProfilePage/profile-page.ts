@@ -1,6 +1,6 @@
-import Block from "../../core/Block";
+import Block from "core/Block";
 
-import data from '../../data/profile';
+import data from 'data/profile';
 
 import './profile.css';
 

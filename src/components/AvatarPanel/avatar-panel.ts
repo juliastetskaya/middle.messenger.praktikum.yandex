@@ -1,6 +1,6 @@
-import Block from '../../core/Block';
+import Block from 'core/Block';
 
-import data from '../../data/avatar';
+import data from 'data/avatar';
 
 import './avatar-panel.css';
 

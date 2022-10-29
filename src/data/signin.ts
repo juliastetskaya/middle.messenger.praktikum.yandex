@@ -9,7 +9,7 @@ export default ({
             name: "login",
             label: "Логин",
             placeholder: "Логин",
-            errorMessage: "Неверный логин",
+            // errorMessage: "Неверный логин",
         },
         {
             type: "password",
@@ -17,7 +17,7 @@ export default ({
             class: "password",
             label: "Пароль",
             placeholder: "Пароль",
-            errorMessage: "Слишком короткий пароль",
+            // errorMessage: "Слишком короткий пароль",
         }
     ]
 });

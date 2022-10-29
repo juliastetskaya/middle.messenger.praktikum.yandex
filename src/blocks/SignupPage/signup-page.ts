@@ -1,6 +1,6 @@
-import Block from "../../core/Block";
+import Block from "core/Block";
 
-import data from '../../data/signup';
+import data from 'data/signup';
 
 
 export class SignupPage extends Block {

@@ -1,6 +1,6 @@
-import Block from "../../core/Block";
+import Block from "core/Block";
 
-import data from '../../data/chats';
+import data from 'data/chats';
 
 import './chat.css';
 

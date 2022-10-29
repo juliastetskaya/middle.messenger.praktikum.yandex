@@ -1,8 +1,8 @@
-import Block from "../../core/Block";
+import Block from "core/Block";
 
 import './start.css';
 
-import data from '../../data/start';
+import data from 'data/start';
 
 
 export class StartPage extends Block {

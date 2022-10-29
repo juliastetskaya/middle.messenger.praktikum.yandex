@@ -1,6 +1,6 @@
-import Block from '../../core/Block';
+import Block from 'core/Block';
 
-import arrow from '../../static/arrow_button.svg';
+import arrow from 'static/arrow_button.svg';
 
 import './left-menu.css';
 

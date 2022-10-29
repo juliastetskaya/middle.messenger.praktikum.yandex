@@ -1,11 +1,14 @@
-import Block from '../../core/Block';
-import { InputProps } from '../../components/Input';
+import Block from 'core/Block';
+import { InputProps } from 'components/Input';
 
 import './form.css';
 
 interface FormProps {
     class?: string;
     fields: InputProps[];
+    events?: {
+        input?: () => void;
+    }
 }
 
 export class Form extends Block {
@@ -19,12 +22,13 @@ export class Form extends Block {
                 <ul class="form__list">
                     {{#each fields}}
                         <li class="form__item">
-                            {{{Input
+                            {{{ Input
                                 type=type
                                 label=label
                                 name=name
                                 placeholder=placeholder
                                 errorMessage=errorMessage
+                                onInput=onInput
                             }}}
                         </li>
                     {{/each}}

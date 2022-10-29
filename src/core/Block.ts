@@ -83,11 +83,14 @@ class Block<P = any> {
     }
 
     setProps = (nextProps: P) => {
+        console.log('SET_PROPS', nextProps);
         if (!nextProps) {
             return;
         }
 
         Object.assign(this.props, nextProps);
+
+        console.log('THIS_PROPS+++++', this.props);
     };
 
     setState = (nextState: any) => {

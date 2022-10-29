@@ -1,4 +1,4 @@
-import Block from '../../core/Block';
+import Block from 'core/Block';
 
 import { TextMessageProps } from '../TextMessage';
 import { ImageMessageProps } from '../ImageMessage';

@@ -1,7 +1,7 @@
 import { PATHS } from "../../constants";
-import Block from "../../core/Block";
+import Block from "core/Block";
 
-import data from '../../data/errors';
+import data from 'data/errors';
 
 
 export class ErrorPage extends Block {
