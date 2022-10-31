@@ -2,8 +2,10 @@ import photograph from '../static/photograph.png';
 
 export default ({
     searchPlaceholder: "Поиск",
-    linkHref: "/profile.html",
-    linkText: "Профиль",
+    link: {
+        href: "/profile.html",
+        text: "Профиль",
+    },
     rightSidePlaceholder: "Выберите чат чтобы отправить сообщение",
     chats: [
         {
@@ -66,27 +68,27 @@ export default ({
     chatName: "Вадим",
     userMenu: [
         {
-            linkText: "Добавить пользователя",
-            linkHref: "/",
+            text: "Добавить пользователя",
+            href: "/",
         },
         {
-            linkText: "Удалить пользователя",
-            linkHref: "/",
+            text: "Удалить пользователя",
+            href: "/",
         }
     ],
     placeholder: "Сообщение",
     messageMenu: [
         {
-            linkText: "Фото или Видео",
-            linkHref: "/",
+            text: "Фото или Видео",
+            href: "/",
         },
         {
-            linkText: "Файл",
-            linkHref: "/",
+            text: "Файл",
+            href: "/",
         },
         {
-            linkText: "Локация",
-            linkHref: "/",
+            text: "Локация",
+            href: "/",
         }
     ],
     message: {

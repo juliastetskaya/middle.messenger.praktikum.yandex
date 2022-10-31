@@ -13,11 +13,12 @@ export class LinkList extends Block {
     }
     
     render() {
+        console.log('this.props', this.props);
         return `
             <ul class="link-list {{class}}">
                 {{#each links}}
                     <li class="link-list__item">
-                        {{{ Link class=class linkText=linkText linkHref=linkHref }}}
+                        {{{ Link class=class text=text href=href }}}
                     </li>
                 {{/each}}
             </ul>

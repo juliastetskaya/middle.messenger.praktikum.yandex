@@ -6,14 +6,12 @@ interface ButtonProps {
     text: string;
     type?: string;
     class?: string;
-    events?: {
-        click?: () => void
-    }
+    onClick?: () => void;
 }
 
 export class Button extends Block {
-    constructor(props: ButtonProps) {
-        super(props);
+    constructor({ onClick, ...rest }: ButtonProps) {
+        super({ events: { click: onClick }, ...rest });
     }
 
     render() {

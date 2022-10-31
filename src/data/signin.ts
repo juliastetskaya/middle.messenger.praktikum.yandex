@@ -1,15 +1,21 @@
 export default ({
     text: "Вход",
-    buttonText: "Авторизоваться",
-    linkText: "Нет аккаунта?",
-    linkHref: "/signup.html",
+    button: {
+        text: "Авторизоваться",
+    },
+    link: {
+        text: "Нет аккаунта?",
+        href: "/signup.html",
+    },
     fields: [
         {
             type: "text",
             name: "login",
             label: "Логин",
             placeholder: "Логин",
-            // errorMessage: "Неверный логин",
+            errorMessage: "",
+            value: "",
+            ref: "loginRef",
         },
         {
             type: "password",
@@ -17,7 +23,9 @@ export default ({
             class: "password",
             label: "Пароль",
             placeholder: "Пароль",
-            // errorMessage: "Слишком короткий пароль",
+            errorMessage: "",
+            value: "",
+            ref: "passwordRef",
         }
     ]
 });

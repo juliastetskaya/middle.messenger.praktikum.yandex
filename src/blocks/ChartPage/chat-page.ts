@@ -6,14 +6,14 @@ import './chat.css';
 
 export class ChatPage extends Block {
     constructor() {
-        super({ ...data });
+        super(data);
     }
 
     render() {
         return `
             <div class="chat">
                 <div class="left-side">
-                    {{{ Link class="chat__profile-link" linkHref=linkHref linkText=linkText }}}
+                    {{{ Link class="chat__profile-link" href=link.href text=link.text }}}
                     <input class="chat__search-field" type="text" placeholder={{searchPlaceholder}}>
                     {{{ ChatList chats=chats }}}
                 </div>

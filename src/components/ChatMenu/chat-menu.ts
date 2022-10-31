@@ -20,7 +20,7 @@ export class ChatMenu extends Block {
                 <ul class="chat-menu__list">
                     {{#each links}}
                         <li class="chat-menu__item">
-                            {{{ Link linkHref=linkHref linkText=linkText }}}
+                            {{{ Link href=href text=text }}}
                         </li>
                     {{/each}}
                 </ul>

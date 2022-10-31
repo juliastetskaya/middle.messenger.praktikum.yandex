@@ -1,6 +1,8 @@
-export default ({
+export default {
     name: "Иван",
-    saveButton: "Сохранить",
+    button: {
+        text: "Сохранить",
+    },
     fields: [
         {
             type: "email",
@@ -41,16 +43,16 @@ export default ({
     ],
     links: [
         {
-            linkText: "Изменить данные",
-            linkHref: "/profile-change.html"
+            text: "Изменить данные",
+            href: "/profile-change.html"
         },
         {
-            linkText: "Изменить пароль",
-            linkHref: "/password-change.html"
+            text: "Изменить пароль",
+            href: "/password-change.html"
         },
         {
-            linkText: "Выйти",
-            linkHref: "/",
+            text: "Выйти",
+            href: "/",
             class: "quit"
         }
     ],
@@ -75,4 +77,4 @@ export default ({
         }
     ],
     placeholder: "Поменять аватар",
-});
+};

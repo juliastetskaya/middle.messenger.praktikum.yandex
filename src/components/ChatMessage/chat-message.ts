@@ -14,7 +14,6 @@ export class ChatMessage extends Block {
     }
 
     render() {
-        console.log('props', this.props);
         return `
             <div class="chat-message">
                 {{{ Button type="button" class="chat-message__menu-button" }}}

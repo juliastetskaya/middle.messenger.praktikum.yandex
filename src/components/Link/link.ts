@@ -4,8 +4,8 @@ import './link.css';
 
 export type LinkProps = {
     class?: string;
-    linkHref: string;
-    linkText: string;
+    href: string;
+    text: string;
 };
 
 export class Link extends Block {
@@ -15,7 +15,7 @@ export class Link extends Block {
     
     render() {
         return `
-            <a href={{linkHref}} class="link {{class}}">{{linkText}}</a>
+            <a href={{href}} class="link {{class}}">{{text}}</a>
         `;
     }
 }

@@ -18,7 +18,6 @@ export class MessageArea extends Block {
     }
 
     render() {
-        console.log('props', this.props);
         return `
             <div class="messages-area">
                 <div class="message-date">{{messageDate}}</div>

@@ -23,7 +23,7 @@ class Block<P = any> {
     private eventBus: () => EventBus<Events>;
 
     protected state: any = {};
-    protected refs: {[key: string]: HTMLElement} = {};
+    public readonly refs: {[key: string]: Block} = {};
 
     public constructor(props?: P) {
         const eventBus = new EventBus<Events>();
@@ -38,11 +38,6 @@ class Block<P = any> {
         this._registerEvents(eventBus);
 
         eventBus.emit(Block.EVENTS.INIT);
-        // const { props, children } = this.getChildren(propsAndChildren);
-
-        // this.children = children;
-        
-        // this.initChildren();
     }
 
     _registerEvents(eventBus: EventBus) {
@@ -83,14 +78,15 @@ class Block<P = any> {
     }
 
     setProps = (nextProps: P) => {
-        console.log('SET_PROPS', nextProps);
+        console.log('next props', nextProps);
         if (!nextProps) {
             return;
         }
 
+        console.log('!!! before', this.props);
         Object.assign(this.props, nextProps);
+        console.log('!!! after', this.props);
 
-        console.log('THIS_PROPS+++++', this.props);
     };
 
     setState = (nextState: any) => {

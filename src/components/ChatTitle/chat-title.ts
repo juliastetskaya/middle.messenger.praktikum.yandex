@@ -15,7 +15,6 @@ export class ChatTitle extends Block {
     }
 
     render() {
-        console.log('!!!props', this.props);
         return `
             <div class="chat-title">
                 <div class="chat-title__avatar"></div>

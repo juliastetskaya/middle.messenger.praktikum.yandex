@@ -5,8 +5,10 @@ import './error.css';
 interface ErrorProps {
     title: string;
     text: string;
-    linkHref: string;
-    linkText: string;
+    link: {
+        href: string,
+        text: string,
+    };
 }
 
 export class Error extends Block {
@@ -19,7 +21,7 @@ export class Error extends Block {
             <div class="error-page">
                 <h1 class="error-page__title">{{title}}</h1>
                 <p class="error-page__text">{{text}}</p>
-                {{{ Link linkHref=linkHref linkText=linkText }}}
+                {{{ Link href=link.href text=link.text }}}
             </div>
         `;
     }

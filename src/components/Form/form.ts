@@ -6,9 +6,6 @@ import './form.css';
 interface FormProps {
     class?: string;
     fields: InputProps[];
-    events?: {
-        input?: () => void;
-    }
 }
 
 export class Form extends Block {
@@ -17,6 +14,7 @@ export class Form extends Block {
     }
 
     render() {
+        console.log('Form props', this.props);
         return `
             <form action="#" class="form {{class}}">
                 <ul class="form__list">
@@ -26,9 +24,11 @@ export class Form extends Block {
                                 type=type
                                 label=label
                                 name=name
+                                value=value
                                 placeholder=placeholder
                                 errorMessage=errorMessage
                                 onInput=onInput
+                                ref=ref
                             }}}
                         </li>
                     {{/each}}

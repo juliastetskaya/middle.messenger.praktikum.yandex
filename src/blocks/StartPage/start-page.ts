@@ -4,10 +4,11 @@ import './start.css';
 
 import data from 'data/start';
 
+const { links } = data;
 
 export class StartPage extends Block {
     constructor() {
-        super({ ...data });
+        super({ links });
     }
 
     render() {
