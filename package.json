@@ -21,7 +21,8 @@
     "components": "./src/components",
     "blocks": "./src/blocks",
     "data": "./src/data",
-    "static": "./src/static"
+    "static": "./src/static",
+    "utils": "./src/utils"
   },
   "dependencies": {
     "express": "4.18.1",

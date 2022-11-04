@@ -17,7 +17,7 @@ export type PanelProps = {
     fields: InputProps[];
 };
 
-export class Panel extends Block {
+export class Panel extends Block<PanelProps> {
     constructor(props: PanelProps) {
         super(props);
     }

@@ -2,29 +2,37 @@ import Block from 'core/Block';
 
 import './input.css';
 
-export type InputProps = {
+export type IncomingProps = {
     type: 'text' | 'password' | 'email' | 'tel';
     name: string;
     label: string;
-    value: string;
     placeholder: string;
-    errorMessage: string;
     onInput: () => void;
-    ref: string;
+    onFocus: () => void;
+    onBlur: () => void;
 };
 
-export class Input extends Block {
-    constructor({ onInput, ...rest }: InputProps) {
-        super({ events: { input: onInput }, ...rest });
+type InputProps = {
+    class?: string;
+    type: 'text' | 'password' | 'email' | 'tel';
+    name: string;
+    label: string;
+    placeholder: string;
+    events: {
+        input: () => void,
+        focus: () => void,
+        blur: () => void,
+    }
+}
+
+export class Input extends Block<InputProps> {
+    constructor({ onInput, onFocus, onBlur, ...rest }: IncomingProps) {
+        super({ events: { input: onInput, focus: onFocus, blur: onBlur }, ...rest });
     }
 
     render() {
         return `
-            <div class="input">
-                <label class="input__label" for="{{name}}">{{label}}</label>
-                <input class="input__field" type="{{type}}" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}" value="{{value}}" ref="{{ref}}">
-                {{#if errorMessage}}<p class="input__error">{{errorMessage}}</p>{{/if}}
-            </div>
+            <input class="input {{class}}" type="{{type}}" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}">
         `;
     }
 }

@@ -2,6 +2,8 @@ import Panel from 'components/Panel';
 import Button from 'components/Button';
 import Form from 'components/Form';
 import Input from 'components/Input';
+import Label from 'components/Label';
+import ControlledInput from 'components/ControlledInput';
 import Link from 'components/Link';
 import Error from 'components/Error';
 import LeftMenu from 'components/LeftMenu';
@@ -17,6 +19,8 @@ import MessageArea from 'components/MessageArea';
 import ChatMessage from 'components/ChatMessage';
 import ChatMenu from 'components/ChatMenu';
 import UserChange from 'components/UserChange';
+import Field from 'components/Field';
+import FieldList from 'components/FieldList';
 
 import StartPage from 'blocks/StartPage';
 import SigninPage from 'blocks/SigninPage';
@@ -38,6 +42,8 @@ registerComponent(Panel);
 registerComponent(Button);
 registerComponent(Form);
 registerComponent(Input);
+registerComponent(Label);
+registerComponent(ControlledInput);
 registerComponent(Error);
 registerComponent(Avatar);
 registerComponent(LeftMenu);
@@ -53,6 +59,8 @@ registerComponent(MessageArea);
 registerComponent(ChatMessage);
 registerComponent(ChatMenu);
 registerComponent(UserChange);
+registerComponent(Field);
+registerComponent(FieldList);
 
 document.addEventListener('DOMContentLoaded', () => {
     let page: Block = new StartPage();

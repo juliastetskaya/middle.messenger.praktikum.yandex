@@ -39,7 +39,7 @@ export default {
             name: "phone",
             label: "Телефон",
             placeholder: "+7(909)9673030",
-        }
+        },
     ],
     links: [
         {
@@ -54,7 +54,33 @@ export default {
             text: "Выйти",
             href: "/",
             class: "quit"
-        }
+        },
+    ],
+    profileFields: [
+        {
+            label: 'Почта',
+            value: 'pochta@yandex.ru',
+        },
+        {
+            label: 'Логин',
+            value: 'ivanivanov',
+        },
+        {
+            label: 'Имя',
+            value: 'Иван',
+        },
+        {
+            label: 'Фамилия',
+            value: 'Иванов',
+        },
+        {
+            label: 'Имя в чате',
+            value: 'Иван',
+        },
+        {
+            label: 'Телефон',
+            value: '+7(909)9673030',
+        },
     ],
     passwordFields: [
         {
@@ -71,10 +97,10 @@ export default {
         },
         {
             type: "password",
-            name: "newPassword",
+            name: "passwordCheck",
             label: "Повторите новый пароль",
             placeholder: "•••••••••••"
-        }
+        },
     ],
     placeholder: "Поменять аватар",
 };

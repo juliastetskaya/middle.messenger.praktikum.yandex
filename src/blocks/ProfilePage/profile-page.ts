@@ -17,7 +17,7 @@ export class ProfilePage extends Block {
                     <div class="profile__content profile-page">
                         {{{ Avatar class="profile__avatar" placeholder=placeholder }}}
                         <p class="profile__title">{{name}}</p>
-                        {{{ Form class="profile__form" fields=fields }}}
+                        {{{ FieldList fields=profileFields }}}
                         {{{ LinkList class="profile__links" links=links }}}
                         {{{ AvatarPanel }}}
                     </div>

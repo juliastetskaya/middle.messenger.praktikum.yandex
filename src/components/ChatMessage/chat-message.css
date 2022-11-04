@@ -20,6 +20,10 @@
     background-color: var(--blue-color);
 }
 
+.chat-message .form {
+    flex-direction: row;
+}
+
 .chat-message__input {
     flex: 1;
     border: none;

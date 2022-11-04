@@ -12,6 +12,10 @@
     justify-content: center;
 }
 
+.profile__panel .field-list {
+    margin-top: 50px;
+}
+
 .profile__content {
     position: relative;
     width: 510px;
@@ -23,7 +27,8 @@
     min-height: 194px;
 }
 
-.profile__form .input {
+.profile__form .controlled-input {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,18 +38,25 @@
 
 .profile__form .form__item:not(:last-child) {
     border-bottom: 1px solid var(--lighter-grey-color);
+    margin-bottom: 10px;
 }
 
-.profile__form .input__label {
+.profile__form .label {
     font-size: 13px;
     line-height: 13px;
     color: var(--light-black-color);
 }
 
-.profile__form .input__field {
+.profile__form .input {
     flex: 0.7;
     margin-left: 10px;
     text-align: end;
+}
+
+.profile__form .error {
+    left: auto;
+    right: 0;
+    bottom: 28px;
 }
 
 .profile__title {

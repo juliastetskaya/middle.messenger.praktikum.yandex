@@ -17,6 +17,9 @@
 
 .panel__form .form__item {
     margin-top: 17px;
+}
+
+.panel__form .input {
     border-bottom: 1px solid var(--blue-color);
 }
 

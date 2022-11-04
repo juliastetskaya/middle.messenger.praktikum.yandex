@@ -8,7 +8,7 @@ interface FormProps {
     fields: InputProps[];
 }
 
-export class Form extends Block {
+export class Form extends Block<FormProps> {
     constructor(props: FormProps) {
         super(props);
     }
@@ -20,14 +20,14 @@ export class Form extends Block {
                 <ul class="form__list">
                     {{#each fields}}
                         <li class="form__item">
-                            {{{ Input
+                            {{{ ControlledInput
                                 type=type
                                 label=label
                                 name=name
                                 value=value
+                                class=class
                                 placeholder=placeholder
                                 errorMessage=errorMessage
-                                onInput=onInput
                                 ref=ref
                             }}}
                         </li>

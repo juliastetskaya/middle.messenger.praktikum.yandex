@@ -22,16 +22,12 @@ class Block<P = any> {
 
     private eventBus: () => EventBus<Events>;
 
-    protected state: any = {};
-    public readonly refs: {[key: string]: Block} = {};
+    protected refs: {[key: string]: Block} = {};
 
     public constructor(props?: P) {
         const eventBus = new EventBus<Events>();
 
-        this.getStateFromProps(props);
-
         this.props = this._makePropsProxy(props || {} as P)
-        this.state = this._makePropsProxy(this.state);
 
         this.eventBus = () => eventBus;
 
@@ -45,10 +41,6 @@ class Block<P = any> {
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-    }
-
-    protected getStateFromProps(props?: P): void {
-        this.state = {};
     }
 
     init() {
@@ -77,25 +69,14 @@ class Block<P = any> {
         return true;
     }
 
-    setProps = (nextProps: P) => {
+    setProps = (nextProps: Partial<P>) => {
         console.log('next props', nextProps);
         if (!nextProps) {
             return;
         }
 
-        console.log('!!! before', this.props);
         Object.assign(this.props, nextProps);
-        console.log('!!! after', this.props);
-
     };
-
-    setState = (nextState: any) => {
-        if (!nextState) {
-            return;
-        }
-
-        Object.assign(this.state, nextState);
-    }
 
     get element() {
         return this._element;
@@ -182,17 +163,12 @@ class Block<P = any> {
         });
     }
 
-    // _createDocumentElement(tagName: string) {
-    //     // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-    //     return document.createElement(tagName);
-    // }
-
     _compile(): DocumentFragment {
         const fragment = document.createElement('template');
 
         //  Рендерим шаблон
         const template = Handlebars.compile(this.render());
-        fragment.innerHTML = template({ ...this.state, ...this.props, children: this.children, refs: this.refs });
+        fragment.innerHTML = template({ ...this.props, children: this.children, refs: this.refs });
     
         // Заменяем заглушки на компоненты
         Object.entries(this.children).forEach(([id, component]) => {
@@ -228,47 +204,6 @@ class Block<P = any> {
     hide() {
         this.getContent()!.style.display = 'none';
     }
-
-    // getChildren(propsAndChildren: any): Record<string, Record<string, Block>> {
-    //     const children: Record<string, Block> = {};
-    //     const props: Record<string, any> = {};
-
-    //     Object.entries(propsAndChildren).map(([key, value]) => {
-    //         if (value instanceof Block) {
-    //             children[key] = value;
-    //         } else {
-    //             props[key] = value;
-    //         }
-    //     });
-
-    //     return { children, props};
-    // }
-
-    // compile(template: (context: any) => string, context: any) {
-    //     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
-        
-    //     Object.entries(this.children).forEach(([key, child]) => {
-    //         context[key] = `<div data-id="id-${child.id}"></div>`;
-    //     });
-        
-    //     const htmlString = template(context);
-
-    //     fragment.innerHTML = htmlString;
-
-    //     Object.entries(this.children).forEach(([_, child]) => {
-    //         const stub = fragment.content.querySelector(`[data-id="id-${child.id}"]`);
-
-    //         if (!stub) {
-    //             return;
-    //         }
-
-    //         stub.replaceWith(child.getContent()!);
-    //     })
-
-    //     return fragment.content;
-    // }
-
-    // protected initChildren() {}
 }
 
 export default Block;

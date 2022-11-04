@@ -11,7 +11,7 @@
     justify-content: space-between;
 }
 
-.user-panel .input__field {
+.user-panel .input {
     border-bottom: 1px solid var(--blue-color);
 }
 
