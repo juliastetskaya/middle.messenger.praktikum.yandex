@@ -63,18 +63,19 @@ registerComponent(Field);
 registerComponent(ProfileList);
 
 document.addEventListener('DOMContentLoaded', () => {
-    let page: Block = new StartPage();
+    let page: Block;
+
     const { pathname } = window.location;
 
     switch (pathname) {
+        case PATHS.START:
+            page = new StartPage();
+            break;
         case PATHS.SIGNIN:
             page = new SigninPage();
             break;
         case PATHS.SIGNUP:
             page = new SignupPage();
-            break;
-        case PATHS[404]:
-            page = new ErrorPage(pathname);
             break;
         case PATHS[500]:
             page = new ErrorPage(pathname);
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             page = new ChatPage();
             break;
         default:
+            page = new ErrorPage(PATHS[404]);
             break;
     }
 

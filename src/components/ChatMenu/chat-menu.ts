@@ -10,6 +10,8 @@ type ChatMenuProps = {
 };
 
 export class ChatMenu extends Block<ChatMenuProps> {
+    static componentName = 'ChatMenu';
+
     render() {
         return `
             <div class="chat-menu {{class}}">

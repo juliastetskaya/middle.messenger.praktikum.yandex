@@ -7,6 +7,8 @@ export type ErrorProps = {
 };
 
 export class Error extends Block<ErrorProps> {
+    static componentName = 'Error';
+
     render() {
         return `
             <p class="error">{{#if text}}{{text}}{{/if}}</p>

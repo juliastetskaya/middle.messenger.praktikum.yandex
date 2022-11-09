@@ -8,6 +8,8 @@ export type LabelProps = {
 };
 
 export class Label extends Block<LabelProps> {
+    static componentName = 'Label';
+
     render() {
         return `
             <label class="label" for="{{name}}">{{text}}</label>

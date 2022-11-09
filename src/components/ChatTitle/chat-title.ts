@@ -10,6 +10,8 @@ type ChatTitleProps = {
 };
 
 export class ChatTitle extends Block<ChatTitleProps> {
+    static componentName = 'ChatTitle';
+
     render() {
         return `
             <div class="chat-title">

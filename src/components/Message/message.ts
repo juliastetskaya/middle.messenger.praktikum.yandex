@@ -10,6 +10,8 @@ export type MessageProps = {
 };
 
 export class Message extends Block<MessageProps> {
+    static componentName = 'Message';
+
     render() {
         return `
             <div class="message">

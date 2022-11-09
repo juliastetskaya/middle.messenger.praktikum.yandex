@@ -13,7 +13,9 @@ type ErrorPageProps = {
     link: LinkProps,
 };
 
-export class ErrorPage extends Block {
+export class ErrorPage extends Block<ErrorPageProps> {
+    static componentName = 'ErrorPage';
+
     constructor(pathname: string) {
         const currentData = pathname === PATHS[404] ? four : five;
         super(currentData as ErrorPageProps);

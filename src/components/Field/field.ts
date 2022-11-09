@@ -8,6 +8,8 @@ export type FieldProps = {
 };
 
 export class Field extends Block<FieldProps> {
+    static componentName = 'Field';
+
     render() {
         return `
             <li class="field">

@@ -10,6 +10,8 @@ type ProfileListProps = {
 };
 
 export class ProfileList extends Block<ProfileListProps> {
+    static componentName = 'ProfileList';
+
     render() {
         return `
             <ul class="field-list">

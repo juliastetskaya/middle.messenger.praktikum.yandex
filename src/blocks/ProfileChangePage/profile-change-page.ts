@@ -12,6 +12,8 @@ type ProfilePageProps = {
 };
 
 export class ProfileChangePage extends Block<ProfilePageProps> {
+    static componentName = 'ProfileChangePage';
+
     constructor() {
         super({ button, fields } as ProfilePageProps);
 

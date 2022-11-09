@@ -9,6 +9,8 @@ export type LinkProps = {
 };
 
 export class Link extends Block<LinkProps> {
+    static componentName = 'Link';
+
     render() {
         return `
             <a href={{href}} class="link {{class}}">{{text}}</a>

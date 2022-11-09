@@ -7,6 +7,8 @@ type ChatListProps = {
 };
 
 export class ChatList extends Block<ChatListProps> {
+    static componentName = 'ChatList';
+
     render() {
         return `
             <ul class="chat-list">

@@ -10,6 +10,8 @@ type AvatarProps = {
 };
 
 export class Avatar extends Block<AvatarProps> {
+    static componentName = 'Avatar';
+
     render() {
         return `
             <div class="avatar {{class}}">
