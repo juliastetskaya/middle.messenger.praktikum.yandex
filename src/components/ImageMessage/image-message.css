@@ -1,0 +1,16 @@
+.image-message {
+    position: relative;
+    width: fit-content;
+    max-width: 400px;
+    margin-top: 10px;
+    border-radius: 12px;
+}
+
+.image-message .message-time {
+    padding: 2px 7px;
+    border-radius: 30px;
+    color: var(--white-color);
+    background-color: rgba(82, 82, 82, 50%);
+    bottom: 13px;
+    right: 11px;
+}

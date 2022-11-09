@@ -1,0 +1,29 @@
+.panel {
+    width: 340px;
+    background-color: var(--white-color);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 14%);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.panel__title {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.panel__form .form__item {
+    margin-top: 17px;
+}
+
+.panel__form .input {
+    border-bottom: 1px solid var(--blue-color);
+}
+
+.signin,
+.signup {
+    min-height: 450px;
+}

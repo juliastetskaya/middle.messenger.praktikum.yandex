@@ -1,0 +1,12 @@
+.messages-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.message-date {
+    margin-top: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
