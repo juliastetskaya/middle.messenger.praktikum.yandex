@@ -5,18 +5,14 @@ import { ImageMessageProps } from '../ImageMessage';
 
 import './message-area.css';
 
-export interface MessageAreaProps {
+export type MessageAreaProps = {
     messageDate: string;
     message: TextMessageProps;
     imageMessage: ImageMessageProps;
     myMessage: TextMessageProps;
-}
+};
 
 export class MessageArea extends Block<MessageAreaProps> {
-    constructor(props: MessageAreaProps) {
-        super(props);
-    }
-
     render() {
         return `
             <div class="messages-area">

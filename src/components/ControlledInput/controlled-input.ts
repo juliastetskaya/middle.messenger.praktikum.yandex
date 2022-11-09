@@ -3,7 +3,6 @@ import { validateForm } from 'utils';
 
 import './controlled-input.css';
 
-
 type ControlledInputProps = {
     class?: string;
     type: 'text' | 'password' | 'email' | 'tel';
@@ -15,7 +14,7 @@ type ControlledInputProps = {
     onInput: (e: Event) => void;
     onFocus: (e: Event) => void;
     onBlur: (e: Event) => void;
-}
+};
 
 export class ControlledInput extends Block<ControlledInputProps> {
     constructor(props: ControlledInputProps) {
@@ -30,23 +29,23 @@ export class ControlledInput extends Block<ControlledInputProps> {
 
     onInput = () => {
         this.refs.errorRef.setProps({ text: '' });
-    }
+    };
 
     onFocus = (e: Event) => {
         const inputEl = e.target as HTMLInputElement;
-        
+
         const error = validateForm([{ type: inputEl.name, value: inputEl.value }]);
-        
+
         this.refs.errorRef.setProps({ text: error });
-    }
-    
+    };
+
     onBlur = (e: Event) => {
         const inputEl = e.target as HTMLInputElement;
-        
+
         const error = validateForm([{ type: inputEl.name, value: inputEl.value }]);
-        
+
         this.refs.errorRef.setProps({ text: error });
-    }
+    };
 
     render() {
         return `

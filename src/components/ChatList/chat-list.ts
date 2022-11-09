@@ -4,13 +4,9 @@ import { MessageProps } from '../Message';
 
 type ChatListProps = {
     chats: MessageProps[];
-}
+};
 
 export class ChatList extends Block<ChatListProps> {
-    constructor(props: ChatListProps) {
-        super(props);
-    }
-
     render() {
         return `
             <ul class="chat-list">

@@ -8,10 +8,6 @@ export type LinkListProps = {
 };
 
 export class LinkList extends Block<LinkListProps> {
-    constructor(props: LinkListProps) {
-        super(props);
-    }
-    
     render() {
         return `
             <ul class="link-list {{class}}">

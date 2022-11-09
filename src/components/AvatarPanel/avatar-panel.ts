@@ -12,7 +12,7 @@ type AvatarPanelProps = {
     title: string;
     link: LinkProps;
     button: ButtonProps;
-}
+};
 
 export class AvatarPanel extends Block<AvatarPanelProps> {
     constructor() {

@@ -23,10 +23,12 @@ export type InputProps = {
         focus: () => void,
         blur: () => void,
     }
-}
+};
 
 export class Input extends Block<InputProps> {
-    constructor({ onInput, onFocus, onBlur, ...rest }: IncomingProps) {
+    constructor({
+        onInput, onFocus, onBlur, ...rest
+    }: IncomingProps) {
         super({ events: { input: onInput, focus: onFocus, blur: onBlur }, ...rest });
     }
 

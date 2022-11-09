@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import { LinkListProps } from 'components/LinkList';
 
 import './start.css';

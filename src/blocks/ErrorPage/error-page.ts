@@ -1,8 +1,7 @@
-import Block from "core/Block";
-import { PATHS } from "../../constants";
-
+import Block from 'core/Block';
 import data from 'data/errors';
 import { LinkProps } from 'components/Link';
+import { PATHS } from '../../constants';
 
 import './error-page.css';
 
@@ -12,7 +11,7 @@ type ErrorPageProps = {
     title: string;
     text: string;
     link: LinkProps,
-}
+};
 
 export class ErrorPage extends Block {
     constructor(pathname: string) {

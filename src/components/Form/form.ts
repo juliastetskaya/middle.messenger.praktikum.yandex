@@ -6,13 +6,9 @@ import './form.css';
 type FormProps = {
     class?: string;
     fields: InputProps[];
-}
+};
 
 export class Form extends Block<FormProps> {
-    constructor(props: FormProps) {
-        super(props);
-    }
-
     render() {
         return `
             <form action="#" class="form {{class}}">

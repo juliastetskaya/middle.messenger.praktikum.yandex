@@ -4,16 +4,12 @@ import avatar from 'static/avatar.svg';
 
 import './avatar.css';
 
-interface AvatarProps {
+type AvatarProps = {
     class?: string;
     placeholder: string;
-}
+};
 
 export class Avatar extends Block<AvatarProps> {
-    constructor(props: AvatarProps) {
-        super(props);
-    }
-
     render() {
         return `
             <div class="avatar {{class}}">

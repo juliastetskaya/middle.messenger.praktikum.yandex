@@ -1,4 +1,4 @@
-import { validateForm } from "./validateForm";
+import { validateForm } from './validateForm';
 
 type FieldProps = {
     type?: string,
@@ -11,11 +11,9 @@ type FieldProps = {
 
 export const validateAndGetInputData = (fields: FieldProps[], element?: Nullable<HTMLElement>) => {
     const allFieldNames = fields.map(({ name }) => name);
-    console.log('allFields', allFieldNames);
+
     return allFieldNames.reduce((acc, name) => {
         const inputEl = element?.querySelector(`input[name='${name}']`) as HTMLInputElement;
-
-        console.log('INPUT_EL', inputEl);
 
         const error = validateForm([{ type: inputEl.name, value: inputEl.value }]);
 

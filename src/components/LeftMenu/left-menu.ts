@@ -5,10 +5,6 @@ import arrow from 'static/arrow_button.svg';
 import './left-menu.css';
 
 export class LeftMenu extends Block {
-    constructor() {
-        super();
-    }
-    
     render() {
         return `
             <div class="left-menu">

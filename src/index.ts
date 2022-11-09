@@ -66,13 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let page: Block = new StartPage();
     const { pathname } = window.location;
 
-    switch(pathname) {
+    switch (pathname) {
         case PATHS.SIGNIN:
-            console.log('SIGN IN');
             page = new SigninPage();
             break;
         case PATHS.SIGNUP:
-            console.log('SIGN UP');
             page = new SignupPage();
             break;
         case PATHS[404]:
@@ -94,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
             page = new ChatPage();
             break;
         default:
-            console.log('DEFAULT');
             break;
     }
 

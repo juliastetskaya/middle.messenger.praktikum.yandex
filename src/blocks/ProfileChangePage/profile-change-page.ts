@@ -1,17 +1,15 @@
-import Block from "core/Block";
-import { FieldProps } from '../SigninPage';
-
+import Block from 'core/Block';
 import data from 'data/profile';
 import { validateAndGetInputData } from 'utils';
 import { ButtonProps } from 'components/Button';
+import { FieldProps } from '../SigninPage';
 
 const { button, fields } = data;
-
 
 type ProfilePageProps = {
     button: ButtonProps;
     fields: FieldProps[];
-}
+};
 
 export class ProfileChangePage extends Block<ProfilePageProps> {
     constructor() {
@@ -28,7 +26,7 @@ export class ProfileChangePage extends Block<ProfilePageProps> {
         if (values) {
             console.log('Form is ready to send data:', values);
         }
-    }
+    };
 
     render() {
         return `

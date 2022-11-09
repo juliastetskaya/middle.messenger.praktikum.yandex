@@ -18,16 +18,16 @@ class Block<P = any> {
 
     protected readonly props: P;
 
-    protected children: {[id: string]: Block} = {};
+    protected children: { [id: string]: Block } = {};
 
     private eventBus: () => EventBus<Events>;
 
-    protected refs: {[key: string]: Block} = {};
+    protected refs: { [key: string]: Block } = {};
 
     public constructor(props?: P) {
         const eventBus = new EventBus<Events>();
 
-        this.props = this._makePropsProxy(props || {} as P)
+        this.props = this._makePropsProxy(props || {} as P);
 
         this.eventBus = () => eventBus;
 
@@ -52,6 +52,7 @@ class Block<P = any> {
     }
 
     // @ts-expect-error
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     componentDidMount(props: P) {}
 
     _componentDidUpdate(oldProps: P, newProps: P) {
@@ -63,6 +64,7 @@ class Block<P = any> {
     }
 
     // @ts-expect-error
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     componentDidUpdate(oldProps: P, newProps: P) {
         return true;
     }
@@ -89,7 +91,6 @@ class Block<P = any> {
             this._element!.replaceWith(newElement);
         }
 
-
         this._element = newElement;
         this._addEvents();
     }
@@ -102,12 +103,12 @@ class Block<P = any> {
         // Хак, чтобы вызвать CDM только после добавления в DOM
         if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
             setTimeout(() => {
-                if (this.element?.parentNode?.nodeType !==  Node.DOCUMENT_FRAGMENT_NODE) {
+                if (this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
                     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
                 }
-            }, 100)
+            }, 100);
         }
-    
+
         return this.element!;
     }
 
@@ -137,6 +138,7 @@ class Block<P = any> {
     }
 
     _removeEvents() {
+        // eslint-disable-next-line prefer-destructuring
         const events: Record<string, () => void> = (this.props as any).events;
 
         if (!events || !this._element) {
@@ -149,6 +151,7 @@ class Block<P = any> {
     }
 
     _addEvents() {
+        // eslint-disable-next-line prefer-destructuring
         const events: Record<string, () => void> = (this.props as any).events;
 
         if (!events || !this._element) {
@@ -166,7 +169,7 @@ class Block<P = any> {
         //  Рендерим шаблон
         const template = Handlebars.compile(this.render());
         fragment.innerHTML = template({ ...this.props, children: this.children, refs: this.refs });
-    
+
         // Заменяем заглушки на компоненты
         Object.entries(this.children).forEach(([id, component]) => {
             // Ищем заглушки

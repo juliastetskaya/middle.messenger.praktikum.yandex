@@ -1,19 +1,15 @@
 import Block from 'core/Block';
 
-import LinkProps from '../Link';
+import { LinkProps } from '../Link';
 
 import './chat-title.css';
 
-interface ChatTitleProps {
+type ChatTitleProps = {
     chatName: string;
     userMenu: LinkProps[];
-}
+};
 
 export class ChatTitle extends Block<ChatTitleProps> {
-    constructor(props: ChatTitleProps) {
-        super(props);
-    }
-
     render() {
         return `
             <div class="chat-title">
@@ -24,5 +20,5 @@ export class ChatTitle extends Block<ChatTitleProps> {
                 {{{ ChatMenu class="user-menu" links=userMenu }}}
             </div>
             `;
-        }
     }
+}

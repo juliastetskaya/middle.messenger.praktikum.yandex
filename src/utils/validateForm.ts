@@ -13,8 +13,8 @@ const MORE_THAN_10_SYMBOLS = 'Should contain more than 10 symbols';
 const NOT_MORE_THAN_15_SYMBOLS = 'Can not be more than 15 symbols';
 const ONLY_DIGITS = 'Can contain only digits';
 const START_WITH_PLUS = 'Should start with plus';
-const DOG_SYMBOL= 'Should contain @ symbol';
-const DOT_SYMBOL= 'Should contain .(dot) symbol';
+const DOG_SYMBOL = 'Should contain @ symbol';
+const DOT_SYMBOL = 'Should contain .(dot) symbol';
 const LETTERS_BEFORE_AND_AFTER_DOT = 'Should contain letters before and after dot';
 const START_WITH_CAPITAL_LETTER = 'Should start with capital letter';
 const ONLY_LETTERS = 'Should contain only letters';
@@ -44,7 +44,7 @@ export enum ValidateType {
     SecondName = 'second_name',
     Phone = 'phone',
     Message = 'message',
-    ChatName = 'chat_name'
+    ChatName = 'chat_name',
 }
 
 type ValidateRule = {
@@ -52,11 +52,10 @@ type ValidateRule = {
     value: string;
 };
 
-
 export const validateForm = (rules: ValidateRule[]): string => {
     let errorMessage = '';
 
-    for (let i = 0; i < rules.length; i++) {
+    for (let i = 0; i < rules.length; i += 1) {
         const { type, value } = rules[i];
 
         switch (type) {
@@ -148,6 +147,8 @@ export const validateForm = (rules: ValidateRule[]): string => {
                 } else if (!value.match(/^[A-ZА-Яa-zа-я-]{0,}$/g)) {
                     errorMessage = NO_SPECIAL_SYMBOLS;
                 }
+                break;
+            default:
                 break;
         }
     }

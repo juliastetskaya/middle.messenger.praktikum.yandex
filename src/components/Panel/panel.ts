@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import InputProps from '../Input';
+import { InputProps } from '../Input';
 import { LinkProps } from '../Link';
 
 import './panel.css';
@@ -16,10 +16,6 @@ export type PanelProps = {
 };
 
 export class Panel extends Block<PanelProps> {
-    constructor(props: PanelProps) {
-        super(props);
-    }
-    
     render() {
         return `
             <div class="panel {{class}}">

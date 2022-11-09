@@ -2,18 +2,14 @@ import Block from 'core/Block';
 
 import './message.css';
 
-export interface MessageProps {
+export type MessageProps = {
     chatName: string;
     time: string;
     text: string;
     count: number;
-}
+};
 
 export class Message extends Block<MessageProps> {
-    constructor(props: MessageProps) {
-        super(props);
-    }
-
     render() {
         return `
             <div class="message">

@@ -7,13 +7,13 @@ export type ButtonProps = {
     type?: string;
     class?: string;
     onClick?: () => void;
-}
+};
 
 type ButtonBlockProps = ButtonProps & {
     events: {
         click?: () => void;
     }
-}
+};
 
 export class Button extends Block<ButtonBlockProps> {
     constructor({ onClick, ...rest }: ButtonProps) {

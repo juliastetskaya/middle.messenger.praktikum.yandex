@@ -1,2 +1,2 @@
-export { validateAndGetInputData } from './getInputData';
+export { validateAndGetInputData } from './validateAndGetInputData';
 export { validateForm, ValidateType } from './validateForm';

@@ -15,7 +15,7 @@ export type UserChangeProps = {
         name: string;
         placeholder: string;
     };
-}
+};
 
 export class UserChange extends Block<UserChangeProps> {
     constructor(props: UserChangeProps) {
@@ -25,8 +25,8 @@ export class UserChange extends Block<UserChangeProps> {
             button: {
                 ...this.props.button,
                 onClick: this.onSubmit,
-            }
-        })
+            },
+        });
     }
 
     onSubmit = () => {
@@ -35,7 +35,7 @@ export class UserChange extends Block<UserChangeProps> {
         if (values) {
             console.log('Form is ready to send data:', values);
         }
-    }
+    };
 
     render() {
         return `

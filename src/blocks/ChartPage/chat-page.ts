@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 
 import data from 'data/chats';
 import { validateAndGetInputData } from 'utils';
@@ -44,7 +44,7 @@ type ChatPageProps = {
     messageDate: string;
     imageMessage: ImageMessageProps;
     button: ButtonProps;
-}
+};
 
 export class ChatPage extends Block<ChatPageProps> {
     constructor() {
@@ -64,9 +64,9 @@ export class ChatPage extends Block<ChatPageProps> {
             searchPlaceholder,
             rightSidePlaceholder,
         } as ChatPageProps);
-    
+
         this.setProps({
-            button: { onClick: this.onSubmit }
+            button: { onClick: this.onSubmit },
         });
     }
 
@@ -76,7 +76,7 @@ export class ChatPage extends Block<ChatPageProps> {
         if (values) {
             console.log('Form is ready to send data:', values);
         }
-    }
+    };
 
     render() {
         return `
@@ -88,7 +88,12 @@ export class ChatPage extends Block<ChatPageProps> {
                 </div>
                 <div class="right-side">
                     {{{ ChatTitle chatName=chatName userMenu=userMenu }}}
-                    {{{ MessageArea message=message imageMessage=imageMessage myMessage=myMessage messageDate=messageDate }}}
+                    {{{ MessageArea
+                        message=message
+                        imageMessage=imageMessage
+                        myMessage=myMessage
+                        messageDate=messageDate
+                    }}}
                     {{{ ChatMessage messageMenu=messageMenu placeholder=placeholder button=button }}}
                 </div>
                 {{{ UserChange title=addUser.title button=addUser.button input=addUser.input }}}

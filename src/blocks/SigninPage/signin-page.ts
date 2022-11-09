@@ -1,11 +1,15 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 
 import data from 'data/signin';
 
 import { validateAndGetInputData } from 'utils';
 
-const { button, fields, text, link } = data;
-
+const {
+    button,
+    fields,
+    text,
+    link,
+} = data;
 
 export type FieldProps = {
     type: string,
@@ -27,12 +31,17 @@ export type SignPageProps = {
         text: string,
         href: string,
     };
-}
+};
 
 export class SigninPage extends Block<SignPageProps> {
     constructor() {
-        super({ text, fields, button, link } as SignPageProps);
-        
+        super({
+            text,
+            fields,
+            button,
+            link,
+        } as SignPageProps);
+
         this.setProps({
             button: { ...button, onClick: this.onSubmit },
         });
@@ -44,7 +53,7 @@ export class SigninPage extends Block<SignPageProps> {
         if (values) {
             console.log('Form is ready to send data:', values);
         }
-    }
+    };
 
     render() {
         return `

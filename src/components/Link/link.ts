@@ -9,10 +9,6 @@ export type LinkProps = {
 };
 
 export class Link extends Block<LinkProps> {
-    constructor(props: LinkProps) {
-        super(props);
-    }
-    
     render() {
         return `
             <a href={{href}} class="link {{class}}">{{text}}</a>

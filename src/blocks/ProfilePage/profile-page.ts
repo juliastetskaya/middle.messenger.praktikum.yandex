@@ -26,7 +26,7 @@ type ProfilePageProps = {
     profileFields: ProfileFieldProps[];
     passwordFields: FieldProps[];
     placeholder: string;
-}
+};
 
 export class ProfilePage extends Block<ProfilePageProps> {
     constructor() {
@@ -57,4 +57,4 @@ export class ProfilePage extends Block<ProfilePageProps> {
             </div>
         `;
     }
-} 
+}

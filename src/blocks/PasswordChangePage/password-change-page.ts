@@ -1,6 +1,6 @@
+import Block from 'core/Block';
 import { FieldProps } from 'blocks/SigninPage';
 import { ButtonProps } from 'components/Button';
-import Block from "core/Block";
 
 import data from 'data/profile';
 import { validateAndGetInputData } from 'utils';
@@ -10,7 +10,8 @@ const { button, passwordFields } = data;
 type PasswordChangePageProps = {
     button: ButtonProps;
     passwordFields: FieldProps[];
-}
+};
+
 export class PasswordChangePage extends Block<PasswordChangePageProps> {
     constructor() {
         super({ button, passwordFields } as PasswordChangePageProps);
@@ -29,7 +30,7 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
         if (values) {
             console.log('Form is ready to send data:', values);
         }
-    }
+    };
 
     render() {
         return `
