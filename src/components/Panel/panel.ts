@@ -1,5 +1,6 @@
 import Block from 'core/Block';
 import InputProps from '../Input';
+import { LinkProps } from '../Link';
 
 import './panel.css';
 
@@ -10,10 +11,7 @@ export type PanelProps = {
         text: string,
         onClick: () => void,
     };
-    link: {
-        text: string,
-        href: string,
-    },
+    link: LinkProps,
     fields: InputProps[];
 };
 

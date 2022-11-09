@@ -2,11 +2,11 @@ import Block from 'core/Block';
 
 import { MessageProps } from '../Message';
 
-interface ChatListProps {
+type ChatListProps = {
     chats: MessageProps[];
 }
 
-export class ChatList extends Block {
+export class ChatList extends Block<ChatListProps> {
     constructor(props: ChatListProps) {
         super(props);
     }

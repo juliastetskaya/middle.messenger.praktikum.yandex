@@ -3,7 +3,7 @@ import { InputProps } from 'components/Input';
 
 import './form.css';
 
-interface FormProps {
+type FormProps = {
     class?: string;
     fields: InputProps[];
 }
@@ -14,7 +14,6 @@ export class Form extends Block<FormProps> {
     }
 
     render() {
-        console.log('Form props', this.props);
         return `
             <form action="#" class="form {{class}}">
                 <ul class="form__list">

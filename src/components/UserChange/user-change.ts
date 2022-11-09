@@ -1,11 +1,15 @@
 import Block from 'core/Block';
+import { validateAndGetInputData } from 'utils';
 
 import './user-panel.css';
 
-export interface UserChangeProps {
+export type UserChangeProps = {
     class?: string;
     title: string;
-    textButton: string;
+    button: {
+        text: string,
+        onClick?: () => void;
+    };
     input: {
         label: string;
         name: string;
@@ -13,17 +17,32 @@ export interface UserChangeProps {
     };
 }
 
-export class UserChange extends Block {
+export class UserChange extends Block<UserChangeProps> {
     constructor(props: UserChangeProps) {
         super(props);
+
+        this.setProps({
+            button: {
+                ...this.props.button,
+                onClick: this.onSubmit,
+            }
+        })
+    }
+
+    onSubmit = () => {
+        const values = validateAndGetInputData([{ name: this.props.input.name }], this.element);
+
+        if (values) {
+            console.log('Form is ready to send data:', values);
+        }
     }
 
     render() {
         return `
             <div class="panel user-panel">
                 <h1 class="panel__title">{{ title }}</h1>
-                {{{ Input type="text" label=input.label name=input.name placeholder=input.placeholder }}}
-                {{{ Button type="button" class="avatar-panel__button" text=textButton }}}
+                {{{ ControlledInput type="text" label=input.label name=input.name placeholder=input.placeholder }}}
+                {{{ Button type="button" class="avatar-panel__button" text=button.text onClick=button.onClick }}}
             </div>
         `;
     }

@@ -2,15 +2,17 @@ import Block from 'core/Block';
 
 import './image-message.css';
 
-export interface ImageMessageProps {
-    class?: string;
-    imageMessage: {
-        src: string;
-        time: string;
-    };
+export type MessageProps = {
+    src: string,
+    time: string,
 }
 
-export class ImageMessage extends Block {
+type ImageMessageProps = {
+    class?: string;
+    imageMessage: MessageProps;
+}
+
+export class ImageMessage extends Block<ImageMessageProps> {
     constructor(props: ImageMessageProps) {
         super(props);
     }

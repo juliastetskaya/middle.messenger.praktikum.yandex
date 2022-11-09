@@ -9,7 +9,7 @@ interface ChatMenuProps {
     links: LinkProps[];
 }
 
-export class ChatMenu extends Block {
+export class ChatMenu extends Block<ChatMenuProps> {
     constructor(props: ChatMenuProps) {
         super(props);
     }

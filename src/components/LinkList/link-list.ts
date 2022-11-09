@@ -7,13 +7,12 @@ export type LinkListProps = {
     links: LinkProps[];
 };
 
-export class LinkList extends Block {
+export class LinkList extends Block<LinkListProps> {
     constructor(props: LinkListProps) {
         super(props);
     }
     
     render() {
-        console.log('this.props', this.props);
         return `
             <ul class="link-list {{class}}">
                 {{#each links}}

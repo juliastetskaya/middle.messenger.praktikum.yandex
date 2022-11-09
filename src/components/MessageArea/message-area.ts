@@ -12,7 +12,7 @@ export interface MessageAreaProps {
     myMessage: TextMessageProps;
 }
 
-export class MessageArea extends Block {
+export class MessageArea extends Block<MessageAreaProps> {
     constructor(props: MessageAreaProps) {
         super(props);
     }

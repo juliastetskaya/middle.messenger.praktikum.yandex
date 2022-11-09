@@ -1,1 +1,1 @@
-export { ImageMessage as default, ImageMessageProps } from './image-message';
+export { ImageMessage as default, MessageProps as ImageMessageProps } from './image-message';

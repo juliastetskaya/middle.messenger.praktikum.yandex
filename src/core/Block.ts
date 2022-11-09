@@ -51,11 +51,8 @@ class Block<P = any> {
         this.componentDidMount(props);
     }
 
+    // @ts-expect-error
     componentDidMount(props: P) {}
-
-    // dispatchComponentDidMount() {
-    //     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-    // }
 
     _componentDidUpdate(oldProps: P, newProps: P) {
         const response = this.componentDidUpdate(oldProps, newProps);
@@ -65,17 +62,17 @@ class Block<P = any> {
         this._render();
     }
 
+    // @ts-expect-error
     componentDidUpdate(oldProps: P, newProps: P) {
         return true;
     }
 
     setProps = (nextProps: Partial<P>) => {
-        console.log('next props', nextProps);
         if (!nextProps) {
             return;
         }
 
-        Object.assign(this.props, nextProps);
+        Object.assign(this.props as {}, nextProps);
     };
 
     get element() {

@@ -1,1 +1,1 @@
-export { UserChange as default } from './user-change';
+export { UserChange as default, UserChangeProps } from './user-change';

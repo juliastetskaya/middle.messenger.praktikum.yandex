@@ -2,7 +2,7 @@ import Block from 'core/Block';
 
 import './input.css';
 
-export type IncomingProps = {
+type IncomingProps = {
     type: 'text' | 'password' | 'email' | 'tel';
     name: string;
     label: string;
@@ -12,7 +12,7 @@ export type IncomingProps = {
     onBlur: () => void;
 };
 
-type InputProps = {
+export type InputProps = {
     class?: string;
     type: 'text' | 'password' | 'email' | 'tel';
     name: string;

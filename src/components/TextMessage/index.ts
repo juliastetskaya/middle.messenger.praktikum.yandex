@@ -1,1 +1,1 @@
-export { TextMessage as default, TextMessageProps } from './text-message';
+export { TextMessage as default, MessageProps as TextMessageProps } from './text-message';

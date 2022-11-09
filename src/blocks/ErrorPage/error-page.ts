@@ -2,14 +2,22 @@ import Block from "core/Block";
 import { PATHS } from "../../constants";
 
 import data from 'data/errors';
+import { LinkProps } from 'components/Link';
 
 import './error-page.css';
 
+const { four, five } = data;
+
+type ErrorPageProps = {
+    title: string;
+    text: string;
+    link: LinkProps,
+}
+
 export class ErrorPage extends Block {
     constructor(pathname: string) {
-        const { four, five } = data;
         const currentData = pathname === PATHS[404] ? four : five;
-        super({ ...currentData });
+        super(currentData as ErrorPageProps);
     }
 
     render() {

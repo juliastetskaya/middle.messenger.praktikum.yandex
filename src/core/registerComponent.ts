@@ -1,7 +1,7 @@
 import Block from './Block';
 import Handlebars, { HelperOptions } from 'handlebars';
 
-interface BlockConstructable<Props = any> {
+type BlockConstructable<Props = any> = {
     new(props: Props): Block;
 }
 
@@ -20,7 +20,7 @@ export default function registerComponent<Props extends any>(Component: BlockCon
         // Костыль для того, чтобы передавать переменные внутрь блоков, подменяя значение
         (Object.keys(hash) as any).forEach((key: keyof Props) => {
             if (this[key] && typeof this[key] === 'string') {
-                hash[key] = hash[key].replace(new RegExp(`{{${key}}}`, 'i'), this[key]);
+                hash[key] = hash[key].replace(new RegExp(`{{${String(key)}}}`, 'i'), this[key]);
             }
         });
 

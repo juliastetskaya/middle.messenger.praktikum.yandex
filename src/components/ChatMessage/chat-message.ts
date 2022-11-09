@@ -8,7 +8,7 @@ interface ChatMessageProps {
     messageMenu: LinkProps[];
 }
 
-export class ChatMessage extends Block {
+export class ChatMessage extends Block<ChatMessageProps> {
     constructor(props: ChatMessageProps) {
         super(props);
     }

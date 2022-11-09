@@ -20,7 +20,7 @@ import ChatMessage from 'components/ChatMessage';
 import ChatMenu from 'components/ChatMenu';
 import UserChange from 'components/UserChange';
 import Field from 'components/Field';
-import FieldList from 'components/FieldList';
+import ProfileList from 'components/ProfileList';
 
 import StartPage from 'blocks/StartPage';
 import SigninPage from 'blocks/SigninPage';
@@ -60,7 +60,7 @@ registerComponent(ChatMessage);
 registerComponent(ChatMenu);
 registerComponent(UserChange);
 registerComponent(Field);
-registerComponent(FieldList);
+registerComponent(ProfileList);
 
 document.addEventListener('DOMContentLoaded', () => {
     let page: Block = new StartPage();

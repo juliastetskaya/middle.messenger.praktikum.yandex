@@ -106,19 +106,23 @@ export default ({
     messageDate: "19 июня",
     addUser: {
         title: "Добавить пользователя",
-        textButton: "Добавить",
+        button: {
+            text: "Добавить",
+        },
         input: {
             label: "Логин",
-            name: "add_user",
+            name: "login",
             placeholder: "ivanivanov",
         }
     },
     removeUser: {
         title: "Удалить пользователя",
-        textButton: "Удалить",
+        button: {
+            text: "Удалить",
+        },
         input: {
             label: "Логин",
-            name: "remove_user",
+            name: "login",
             placeholder: "ivanivanov",
         }
     }

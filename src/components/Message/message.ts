@@ -9,7 +9,7 @@ export interface MessageProps {
     count: number;
 }
 
-export class Message extends Block {
+export class Message extends Block<MessageProps> {
     constructor(props: MessageProps) {
         super(props);
     }

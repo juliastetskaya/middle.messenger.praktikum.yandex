@@ -1,19 +1,20 @@
 import Block from 'core/Block';
 
-interface FieldListProps {
-    fields: {
-        label: string;
-        value: string;
-    }[];
+export type ProfileFieldProps = {
+    label: string;
+    value: string;
 }
 
-export class FieldList extends Block<FieldListProps> {
-    constructor(props: FieldListProps) {
+type ProfileListProps = {
+    fields: ProfileFieldProps[];
+}
+
+export class ProfileList extends Block<ProfileListProps> {
+    constructor(props: ProfileListProps) {
         super(props);
     }
 
     render() {
-        console.log('PROPS', this.props);
         return `
             <ul class="field-list">
                 {{#each fields}}

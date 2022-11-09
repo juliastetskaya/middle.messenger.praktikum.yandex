@@ -2,11 +2,11 @@ import Block from "core/Block";
 
 import data from 'data/signup';
 import { SignPageProps } from 'blocks/SigninPage';
-import { getInputData } from 'utils';
+import { validateAndGetInputData } from 'utils';
 
 const { text, button, link, fields } = data;
 
-export class SignupPage extends Block {
+export class SignupPage extends Block<SignPageProps> {
     constructor() {
         super({ text, button, link, fields } as SignPageProps);
 
@@ -16,8 +16,11 @@ export class SignupPage extends Block {
     }
 
     onSubmit = () => {
-        const values = getInputData(fields, this.element);
-        console.log('Form is ready to send data:', values);
+        const values = validateAndGetInputData(fields, this.element);
+
+        if (values) {
+            console.log('Form is ready to send data:', values);
+        }
     }
 
     render() {

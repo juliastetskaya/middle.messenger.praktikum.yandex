@@ -2,7 +2,7 @@ import Block from "core/Block";
 
 import data from 'data/signin';
 
-import { getInputData } from 'utils';
+import { validateAndGetInputData } from 'utils';
 
 const { button, fields, text, link } = data;
 
@@ -39,8 +39,11 @@ export class SigninPage extends Block<SignPageProps> {
     }
 
     onSubmit = () => {
-        const values = getInputData(fields, this.element);
-        console.log('Form is ready to send data:', values);
+        const values = validateAndGetInputData(fields, this.element);
+
+        if (values) {
+            console.log('Form is ready to send data:', values);
+        }
     }
 
     render() {

@@ -2,15 +2,17 @@ import Block from 'core/Block';
 
 import './text-message.css';
 
-export interface TextMessageProps {
-    class?: string;
-    message: {
-        text: string;
-        time: string;
-    };
+export type MessageProps = {
+    text: string,
+    time: string,
 }
 
-export class TextMessage extends Block {
+type TextMessageProps = {
+    class?: string;
+    message: MessageProps;
+}
+
+export class TextMessage extends Block<TextMessageProps> {
     constructor(props: TextMessageProps) {
         super(props);
     }

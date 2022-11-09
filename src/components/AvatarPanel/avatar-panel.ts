@@ -1,4 +1,6 @@
 import Block from 'core/Block';
+import { LinkProps } from 'components/Link';
+import { ButtonProps } from 'components/Button';
 
 import data from 'data/avatar';
 
@@ -6,9 +8,15 @@ import './avatar-panel.css';
 
 const { title, link, button } = data;
 
-export class AvatarPanel extends Block {
+type AvatarPanelProps = {
+    title: string;
+    link: LinkProps;
+    button: ButtonProps;
+}
+
+export class AvatarPanel extends Block<AvatarPanelProps> {
     constructor() {
-        super({ title, link, button });
+        super({ title, link, button } as AvatarPanelProps);
     }
 
     render() {
