@@ -13,6 +13,8 @@ type ImageMessageProps = {
 };
 
 export class ImageMessage extends Block<ImageMessageProps> {
+    static componentName = 'ImageMessage';
+
     render() {
         return `
             <div class="image-message {{class}}">

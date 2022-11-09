@@ -12,6 +12,8 @@ class Block<P = any> {
         FLOW_RENDER: 'flow:render',
     } as const;
 
+    static componentName: string;
+
     public id = makeUUID();
 
     private _element: Nullable<HTMLElement> = null;

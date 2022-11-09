@@ -18,6 +18,8 @@ export type UserChangeProps = {
 };
 
 export class UserChange extends Block<UserChangeProps> {
+    static componentName = 'UserChange';
+
     constructor(props: UserChangeProps) {
         super(props);
 

@@ -9,6 +9,8 @@ type FormProps = {
 };
 
 export class Form extends Block<FormProps> {
+    static componentName = 'Form';
+
     render() {
         return `
             <form action="#" class="form {{class}}">

@@ -15,6 +15,8 @@ type AvatarPanelProps = {
 };
 
 export class AvatarPanel extends Block<AvatarPanelProps> {
+    static componentName = 'AvatarPanel';
+
     constructor() {
         super({ title, link, button } as AvatarPanelProps);
     }

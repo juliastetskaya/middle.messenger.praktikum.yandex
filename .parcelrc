@@ -4,10 +4,5 @@
   ],
   "validators": {
     "*.{ts,tsx}": ["@parcel/validator-typescript"]
-  },
-  "transformers": {
-    "*.hbs": [
-      "@anikin/parcel-transformer-handlebars-precompile"
-    ]
   }
 }

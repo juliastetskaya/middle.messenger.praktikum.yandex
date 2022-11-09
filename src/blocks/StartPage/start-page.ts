@@ -8,6 +8,8 @@ import data from 'data/start';
 const { links } = data;
 
 export class StartPage extends Block<LinkListProps> {
+    static componentName = 'StartPage';
+
     constructor() {
         super({ links } as LinkListProps);
     }

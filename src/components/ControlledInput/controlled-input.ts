@@ -17,6 +17,8 @@ type ControlledInputProps = {
 };
 
 export class ControlledInput extends Block<ControlledInputProps> {
+    static componentName = 'ControlledInput';
+
     constructor(props: ControlledInputProps) {
         super(props);
 

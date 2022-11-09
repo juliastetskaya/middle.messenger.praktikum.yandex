@@ -16,6 +16,8 @@ export type PanelProps = {
 };
 
 export class Panel extends Block<PanelProps> {
+    static componentName = 'Panel';
+
     render() {
         return `
             <div class="panel {{class}}">

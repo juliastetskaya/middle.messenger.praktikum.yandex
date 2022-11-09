@@ -29,6 +29,8 @@ type ProfilePageProps = {
 };
 
 export class ProfilePage extends Block<ProfilePageProps> {
+    static componentName = 'ProfilePage';
+
     constructor() {
         super({
             name,

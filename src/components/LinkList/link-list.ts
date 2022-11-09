@@ -8,6 +8,8 @@ export type LinkListProps = {
 };
 
 export class LinkList extends Block<LinkListProps> {
+    static componentName = 'LinkList';
+
     render() {
         return `
             <ul class="link-list {{class}}">

@@ -12,6 +12,8 @@ const {
 } = data;
 
 export class SignupPage extends Block<SignPageProps> {
+    static componentName = 'SignupPage';
+
     constructor() {
         super({
             text,

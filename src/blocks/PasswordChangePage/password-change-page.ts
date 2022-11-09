@@ -13,6 +13,8 @@ type PasswordChangePageProps = {
 };
 
 export class PasswordChangePage extends Block<PasswordChangePageProps> {
+    static componentName = 'PasswordChangePage';
+
     constructor() {
         super({ button, passwordFields } as PasswordChangePageProps);
 

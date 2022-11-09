@@ -9,6 +9,8 @@ type ChatMessageProps = {
 };
 
 export class ChatMessage extends Block<ChatMessageProps> {
+    static componentName = 'ChatMessage';
+
     render() {
         return `
             <div class="chat-message">

@@ -34,6 +34,8 @@ export type SignPageProps = {
 };
 
 export class SigninPage extends Block<SignPageProps> {
+    static componentName = 'SigninPage';
+
     constructor() {
         super({
             text,

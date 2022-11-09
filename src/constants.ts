@@ -1,4 +1,5 @@
 export const PATHS = {
+    START: '/',
     SIGNIN: '/signin.html',
     SIGNUP: '/signup.html',
     PROFILE: '/profile.html',

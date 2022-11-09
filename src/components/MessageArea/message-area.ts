@@ -13,6 +13,8 @@ export type MessageAreaProps = {
 };
 
 export class MessageArea extends Block<MessageAreaProps> {
+    static componentName = 'MessageArea';
+
     render() {
         return `
             <div class="messages-area">

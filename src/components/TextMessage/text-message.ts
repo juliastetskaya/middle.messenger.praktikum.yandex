@@ -13,6 +13,8 @@ type TextMessageProps = {
 };
 
 export class TextMessage extends Block<TextMessageProps> {
+    static componentName = 'TextMessage';
+
     render() {
         return `
             <div class="text-message {{class}}">
