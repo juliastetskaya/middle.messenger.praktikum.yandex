@@ -1,9 +1,7 @@
-export type Listener<T extends unknown[] = any[]> = (...args: T) => void;
+export default class EventBus {
+    private listeners: Record<string, Function[]> = {};
 
-export default class EventBus<E extends string = string, M extends { [K in E]: unknown[] } = Record<E, any[]>> {
-    private listeners: { [key in E]?: Listener<M[E]>[] } = {};
-
-    on(event: E, callback: Listener<M[E]>): void {
+    on(event: string, callback: Function): void {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -11,23 +9,19 @@ export default class EventBus<E extends string = string, M extends { [K in E]: u
         this.listeners[event]!.push(callback);
     }
 
-    off(event: E, callback: Listener<M[E]>): void {
+    off(event: string, callback: Function): void {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         }
 
-        this.listeners[event] = this.listeners[event]!.filter(
-            (listener: Listener<M[E]>) => listener !== callback,
-        );
+        this.listeners[event] = this.listeners[event]!.filter((listener) => listener !== callback);
     }
 
-    emit(event: E, ...args: M[E]): void {
+    emit(event: string, ...args: unknown[]): void {
         if (!this.listeners[event]) {
             return;
         }
 
-        this.listeners[event]!.forEach(
-            (listener: Listener<M[E]>) => listener(...args),
-        );
+        this.listeners[event]!.forEach((listener) => listener(...args));
     }
 }

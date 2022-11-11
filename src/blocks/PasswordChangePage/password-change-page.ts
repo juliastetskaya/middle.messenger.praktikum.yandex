@@ -41,8 +41,8 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
                 <div class="profile__panel">
                     <div class="profile__content password-change">
                         {{{ Avatar }}}
-                        {{{ Form class="profile__form" fields=passwordFields }}}
-                        {{{ Button type="button" class="profile__button" text=button.text onClick=button.onClick }}}
+                        {{{ Form class="profile__form" fields=passwordFields button=button }}}
+
                     </div>
                 </div>
             </div>

@@ -7,21 +7,16 @@ type IncomingProps = {
     name: string;
     label: string;
     placeholder: string;
-    onInput: () => void;
-    onFocus: () => void;
-    onBlur: () => void;
+    onInput?: () => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
 };
 
-export type InputProps = {
-    class?: string;
-    type: 'text' | 'password' | 'email' | 'tel';
-    name: string;
-    label: string;
-    placeholder: string;
-    events: {
-        input: () => void,
-        focus: () => void,
-        blur: () => void,
+export type InputProps = IncomingProps & {
+    events?: {
+        input?: () => void,
+        focus?: () => void,
+        blur?: () => void,
     }
 };
 

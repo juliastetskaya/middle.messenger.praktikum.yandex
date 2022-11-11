@@ -22,15 +22,9 @@ export class Panel extends Block<PanelProps> {
         return `
             <div class="panel {{class}}">
                 <h1 class="panel__title">{{ text }}</h1>
-                {{{ Form class="panel__form" fields=fields ref="formRef" }}}
-                {{{ Button
-                    class="panel__button"
-                    type="submit"
-                    text=button.text
-                    onClick=button.onClick
-                }}}
+                {{{ Form class="panel__form" fields=fields ref="formRef" button=button }}}
                 {{{ Link class="panel__link" href=link.href text=link.text }}}
-            </div>    
+            </div>
         `;
     }
 }

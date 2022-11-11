@@ -83,12 +83,14 @@ export class ChatPage extends Block<ChatPageProps> {
     render() {
         return `
             <div class="chat">
-                <div class="left-side">
+                <aside class="left-side">
                     {{{ Link class="chat__profile-link" href=link.href text=link.text }}}
-                    <input class="chat__search-field" type="text" placeholder={{searchPlaceholder}}>
+                    <form action="#">
+                        <input class="chat__search-field" type="text" placeholder={{searchPlaceholder}}>
+                    </form>
                     {{{ ChatList chats=chats }}}
-                </div>
-                <div class="right-side">
+                </aside>
+                <aside class="right-side">
                     {{{ ChatTitle chatName=chatName userMenu=userMenu }}}
                     {{{ MessageArea
                         message=message
@@ -97,10 +99,10 @@ export class ChatPage extends Block<ChatPageProps> {
                         messageDate=messageDate
                     }}}
                     {{{ ChatMessage messageMenu=messageMenu placeholder=placeholder button=button }}}
-                </div>
+                </aside>
                 {{{ UserChange title=addUser.title button=addUser.button input=addUser.input }}}
                 {{{ UserChange title=removeUser.title button=removeUser.button input=removeUser.input }}}
-                <div class="overlay"></div> 
+                <div class="overlay"></div>
             </div>
         `;
     }

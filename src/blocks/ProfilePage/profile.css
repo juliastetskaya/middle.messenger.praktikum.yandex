@@ -79,8 +79,8 @@
     border-bottom: 1px solid var(--lighter-grey-color);
 }
 
-.profile-page .profile__button,
-.password-change .profile__button {
+.profile-page .button,
+.password-change .button {
     margin-top: 60px;
 }
 
@@ -101,6 +101,6 @@
     margin-top: 88px;
 }
 
-.profile-change .profile__button {
+.profile-change .button {
     margin-top: 50px;
 }

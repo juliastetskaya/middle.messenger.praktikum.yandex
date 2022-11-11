@@ -1,11 +1,13 @@
 import Block from 'core/Block';
 import { InputProps } from 'components/Input';
+import { ButtonProps } from 'components/Button';
 
 import './form.css';
 
 type FormProps = {
     class?: string;
     fields: InputProps[];
+    button: ButtonProps;
 };
 
 export class Form extends Block<FormProps> {
@@ -13,7 +15,7 @@ export class Form extends Block<FormProps> {
 
     render() {
         return `
-            <form action="#" class="form {{class}}">
+            <form action="#" class="form {{class}}" method="GET">
                 <ul class="form__list">
                     {{#each fields}}
                         <li class="form__item">
@@ -30,6 +32,7 @@ export class Form extends Block<FormProps> {
                         </li>
                     {{/each}}
                 </ul>
+                {{{ Button type="submit" text=button.text onClick=button.onClick }}}
             </form>
         `;
     }

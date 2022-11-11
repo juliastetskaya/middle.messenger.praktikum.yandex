@@ -9,10 +9,11 @@
         "@typescript-eslint/indent": ["error", 4],
         "import/prefer-default-export": "off",
         "no-restricted-exports": "off",
-        "max-len": ["error", { "code": 120 }],
+        "max-len": "off",
         "no-underscore-dangle": ["error", { "allowAfterThis": true }],
         "no-param-reassign": ["error", { "props": false }],
-        "no-unused-vars": ["error", { "args": "none" }]
+        "no-unused-vars": ["error", { "args": "none" }],
+        "class-methods-use-this": "off"
     },
     "env": {
         "browser": true

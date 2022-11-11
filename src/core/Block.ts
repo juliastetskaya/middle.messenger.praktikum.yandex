@@ -2,9 +2,9 @@ import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 
-type Events = Values<typeof Block.EVENTS>;
+type EventType = Record<string, () => void>;
 
-class Block<P = any> {
+class Block<P = {}> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -20,14 +20,14 @@ class Block<P = any> {
 
     protected readonly props: P;
 
-    protected children: { [id: string]: Block } = {};
+    protected children: { [id: string]: Block<P> } = {};
 
-    private eventBus: () => EventBus<Events>;
+    private eventBus: () => EventBus;
 
-    protected refs: { [key: string]: Block } = {};
+    protected refs: { [key: string]: Block<P> } = {};
 
     public constructor(props?: P) {
-        const eventBus = new EventBus<Events>();
+        const eventBus = new EventBus();
 
         this.props = this._makePropsProxy(props || {} as P);
 
@@ -49,25 +49,21 @@ class Block<P = any> {
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props);
     }
 
-    _componentDidMount(props: P) {
-        this.componentDidMount(props);
+    _componentDidMount() {
+        this.componentDidMount();
     }
 
-    // @ts-expect-error
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    componentDidMount(props: P) {}
+    componentDidMount() {}
 
-    _componentDidUpdate(oldProps: P, newProps: P) {
-        const response = this.componentDidUpdate(oldProps, newProps);
+    _componentDidUpdate() {
+        const response = this.componentDidUpdate();
         if (!response) {
             return;
         }
         this._render();
     }
 
-    // @ts-expect-error
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    componentDidUpdate(oldProps: P, newProps: P) {
+    componentDidUpdate() {
         return true;
     }
 
@@ -114,7 +110,7 @@ class Block<P = any> {
         return this.element!;
     }
 
-    _makePropsProxy(props: any): any {
+    _makePropsProxy(props: P): P {
         // Можно и так передать this
         // Такой способ больше не применяется с приходом ES6+
         const self = this;
@@ -140,8 +136,7 @@ class Block<P = any> {
     }
 
     _removeEvents() {
-        // eslint-disable-next-line prefer-destructuring
-        const events: Record<string, () => void> = (this.props as any).events;
+        const { events }: EventType = (this.props as unknown as EventType);
 
         if (!events || !this._element) {
             return;
@@ -153,8 +148,7 @@ class Block<P = any> {
     }
 
     _addEvents() {
-        // eslint-disable-next-line prefer-destructuring
-        const events: Record<string, () => void> = (this.props as any).events;
+        const { events }: EventType = (this.props as unknown as EventType);
 
         if (!events || !this._element) {
             return;

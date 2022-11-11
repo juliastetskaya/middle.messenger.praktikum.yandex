@@ -11,6 +11,7 @@ type ControlledInputProps = {
     value: string;
     placeholder: string;
     errorMessage: string;
+    text: string;
     onInput: (e: Event) => void;
     onFocus: (e: Event) => void;
     onBlur: (e: Event) => void;

@@ -37,8 +37,7 @@ export class ProfileChangePage extends Block<ProfilePageProps> {
                 <div class="profile__panel">
                     <div class="profile__content profile-change">
                         {{{ Avatar }}}
-                        {{{ Form class="profile__form" fields=fields }}}
-                        {{{ Button type="button" class="profile__button" text=button.text onClick=button.onClick }}}
+                        {{{ Form class="profile__form" fields=fields button=button }}}
                     </div>
                 </div>
             </div>
