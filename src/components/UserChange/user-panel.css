@@ -1,0 +1,25 @@
+.user-panel {
+    display: none;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 257px;
+    padding: 40px 30px;
+    justify-content: space-between;
+}
+
+.user-panel .input {
+    border-bottom: 1px solid var(--blue-color);
+}
+
+.user-panel .panel__title {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.user-panel .controlled-input {
+    margin-top: 16px;
+}
