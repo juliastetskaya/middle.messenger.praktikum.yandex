@@ -1,4 +1,5 @@
 import Block from 'core/Block';
+import { ButtonProps } from 'components/Button';
 
 import data from 'data/signin';
 
@@ -23,10 +24,7 @@ export type FieldProps = {
 export type SignPageProps = {
     text: string;
     fields: FieldProps[];
-    button: {
-        text: string,
-        onClick?: () => void,
-    };
+    button: ButtonProps;
     link: {
         text: string,
         href: string,
@@ -49,7 +47,8 @@ export class SigninPage extends Block<SignPageProps> {
         });
     }
 
-    onSubmit = () => {
+    onSubmit = (e: Event) => {
+        e.preventDefault();
         const values = validateAndGetInputData(fields, this.element);
 
         if (values) {

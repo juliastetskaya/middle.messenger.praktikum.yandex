@@ -72,7 +72,8 @@ export class ChatPage extends Block<ChatPageProps> {
         });
     }
 
-    onSubmit = () => {
+    onSubmit = (e: Event) => {
+        e.preventDefault();
         const values = validateAndGetInputData([{ name: 'message' }], this.element);
 
         if (values) {
@@ -90,7 +91,7 @@ export class ChatPage extends Block<ChatPageProps> {
                     </form>
                     {{{ ChatList chats=chats }}}
                 </aside>
-                <aside class="right-side">
+                <div class="right-side">
                     {{{ ChatTitle chatName=chatName userMenu=userMenu }}}
                     {{{ MessageArea
                         message=message
@@ -99,7 +100,7 @@ export class ChatPage extends Block<ChatPageProps> {
                         messageDate=messageDate
                     }}}
                     {{{ ChatMessage messageMenu=messageMenu placeholder=placeholder button=button }}}
-                </aside>
+                </div>
                 {{{ UserChange title=addUser.title button=addUser.button input=addUser.input }}}
                 {{{ UserChange title=removeUser.title button=removeUser.button input=removeUser.input }}}
                 <div class="overlay"></div>

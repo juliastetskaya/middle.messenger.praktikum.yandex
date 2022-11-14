@@ -26,7 +26,8 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
         });
     }
 
-    onSubmit = () => {
+    onSubmit = (e: Event) => {
+        e.preventDefault();
         const values = validateAndGetInputData(passwordFields, this.element);
 
         if (values) {

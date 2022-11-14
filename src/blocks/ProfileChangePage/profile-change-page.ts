@@ -22,7 +22,8 @@ export class ProfileChangePage extends Block<ProfilePageProps> {
         });
     }
 
-    onSubmit = () => {
+    onSubmit = (e: Event) => {
+        e.preventDefault();
         const values = validateAndGetInputData(fields, this.element);
 
         if (values) {

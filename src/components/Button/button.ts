@@ -6,12 +6,12 @@ export type ButtonProps = {
     text?: string;
     type?: string;
     class?: string;
-    onClick?: () => void;
+    onClick?: (e: Event) => void;
 };
 
 type ButtonBlockProps = ButtonProps & {
     events: {
-        click?: () => void;
+        click?: (e: Event) => void;
     }
 };
 

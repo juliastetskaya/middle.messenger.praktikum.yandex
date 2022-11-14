@@ -1,4 +1,5 @@
 import Block from 'core/Block';
+import { ButtonProps } from 'components/Button';
 import { validateAndGetInputData } from 'utils';
 
 import './user-panel.css';
@@ -6,10 +7,7 @@ import './user-panel.css';
 export type UserChangeProps = {
     class?: string;
     title: string;
-    button: {
-        text: string,
-        onClick?: () => void;
-    };
+    button: ButtonProps;
     input: {
         label: string;
         name: string;
@@ -31,7 +29,8 @@ export class UserChange extends Block<UserChangeProps> {
         });
     }
 
-    onSubmit = () => {
+    onSubmit = (e: Event) => {
+        e.preventDefault();
         const values = validateAndGetInputData([{ name: this.props.input.name }], this.element);
 
         if (values) {

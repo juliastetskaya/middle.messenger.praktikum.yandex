@@ -27,7 +27,8 @@ export class SignupPage extends Block<SignPageProps> {
         });
     }
 
-    onSubmit = () => {
+    onSubmit = (e: Event) => {
+        e.preventDefault();
         const values = validateAndGetInputData(fields, this.element);
 
         if (values) {
