@@ -17,7 +17,7 @@ export class ErrorPage extends Block<ErrorPageProps> {
     static componentName = 'ErrorPage';
 
     constructor(pathname: string) {
-        const currentData = pathname === PATHS[404] ? four : five;
+        const currentData = pathname === PATHS.NOT_FOUND ? four : five;
         super(currentData as ErrorPageProps);
     }
 

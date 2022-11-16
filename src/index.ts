@@ -31,7 +31,8 @@ import ProfileChangePage from 'blocks/ProfileChangePage';
 import PasswordChangePage from 'blocks/PasswordChangePage';
 import ChatPage from 'blocks/ChartPage';
 
-import { registerComponent, renderDOM, Block } from './core';
+import { registerComponent, renderDOM, Block } from 'core';
+import { Router } from 'router';
 
 import { PATHS } from './constants';
 
@@ -62,40 +63,20 @@ registerComponent(UserChange);
 registerComponent(Field);
 registerComponent(ProfileList);
 
+const renderPage = (page: Block) => () => renderDOM('#app', page);
+
 document.addEventListener('DOMContentLoaded', () => {
-    let page: Block;
+    const router = new Router();
 
-    const { pathname } = window.location;
-
-    switch (pathname) {
-        case PATHS.START:
-            page = new StartPage();
-            break;
-        case PATHS.SIGNIN:
-            page = new SigninPage();
-            break;
-        case PATHS.SIGNUP:
-            page = new SignupPage();
-            break;
-        case PATHS[500]:
-            page = new ErrorPage(pathname);
-            break;
-        case PATHS.PROFILE:
-            page = new ProfilePage();
-            break;
-        case PATHS.PROFILE_CHANGE:
-            page = new ProfileChangePage();
-            break;
-        case PATHS.PASSWORD_CHANGE:
-            page = new PasswordChangePage();
-            break;
-        case PATHS.CHAT:
-            page = new ChatPage();
-            break;
-        default:
-            page = new ErrorPage(PATHS[404]);
-            break;
-    }
-
-    renderDOM('#app', page);
+    router
+        .use(PATHS.START, renderPage(new StartPage()))
+        .use(PATHS.SIGNIN, renderPage(new SigninPage()))
+        .use(PATHS.SIGNUP, renderPage(new SignupPage()))
+        .use(PATHS.PROFILE, renderPage(new ProfilePage()))
+        .use(PATHS.PROFILE_CHANGE, renderPage(new ProfileChangePage()))
+        .use(PATHS.PASSWORD_CHANGE, renderPage(new PasswordChangePage()))
+        .use(PATHS.CHAT, renderPage(new ChatPage()))
+        .use(PATHS[500], renderPage(new ErrorPage(PATHS[500])))
+        .use(PATHS.NOT_FOUND, renderPage(new ErrorPage(PATHS.NOT_FOUND)))
+        .start();
 });
