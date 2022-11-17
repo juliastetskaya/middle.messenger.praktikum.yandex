@@ -22,19 +22,9 @@ import UserChange from 'components/UserChange';
 import Field from 'components/Field';
 import ProfileList from 'components/ProfileList';
 
-import StartPage from 'blocks/StartPage';
-import SigninPage from 'blocks/SigninPage';
-import SignupPage from 'blocks/SignupPage';
-import ProfilePage from 'blocks/ProfilePage';
-import ErrorPage from 'blocks/ErrorPage';
-import ProfileChangePage from 'blocks/ProfileChangePage';
-import PasswordChangePage from 'blocks/PasswordChangePage';
-import ChatPage from 'blocks/ChartPage';
-
-import { registerComponent, renderDOM, Block } from 'core';
-import { Router } from 'router';
-
-import { PATHS } from './constants';
+import { registerComponent } from 'core';
+import { Router } from './Router/Router';
+import { initRouter } from './router';
 
 import './styles/colors.css';
 import './styles/style.css';
@@ -63,20 +53,8 @@ registerComponent(UserChange);
 registerComponent(Field);
 registerComponent(ProfileList);
 
-const renderPage = (page: Block) => () => renderDOM('#app', page);
-
 document.addEventListener('DOMContentLoaded', () => {
     const router = new Router();
 
-    router
-        .use(PATHS.START, renderPage(new StartPage()))
-        .use(PATHS.SIGNIN, renderPage(new SigninPage()))
-        .use(PATHS.SIGNUP, renderPage(new SignupPage()))
-        .use(PATHS.PROFILE, renderPage(new ProfilePage()))
-        .use(PATHS.PROFILE_CHANGE, renderPage(new ProfileChangePage()))
-        .use(PATHS.PASSWORD_CHANGE, renderPage(new PasswordChangePage()))
-        .use(PATHS.CHAT, renderPage(new ChatPage()))
-        .use(PATHS[500], renderPage(new ErrorPage(PATHS[500])))
-        .use(PATHS.NOT_FOUND, renderPage(new ErrorPage(PATHS.NOT_FOUND)))
-        .start();
+    initRouter(router);
 });

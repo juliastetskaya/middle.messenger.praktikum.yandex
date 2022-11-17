@@ -1,4 +1,4 @@
-import type { CoreRouter } from 'router';
+import { CoreRouter } from './CoreRouter';
 import { PATHS } from '../constants';
 
 export class Router implements CoreRouter {

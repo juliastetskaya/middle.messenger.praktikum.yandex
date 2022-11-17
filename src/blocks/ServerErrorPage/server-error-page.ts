@@ -2,9 +2,9 @@ import Block from 'core/Block';
 import data from 'data/errors';
 import { LinkProps } from 'components/Link';
 
-import './error-page.css';
+import '../ErrorPage/error-page.css';
 
-const { four } = data;
+const { five } = data;
 
 type ErrorPageProps = {
     title: string;
@@ -12,11 +12,11 @@ type ErrorPageProps = {
     link: LinkProps,
 };
 
-export class ErrorPage extends Block<ErrorPageProps> {
-    static componentName = 'ErrorPage';
+export class ServerErrorPage extends Block<ErrorPageProps> {
+    static componentName = 'ServerErrorPage';
 
     constructor() {
-        super(four as ErrorPageProps);
+        super(five as ErrorPageProps);
     }
 
     render() {
