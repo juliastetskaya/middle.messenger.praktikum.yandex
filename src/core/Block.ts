@@ -4,6 +4,10 @@ import EventBus from './EventBus';
 
 type EventType = Record<string, () => void>;
 
+export interface BlockClass<P = {}> extends Function {
+    new (props: P): Block <P>;
+}
+
 class Block<P = {}> {
     static EVENTS = {
         INIT: 'init',

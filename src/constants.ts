@@ -7,5 +7,5 @@ export const PATHS = {
     PASSWORD_CHANGE: '/password-change.html',
     CHAT: '/chat-page.html',
     NOT_FOUND: '*',
-    500: '/500.html',
+    SERVER_ERROR: '/500.html',
 };
