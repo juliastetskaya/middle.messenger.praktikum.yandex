@@ -9,3 +9,5 @@ export const PATHS = {
     NOT_FOUND: '*',
     SERVER_ERROR: '/500.html',
 };
+
+export const BASE_URL = 'https://ya-praktikum.tech/api/v2';

@@ -3,6 +3,8 @@ import Block from 'core/Block';
 import data from 'data/signup';
 import { SignPageProps } from 'blocks/SigninPage';
 import { validateAndGetInputData } from 'utils';
+import { SignupData } from 'API/auth-api';
+import { signup } from 'services/auth';
 
 const {
     text,
@@ -32,7 +34,7 @@ export class SignupPage extends Block<SignPageProps> {
         const values = validateAndGetInputData(fields, this.element);
 
         if (values) {
-            console.log('Form is ready to send data:', values);
+            signup(values as SignupData);
         }
     };
 
