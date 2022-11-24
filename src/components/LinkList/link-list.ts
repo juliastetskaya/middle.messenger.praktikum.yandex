@@ -15,7 +15,7 @@ export class LinkList extends Block<LinkListProps> {
             <ul class="link-list {{class}}">
                 {{#each links}}
                     <li class="link-list__item">
-                        {{{ Link class=class text=text href=href }}}
+                        {{{ Link class=class text=text href=href onClick=onClick }}}
                     </li>
                 {{/each}}
             </ul>

@@ -52,7 +52,6 @@ export default {
         },
         {
             text: 'Выйти',
-            href: '/',
             class: 'quit',
         },
     ],

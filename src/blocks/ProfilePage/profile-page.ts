@@ -3,8 +3,9 @@ import { FieldProps } from 'blocks/SigninPage';
 import { ButtonProps } from 'components/Button';
 import { LinkProps } from 'components/Link';
 import { ProfileFieldProps } from 'components/ProfileList';
-
 import data from 'data/profile';
+
+import { logout } from 'services/auth';
 
 import './profile.css';
 
@@ -41,7 +42,19 @@ export class ProfilePage extends Block<ProfilePageProps> {
             passwordFields,
             placeholder,
         } as ProfilePageProps);
+
+        this.setProps({
+            links: this.props.links.map((link) => (link.text === 'Выйти' ? {
+                ...link,
+                onClick: this.clickQuitLink,
+            } : link)),
+        });
     }
+
+    clickQuitLink = (event: Event) => {
+        event.preventDefault();
+        logout();
+    };
 
     render() {
         return `

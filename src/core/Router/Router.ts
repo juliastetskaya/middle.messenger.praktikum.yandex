@@ -1,5 +1,5 @@
 import { CoreRouter } from './CoreRouter';
-import { PATHS } from '../constants';
+import { PATHS } from '../../constants';
 
 export class Router implements CoreRouter {
     private routes: Record<string, Function> = {};

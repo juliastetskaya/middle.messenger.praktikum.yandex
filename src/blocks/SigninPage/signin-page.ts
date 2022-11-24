@@ -4,6 +4,8 @@ import { ButtonProps } from 'components/Button';
 import data from 'data/signin';
 
 import { validateAndGetInputData } from 'utils';
+import { signin } from 'services/auth';
+import { SigninData } from 'API/auth-api';
 
 const {
     button,
@@ -52,7 +54,7 @@ export class SigninPage extends Block<SignPageProps> {
         const values = validateAndGetInputData(fields, this.element);
 
         if (values) {
-            console.log('Form is ready to send data:', values);
+            signin(values as SigninData);
         }
     };
 

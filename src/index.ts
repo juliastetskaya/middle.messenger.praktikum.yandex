@@ -23,7 +23,7 @@ import Field from 'components/Field';
 import ProfileList from 'components/ProfileList';
 
 import { registerComponent } from 'core';
-import { Router } from './Router/Router';
+import { Router, CoreRouter } from 'core/Router';
 import { initRouter } from './router';
 
 import './styles/colors.css';
@@ -53,8 +53,15 @@ registerComponent(UserChange);
 registerComponent(Field);
 registerComponent(ProfileList);
 
+declare global {
+    interface Window {
+        router: CoreRouter;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const router = new Router();
 
+    window.router = router;
     initRouter(router);
 });
