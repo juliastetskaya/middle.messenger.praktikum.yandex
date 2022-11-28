@@ -23,7 +23,7 @@ export enum Pages {
     ServerError = 'server_error',
 }
 
-const pagesMapping: Record<Pages, BlockClass> = {
+const pagesMapping: Record<Pages, BlockClass<any>> = {
     [Pages.Start]: StartPage,
     [Pages.Signin]: SigninPage,
     [Pages.Signup]: SignupPage,

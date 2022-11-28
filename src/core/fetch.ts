@@ -15,7 +15,7 @@ type OptionProps = {
     withCredentials?: boolean;
 };
 
-export class HTTPTransport {
+class HTTPTransport {
     private baseUrl: string;
 
     constructor(baseUrl: string) {
@@ -76,3 +76,5 @@ export class HTTPTransport {
         });
     };
 }
+
+export default HTTPTransport;
