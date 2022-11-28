@@ -1,4 +1,4 @@
-import { HTTPTransport } from 'core/fetch';
+import { HTTPTransport } from 'core';
 import { checkResponse } from 'utils';
 import { BASE_URL } from '../constants';
 import { baseHeaders } from './baseHeaders';

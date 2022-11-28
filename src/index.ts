@@ -22,8 +22,9 @@ import UserChange from 'components/UserChange';
 import Field from 'components/Field';
 import ProfileList from 'components/ProfileList';
 
-import { registerComponent } from 'core';
+import { registerComponent, Store } from 'core';
 import { Router, CoreRouter } from 'core/Router';
+import { defaultStore } from './store';
 import { initRouter } from './router';
 
 import './styles/colors.css';
@@ -56,12 +57,15 @@ registerComponent(ProfileList);
 declare global {
     interface Window {
         router: CoreRouter;
+        store: Store<AppState>;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const router = new Router();
+    const store = new Store<AppState>(defaultStore);
 
     window.router = router;
+    window.store = store;
     initRouter(router);
 });

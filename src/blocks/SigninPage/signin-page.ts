@@ -1,11 +1,11 @@
 import Block from 'core/Block';
 import { ButtonProps } from 'components/Button';
-
 import data from 'data/signin';
-
 import { validateAndGetInputData } from 'utils';
 import { signin } from 'services/auth';
 import { SigninData } from 'API/auth-api';
+import { withStore } from 'HOC/withStore';
+import { Store } from 'core';
 
 const {
     button,
@@ -31,27 +31,29 @@ export type SignPageProps = {
         text: string,
         href: string,
     };
+    store: Store<AppState>;
 };
 
-export class SigninPage extends Block<SignPageProps> {
+class SigninPage extends Block<SignPageProps> {
     static componentName = 'SigninPage';
 
-    constructor() {
+    constructor(props: SignPageProps) {
         super({
+            ...props,
             text,
             fields,
             button,
             link,
-        } as SignPageProps);
+        });
 
         this.setProps({
-            button: { ...button, onClick: this.onSubmit },
+            button: { ...this.props.button, onClick: this.onSubmit },
         });
     }
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(fields, this.element);
+        const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {
             signin(values as SigninData);
@@ -73,3 +75,8 @@ export class SigninPage extends Block<SignPageProps> {
         `;
     }
 }
+
+export default withStore(
+    SigninPage,
+    (state) => ({ isLoading: state.isLoading }),
+);
