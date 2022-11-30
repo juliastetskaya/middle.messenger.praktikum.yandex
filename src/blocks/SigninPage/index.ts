@@ -1,3 +1,1 @@
-import SigninPage, { SignPageProps, FieldProps } from './signin-page';
-
-export { SigninPage as default, SignPageProps, FieldProps };
+export { default, SignPageProps, FieldProps } from './signin-page';

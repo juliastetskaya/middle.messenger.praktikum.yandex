@@ -1,5 +1,5 @@
 import { renderDOM } from 'core';
-import { Pages, getPageComponent } from 'utils/pageList';
+import { Pages, getPageWithData } from 'utils/pageList';
 import { CoreRouter } from 'core/Router';
 import { PATHS } from './constants';
 
@@ -53,9 +53,9 @@ const routes = [
 
 export const initRouter = (router: CoreRouter) => {
     routes.forEach(({ path, block }) => router.use(path, () => {
-        const Block = getPageComponent(block);
+        const { Block, data } = getPageWithData(block);
 
-        const page = new Block({});
+        const page = new Block(data);
         renderDOM('#app', page);
     }));
 

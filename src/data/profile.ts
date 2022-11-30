@@ -102,4 +102,14 @@ export default {
         },
     ],
     placeholder: 'Поменять аватар',
+    avatar: {
+        title: 'Загрузите файл',
+        link: {
+            text: 'Выбрать файл на компьютере',
+            href: '/',
+        },
+        button: {
+            text: 'Поменять',
+        },
+    },
 };

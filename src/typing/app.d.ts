@@ -19,6 +19,8 @@ declare global {
         isLoading: boolean;
     };
 
+    type DispatchState<T> = (dispatch: Dispatch<AppState>, state: AppState, action: T) => Promise<void>;
+
     module '*.svg';
     module '*.json';
     module '*.png';

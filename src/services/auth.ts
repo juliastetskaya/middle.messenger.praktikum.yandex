@@ -1,19 +1,22 @@
 import { authAPI, SignupData, SigninData } from 'API/auth-api';
 import { PATHS } from '../constants';
 
-export const signin = async (data: SigninData) => {
+export const signin: DispatchState<SigninData> = async (dispatch, _, action) => {
+    dispatch({ isLoading: true });
     try {
-        await authAPI.signin(data);
+        await authAPI.signin(action);
 
         try {
-            await authAPI.getUser();
+            const user = await authAPI.getUser();
+
+            dispatch({ user });
 
             window.router.go(PATHS.CHAT);
         } catch (error) {
-            console.log('GET USER ERROR', error);
+            dispatch({ error, isLoading: false });
         }
     } catch (error) {
-        console.log('SIGNIN ERROR', error);
+        dispatch({ error, isLoading: false });
     }
 };
 
@@ -35,7 +38,9 @@ export const signup = async (data: SignupData) => {
 
 export const logout = async () => {
     try {
-        await authAPI.logout();
+        const response = await authAPI.logout();
+
+        console.log(response);
 
         window.router.go(PATHS.SIGNIN);
     } catch (error) {

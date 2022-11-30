@@ -1,6 +1,5 @@
 import Block from 'core/Block';
-import { InputProps } from 'components/Input';
-import { ButtonProps } from 'components/Button';
+import { InputProps, ButtonProps } from 'components';
 
 import './form.css';
 

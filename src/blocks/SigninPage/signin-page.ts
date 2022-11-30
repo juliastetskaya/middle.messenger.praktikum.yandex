@@ -1,18 +1,9 @@
 import Block from 'core/Block';
-import { ButtonProps } from 'components/Button';
-import data from 'data/signin';
+import { ButtonProps } from 'components';
 import { validateAndGetInputData } from 'utils';
 import { signin } from 'services/auth';
-import { SigninData } from 'API/auth-api';
-import { withStore } from 'HOC/withStore';
+import { withStore } from 'HOC';
 import { Store } from 'core';
-
-const {
-    button,
-    fields,
-    text,
-    link,
-} = data;
 
 export type FieldProps = {
     type: string,
@@ -38,13 +29,7 @@ class SigninPage extends Block<SignPageProps> {
     static componentName = 'SigninPage';
 
     constructor(props: SignPageProps) {
-        super({
-            ...props,
-            text,
-            fields,
-            button,
-            link,
-        });
+        super(props);
 
         this.setProps({
             button: { ...this.props.button, onClick: this.onSubmit },
@@ -56,11 +41,13 @@ class SigninPage extends Block<SignPageProps> {
         const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {
-            signin(values as SigninData);
+            this.props.store.dispatch(signin, values);
         }
     };
 
     render() {
+        const { isLoading } = this.props.store.getState();
+
         return `
             <div class='container'>
                 {{{ Panel
@@ -70,13 +57,11 @@ class SigninPage extends Block<SignPageProps> {
                     link=link
                     fields=fields
                     ref="panelRef"
+                    isLoading=${isLoading}
                 }}}
             </div>
         `;
     }
 }
 
-export default withStore(
-    SigninPage,
-    (state) => ({ isLoading: state.isLoading }),
-);
+export default withStore(SigninPage);

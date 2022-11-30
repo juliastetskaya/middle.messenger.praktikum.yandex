@@ -3,5 +3,9 @@ export const checkResponse = (response: XMLHttpRequest) => {
         throw new Error(JSON.parse(response.responseText).reason);
     }
 
-    return response;
+    if (response.responseText === 'OK') {
+        return response;
+    }
+
+    return JSON.parse(response.responseText);
 };

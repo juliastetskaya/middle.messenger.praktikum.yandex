@@ -1,32 +1,17 @@
-import Block from 'core/Block';
+import { Store, Block } from 'core';
 
-import data from 'data/chats';
 import { validateAndGetInputData } from 'utils';
-import { MessageProps } from 'components/Message';
-import { UserChangeProps } from 'components/UserChange';
-import { TextMessageProps } from 'components/TextMessage';
-import { ImageMessageProps } from 'components/ImageMessage';
-import { ButtonProps } from 'components/Button';
-import { LinkProps } from 'components/Link';
+import { withStore } from 'HOC';
+import {
+    MessageProps,
+    UserChangeProps,
+    TextMessageProps,
+    ImageMessageProps,
+    ButtonProps,
+    LinkProps,
+} from 'components';
 
 import './chat.css';
-
-const {
-    link,
-    chats,
-    addUser,
-    message,
-    chatName,
-    userMenu,
-    myMessage,
-    removeUser,
-    placeholder,
-    messageMenu,
-    messageDate,
-    imageMessage,
-    searchPlaceholder,
-    rightSidePlaceholder,
-} = data;
 
 type ChatPageProps = {
     link: LinkProps;
@@ -44,28 +29,14 @@ type ChatPageProps = {
     messageDate: string;
     imageMessage: ImageMessageProps;
     button: ButtonProps;
+    store: Store<AppState>;
 };
 
-export class ChatPage extends Block<ChatPageProps> {
+class ChatPage extends Block<ChatPageProps> {
     static componentName = 'ChatPage';
 
-    constructor() {
-        super({
-            link,
-            chats,
-            addUser,
-            message,
-            chatName,
-            userMenu,
-            myMessage,
-            removeUser,
-            placeholder,
-            messageMenu,
-            messageDate,
-            imageMessage,
-            searchPlaceholder,
-            rightSidePlaceholder,
-        } as ChatPageProps);
+    constructor(props: ChatPageProps) {
+        super(props);
 
         this.setProps({
             button: { onClick: this.onSubmit },
@@ -108,3 +79,5 @@ export class ChatPage extends Block<ChatPageProps> {
         `;
     }
 }
+
+export default withStore(ChatPage);

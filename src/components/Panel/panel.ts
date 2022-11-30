@@ -20,11 +20,15 @@ export class Panel extends Block<PanelProps> {
 
     render() {
         return `
-            <div class="panel {{class}}">
-                <h1 class="panel__title">{{ text }}</h1>
-                {{{ Form class="panel__form" fields=fields ref="formRef" button=button }}}
-                {{{ Link class="panel__link" href=link.href text=link.text }}}
-            </div>
+            {{#if isLoading}}
+                {{{ Spinner }}}
+            {{else}}
+                <div class="panel {{class}}">
+                    <h1 class="panel__title">{{ text }}</h1>
+                    {{{ Form class="panel__form" fields=fields ref="formRef" button=button }}}
+                    {{{ Link class="panel__link" href=link.href text=link.text }}}
+                </div>
+            {{/if}}
         `;
     }
 }

@@ -1,23 +1,10 @@
 import Block from 'core/Block';
-import { FieldProps } from 'blocks/SigninPage';
-import { ButtonProps } from 'components/Button';
-import { LinkProps } from 'components/Link';
-import { ProfileFieldProps } from 'components/ProfileList';
-import data from 'data/profile';
+import { FieldProps } from 'blocks';
+import { ButtonProps, LinkProps, ProfileFieldProps } from 'components';
 
 import { logout } from 'services/auth';
 
 import './profile.css';
-
-const {
-    name,
-    button,
-    fields,
-    links,
-    profileFields,
-    passwordFields,
-    placeholder,
-} = data;
 
 type ProfilePageProps = {
     name: string;
@@ -27,21 +14,18 @@ type ProfilePageProps = {
     profileFields: ProfileFieldProps[];
     passwordFields: FieldProps[];
     placeholder: string;
+    avatar: {
+        title: string;
+        link: LinkProps;
+        button: ButtonProps;
+    };
 };
 
 export class ProfilePage extends Block<ProfilePageProps> {
     static componentName = 'ProfilePage';
 
-    constructor() {
-        super({
-            name,
-            button,
-            fields,
-            links,
-            profileFields,
-            passwordFields,
-            placeholder,
-        } as ProfilePageProps);
+    constructor(props: ProfilePageProps) {
+        super(props);
 
         this.setProps({
             links: this.props.links.map((link) => (link.text === 'Выйти' ? {
@@ -66,7 +50,7 @@ export class ProfilePage extends Block<ProfilePageProps> {
                         <p class="profile__title">{{name}}</p>
                         {{{ ProfileList fields=profileFields }}}
                         {{{ LinkList class="profile__links" links=links }}}
-                        {{{ AvatarPanel }}}
+                        {{{ AvatarPanel link=avatar.link button=avatar.button title=avatar.title }}}
                     </div>
                 </div>
             </div>

@@ -11,6 +11,15 @@ import {
     ChatPage,
 } from 'blocks';
 
+import {
+    signinData,
+    chatsData,
+    startData,
+    signupData,
+    profileData,
+    errorData,
+} from 'data';
+
 export enum Pages {
     Start = 'start',
     Signin = 'signin',
@@ -35,4 +44,19 @@ const pagesMapping: Record<Pages, BlockClass<any>> = {
     [Pages.ServerError]: ServerErrorPage,
 };
 
-export const getPageComponent = (page: Pages) => pagesMapping[page];
+const dataMapping: Record<Pages, Record<string, unknown>> = {
+    [Pages.Start]: startData,
+    [Pages.Signin]: signinData,
+    [Pages.Signup]: signupData,
+    [Pages.Profile]: profileData,
+    [Pages.ProfileChange]: profileData,
+    [Pages.PasswordChange]: profileData,
+    [Pages.Chat]: chatsData,
+    [Pages.NotFound]: errorData.four,
+    [Pages.ServerError]: errorData.five,
+};
+
+export const getPageWithData = (page: Pages) => ({
+    Block: pagesMapping[page],
+    data: dataMapping[page],
+});

@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import { ButtonProps } from 'components/Button';
+import { ButtonProps } from 'components';
 import { validateAndGetInputData } from 'utils';
 
 import './user-panel.css';
