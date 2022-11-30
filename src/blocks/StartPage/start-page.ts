@@ -1,18 +1,10 @@
 import Block from 'core/Block';
-import { LinkListProps } from 'components/LinkList';
+import { LinkListProps } from 'components';
 
 import './start.css';
 
-import data from 'data/start';
-
-const { links } = data;
-
 export class StartPage extends Block<LinkListProps> {
     static componentName = 'StartPage';
-
-    constructor() {
-        super({ links } as LinkListProps);
-    }
 
     render() {
         return `

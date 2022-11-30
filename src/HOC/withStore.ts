@@ -12,9 +12,7 @@ export function withStore<P extends WithStateProps>(
         constructor(props: P) {
             super({
                 ...props,
-                ...(mapStateToProps
-                    ? mapStateToProps(window.store.getState())
-                    : { store: window.store }),
+                store: mapStateToProps ? mapStateToProps(window.store.getState()) : window.store,
             });
         }
     } as unknown as BlockClass<Omit<P, 'store'>>;

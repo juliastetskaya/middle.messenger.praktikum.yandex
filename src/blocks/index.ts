@@ -1,21 +1,9 @@
-import StartPage from './StartPage';
-import SigninPage from './SigninPage';
-import SignupPage from './SignupPage';
-import ProfilePage from './ProfilePage';
-import ProfileChangePage from './ProfileChangePage';
-import PasswordChangePage from './PasswordChangePage';
-import ServerErrorPage from './ServerErrorPage';
-import ErrorPage from './ErrorPage';
-import ChatPage from './ChatPage';
-
-export {
-    StartPage,
-    SigninPage,
-    SignupPage,
-    ProfilePage,
-    ProfileChangePage,
-    PasswordChangePage,
-    ServerErrorPage,
-    ErrorPage,
-    ChatPage,
-};
+export { default as StartPage } from './StartPage';
+export { default as SigninPage, FieldProps } from './SigninPage';
+export { default as SignupPage } from './SignupPage';
+export { default as ProfilePage } from './ProfilePage';
+export { default as ProfileChangePage } from './ProfileChangePage';
+export { default as PasswordChangePage } from './PasswordChangePage';
+export { default as ServerErrorPage } from './ServerErrorPage';
+export { default as ErrorPage } from './ErrorPage';
+export { default as ChatPage } from './ChatPage';

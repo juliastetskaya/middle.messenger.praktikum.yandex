@@ -1,10 +1,7 @@
 import Block from 'core/Block';
-import data from 'data/profile';
 import { validateAndGetInputData } from 'utils';
-import { ButtonProps } from 'components/Button';
-import { FieldProps } from '../SigninPage';
-
-const { button, fields } = data;
+import { ButtonProps } from 'components';
+import { FieldProps } from 'blocks';
 
 type ProfilePageProps = {
     button: ButtonProps;
@@ -14,17 +11,17 @@ type ProfilePageProps = {
 export class ProfileChangePage extends Block<ProfilePageProps> {
     static componentName = 'ProfileChangePage';
 
-    constructor() {
-        super({ button, fields } as ProfilePageProps);
+    constructor(props: ProfilePageProps) {
+        super(props);
 
         this.setProps({
-            button: { ...button, onClick: this.onSubmit },
+            button: { ...this.props.button, onClick: this.onSubmit },
         });
     }
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(fields, this.element);
+        const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {
             console.log('Form is ready to send data:', values);

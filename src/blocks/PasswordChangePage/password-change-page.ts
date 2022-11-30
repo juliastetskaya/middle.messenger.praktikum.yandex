@@ -1,11 +1,8 @@
 import Block from 'core/Block';
-import { FieldProps } from 'blocks/SigninPage';
-import { ButtonProps } from 'components/Button';
+import { FieldProps } from 'blocks';
+import { ButtonProps } from 'components';
 
-import data from 'data/profile';
 import { validateAndGetInputData } from 'utils';
-
-const { button, passwordFields } = data;
 
 type PasswordChangePageProps = {
     button: ButtonProps;
@@ -15,8 +12,8 @@ type PasswordChangePageProps = {
 export class PasswordChangePage extends Block<PasswordChangePageProps> {
     static componentName = 'PasswordChangePage';
 
-    constructor() {
-        super({ button, passwordFields } as PasswordChangePageProps);
+    constructor(props: PasswordChangePageProps) {
+        super(props);
 
         this.setProps({
             button: {
@@ -28,7 +25,7 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(passwordFields, this.element);
+        const values = validateAndGetInputData(this.props.passwordFields, this.element);
 
         if (values) {
             console.log('Form is ready to send data:', values);
