@@ -1,6 +1,7 @@
-import Block from 'core/Block';
+import { Store, Block } from 'core';
 import { FieldProps } from 'blocks';
 import { ButtonProps, LinkProps, ProfileFieldProps } from 'components';
+import { withStore } from 'HOC';
 
 import { logout } from 'services/auth';
 
@@ -19,9 +20,10 @@ type ProfilePageProps = {
         link: LinkProps;
         button: ButtonProps;
     };
+    store: Store<AppState>;
 };
 
-export class ProfilePage extends Block<ProfilePageProps> {
+class ProfilePage extends Block<ProfilePageProps> {
     static componentName = 'ProfilePage';
 
     constructor(props: ProfilePageProps) {
@@ -37,10 +39,11 @@ export class ProfilePage extends Block<ProfilePageProps> {
 
     clickQuitLink = (event: Event) => {
         event.preventDefault();
-        logout();
+        this.props.store.dispatch(logout);
     };
 
     render() {
+        console.log('props', this.props);
         return `
             <div class="profile">
                 {{{ LeftMenu }}}
@@ -57,3 +60,5 @@ export class ProfilePage extends Block<ProfilePageProps> {
         `;
     }
 }
+
+export default withStore(ProfilePage);
