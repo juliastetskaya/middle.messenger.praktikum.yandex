@@ -1,5 +1,4 @@
 import { HTTPTransport } from 'core';
-import { checkResponse } from 'utils';
 import { BASE_URL } from '../constants';
 import { baseHeaders } from './baseHeaders';
 
@@ -20,33 +19,17 @@ export type SignupData = {
 const authAPIInstance = new HTTPTransport(`${BASE_URL}/auth`);
 
 export const authAPI = {
-    signin: async (data: SigninData) => {
-        const response = await authAPIInstance.post('/signin', {
-            data: JSON.stringify(data),
-            headers: baseHeaders,
-        });
+    signin: async (data: SigninData) => authAPIInstance.post('/signin', {
+        data: JSON.stringify(data),
+        headers: baseHeaders,
+    }),
 
-        return checkResponse(response);
-    },
+    signup: async (data: SignupData) => authAPIInstance.post('/signup', {
+        data: JSON.stringify(data),
+        headers: baseHeaders,
+    }),
 
-    signup: async (data: SignupData) => {
-        const response = await authAPIInstance.post('/signup', {
-            data: JSON.stringify(data),
-            headers: baseHeaders,
-        });
+    getUser: () => authAPIInstance.get('/user', { headers: baseHeaders }),
 
-        return checkResponse(response);
-    },
-
-    getUser: async () => {
-        const response = await authAPIInstance.get('/user', { headers: baseHeaders });
-
-        return checkResponse(response);
-    },
-
-    logout: async () => {
-        const response = await authAPIInstance.post('/logout', { headers: baseHeaders });
-
-        return checkResponse(response);
-    },
+    logout: () => authAPIInstance.post('/logout', { headers: baseHeaders }),
 };

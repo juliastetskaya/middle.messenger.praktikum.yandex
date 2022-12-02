@@ -1,49 +1,50 @@
-import { authAPI, SignupData, SigninData } from 'API/auth-api';
+import { SignupData, SigninData } from 'API/auth-api';
+import {
+    signinWithErrorHandler,
+    signupWithErrorHandler,
+    getUserWithErrorHandler,
+    logoutWithErrorHandler,
+} from 'API/fetchAPI';
 import { PATHS } from '../constants';
 
 export const signin: DispatchState<SigninData> = async (dispatch, _, action) => {
     dispatch({ isLoading: true });
+
     try {
-        await authAPI.signin(action);
+        await signinWithErrorHandler(action);
 
-        try {
-            const user = await authAPI.getUser();
+        const user = await getUserWithErrorHandler();
 
-            dispatch({ user });
+        dispatch({ user, isLoading: false, error: null });
 
-            window.router.go(PATHS.CHAT);
-        } catch (error) {
-            dispatch({ error, isLoading: false });
-        }
+        window.router.go(PATHS.CHAT);
     } catch (error) {
-        dispatch({ error, isLoading: false });
+        dispatch({ error, isLoading: false, user: null });
     }
 };
 
-export const signup = async (data: SignupData) => {
+export const signup: DispatchState<SignupData> = async (dispatch, _, action) => {
+    dispatch({ isLoading: true });
+
     try {
-        await authAPI.signup(data);
+        await signupWithErrorHandler(action);
 
-        try {
-            await authAPI.getUser();
+        const user = await getUserWithErrorHandler();
 
-            window.router.go(PATHS.CHAT);
-        } catch (error) {
-            console.log('GET USER ERROR', error);
-        }
+        dispatch({ user, isLoading: false, error: null });
+
+        window.router.go(PATHS.CHAT);
     } catch (error) {
-        console.log('SIGNUP ERROR', error);
+        dispatch({ error, isLoading: false, user: null });
     }
 };
 
-export const logout = async () => {
+export const logout: DispatchState = async (dispatch) => {
     try {
-        const response = await authAPI.logout();
-
-        console.log(response);
+        await logoutWithErrorHandler();
 
         window.router.go(PATHS.SIGNIN);
     } catch (error) {
-        console.log('LOGOUT ERROR', error);
+        dispatch({ error, user: null });
     }
 };

@@ -53,28 +53,36 @@ class ChatPage extends Block<ChatPageProps> {
     };
 
     render() {
+        const { isLoading } = this.props.store.getState();
+
         return `
-            <div class="chat">
-                <aside class="left-side">
-                    {{{ Link class="chat__profile-link" href=link.href text=link.text }}}
-                    <form action="#">
-                        <input class="chat__search-field" type="text" placeholder={{searchPlaceholder}}>
-                    </form>
-                    {{{ ChatList chats=chats }}}
-                </aside>
-                <div class="right-side">
-                    {{{ ChatTitle chatName=chatName userMenu=userMenu }}}
-                    {{{ MessageArea
-                        message=message
-                        imageMessage=imageMessage
-                        myMessage=myMessage
-                        messageDate=messageDate
-                    }}}
-                    {{{ ChatMessage messageMenu=messageMenu placeholder=placeholder button=button }}}
-                </div>
-                {{{ UserChange title=addUser.title button=addUser.button input=addUser.input }}}
-                {{{ UserChange title=removeUser.title button=removeUser.button input=removeUser.input }}}
-                <div class="overlay"></div>
+            <div class='container'>
+                {{#if ${isLoading}}}
+                    {{{ Spinner }}}
+                {{else}}
+                    <div class="chat">
+                        <aside class="left-side">
+                            {{{ Link class="chat__profile-link" href=link.href text=link.text }}}
+                            <form action="#">
+                                <input class="chat__search-field" type="text" placeholder={{searchPlaceholder}}>
+                            </form>
+                            {{{ ChatList chats=chats }}}
+                        </aside>
+                        <div class="right-side">
+                            {{{ ChatTitle chatName=chatName userMenu=userMenu }}}
+                            {{{ MessageArea
+                                message=message
+                                imageMessage=imageMessage
+                                myMessage=myMessage
+                                messageDate=messageDate
+                            }}}
+                            {{{ ChatMessage messageMenu=messageMenu placeholder=placeholder button=button }}}
+                        </div>
+                        {{{ UserChange title=addUser.title button=addUser.button input=addUser.input }}}
+                        {{{ UserChange title=removeUser.title button=removeUser.button input=removeUser.input }}}
+                        <div class="overlay"></div>
+                    </div>
+                {{/if}}
             </div>
         `;
     }
