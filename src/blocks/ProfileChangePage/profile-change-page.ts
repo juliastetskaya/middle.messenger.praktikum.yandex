@@ -1,14 +1,17 @@
-import Block from 'core/Block';
+import { Block, Store } from 'core';
 import { validateAndGetInputData } from 'utils';
 import { ButtonProps } from 'components';
 import { FieldProps } from 'blocks';
+import { withStore, withUser } from 'HOC';
 
 type ProfilePageProps = {
     button: ButtonProps;
     fields: FieldProps[];
+    store: Store<AppState>;
+    user: User;
 };
 
-export class ProfileChangePage extends Block<ProfilePageProps> {
+class ProfileChangePage extends Block<ProfilePageProps> {
     static componentName = 'ProfileChangePage';
 
     constructor(props: ProfilePageProps) {
@@ -16,6 +19,7 @@ export class ProfileChangePage extends Block<ProfilePageProps> {
 
         this.setProps({
             button: { ...this.props.button, onClick: this.onSubmit },
+            fields: this.props.fields.map((field) => ({ ...field, value: (this.props.user as any)[field.name] })),
         });
     }
 
@@ -25,6 +29,7 @@ export class ProfileChangePage extends Block<ProfilePageProps> {
 
         if (values) {
             console.log('Form is ready to send data:', values);
+            this.props.store.dispatch(values);
         }
     };
 
@@ -42,3 +47,5 @@ export class ProfileChangePage extends Block<ProfilePageProps> {
         `;
     }
 }
+
+export default withStore(withUser(ProfileChangePage));

@@ -6,9 +6,9 @@ declare global {
 
     export type User = {
         login: string;
-        firstName: string;
-        secondName: string;
-        displayName: string;
+        first_name: string;
+        second_name: string;
+        display_name: string;
         phone: string;
         email: string;
     };
@@ -17,6 +17,7 @@ declare global {
         user: Nullable<User>;
         error: Nullable<string>;
         isLoading: boolean;
+        isInited: boolean;
     };
 
     type DispatchState<T = {}> = (dispatch: Dispatch<AppState>, state: AppState, action: T) => Promise<void>;

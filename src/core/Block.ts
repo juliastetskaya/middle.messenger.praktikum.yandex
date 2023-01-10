@@ -53,11 +53,15 @@ class Block<P = {}> {
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props);
     }
 
-    _componentDidMount() {
-        this.componentDidMount();
+    _componentDidMount(props: P) {
+        this.componentDidMount(props);
     }
 
-    componentDidMount() {}
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    componentDidMount(_props: P) {
+    }
+
+    componentWillUnmount() {}
 
     _componentDidUpdate() {
         const response = this.componentDidUpdate();

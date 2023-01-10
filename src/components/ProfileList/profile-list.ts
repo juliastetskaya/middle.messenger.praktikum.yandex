@@ -3,6 +3,7 @@ import Block from 'core/Block';
 export type ProfileFieldProps = {
     label: string;
     value: string;
+    name: string;
 };
 
 type ProfileListProps = {

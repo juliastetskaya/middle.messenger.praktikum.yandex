@@ -43,6 +43,8 @@ export const logout: DispatchState = async (dispatch) => {
     try {
         await logoutWithErrorHandler();
 
+        dispatch({ user: null, error: null });
+
         window.router.go(PATHS.SIGNIN);
     } catch (error) {
         dispatch({ error, user: null });

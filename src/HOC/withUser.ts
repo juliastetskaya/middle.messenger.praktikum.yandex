@@ -2,17 +2,12 @@ import { BlockClass, Store } from 'core';
 
 type WithStateProps = { store: Store<AppState> };
 
-type StateType = Record<string, any>;
-
-export function withStore<P extends WithStateProps>(
-    Component: BlockClass<P>,
-    mapStateToProps?: (state: StateType) => StateType,
-) {
+export function withUser<P extends WithStateProps>(Component: BlockClass<P>) {
     return class extends Component {
         constructor(props: P) {
             super({
                 ...props,
-                store: mapStateToProps ? mapStateToProps(window.store.getState()) : window.store,
+                user: window.store.getState().user,
             });
         }
 
@@ -26,8 +21,11 @@ export function withStore<P extends WithStateProps>(
             window.store.off('changed', this.__onChangeStoreCallback);
         }
 
-        __onChangeStoreCallback = () => {
-            this.setProps({ ...this.props, store: window.store });
+        __onChangeStoreCallback = (prevState: AppState, nextState: AppState) => {
+            if (JSON.stringify(prevState.user) !== JSON.stringify(nextState.user)) {
+                console.log('USER CHANGED');
+                this.setProps({ ...this.props, user: nextState.user });
+            }
         };
-    } as unknown as BlockClass<Omit<P, 'store'>>;
+    } as unknown as BlockClass<Omit<P, 'user'>>;
 }

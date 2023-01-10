@@ -1,7 +1,7 @@
 import { Store, Block } from 'core';
 import { FieldProps } from 'blocks';
 import { ButtonProps, LinkProps, ProfileFieldProps } from 'components';
-import { withStore } from 'HOC';
+import { withStore, withUser } from 'HOC';
 
 import { logout } from 'services/auth';
 
@@ -21,6 +21,7 @@ type ProfilePageProps = {
         button: ButtonProps;
     };
     store: Store<AppState>;
+    user: User;
 };
 
 class ProfilePage extends Block<ProfilePageProps> {
@@ -34,6 +35,7 @@ class ProfilePage extends Block<ProfilePageProps> {
                 ...link,
                 onClick: this.clickQuitLink,
             } : link)),
+            profileFields: this.props.profileFields.map((field) => ({ ...field, value: (this.props.user as any)[field.name] })),
         });
     }
 
@@ -43,14 +45,13 @@ class ProfilePage extends Block<ProfilePageProps> {
     };
 
     render() {
-        console.log('props', this.props);
         return `
             <div class="profile">
                 {{{ LeftMenu }}}
                 <div class="profile__panel">
                     <div class="profile__content profile-page">
                         {{{ Avatar class="profile__avatar" placeholder=placeholder }}}
-                        <p class="profile__title">{{name}}</p>
+                        <p class="profile__title">{{user.first_name}}</p>
                         {{{ ProfileList fields=profileFields }}}
                         {{{ LinkList class="profile__links" links=links }}}
                         {{{ AvatarPanel link=avatar.link button=avatar.button title=avatar.title }}}
@@ -61,4 +62,4 @@ class ProfilePage extends Block<ProfilePageProps> {
     }
 }
 
-export default withStore(ProfilePage);
+export default withStore(withUser(ProfilePage));

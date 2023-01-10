@@ -59,6 +59,12 @@
     bottom: 28px;
 }
 
+.profile__form .submit-error {
+    bottom: 48px;
+    right: auto;
+    font-size: 10px;
+}
+
 .profile__title {
     font-size: 16px;
     line-height: 16px;
