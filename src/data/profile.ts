@@ -1,5 +1,4 @@
 export default {
-    name: 'Иван',
     button: {
         text: 'Сохранить',
     },
@@ -59,26 +58,32 @@ export default {
         {
             label: 'Почта',
             value: 'pochta@yandex.ru',
+            name: 'email',
         },
         {
             label: 'Логин',
             value: 'ivanivanov',
+            name: 'login',
         },
         {
             label: 'Имя',
             value: 'Иван',
+            name: 'first_name',
         },
         {
             label: 'Фамилия',
             value: 'Иванов',
+            name: 'second_name',
         },
         {
             label: 'Имя в чате',
             value: 'Иван',
+            name: 'chat_name',
         },
         {
             label: 'Телефон',
             value: '+7(909)9673030',
+            name: 'phone',
         },
     ],
     passwordFields: [

@@ -12,6 +12,7 @@ export type FieldProps = {
     placeholder: string,
     errorMessage?: string,
     class?: string,
+    value?: string
 };
 
 export type SignPageProps = {

@@ -1,1 +1,1 @@
-export { ProfileChangePage as default } from './profile-change-page';
+export { default } from './profile-change-page';

@@ -1,6 +1,6 @@
 import { HTTPTransport } from 'core';
+import { getRequestBody } from 'utils';
 import { BASE_URL } from '../constants';
-import { baseHeaders } from './baseHeaders';
 
 export type SigninData = {
     login: string;
@@ -19,17 +19,11 @@ export type SignupData = {
 const authAPIInstance = new HTTPTransport(`${BASE_URL}/auth`);
 
 export const authAPI = {
-    signin: async (data: SigninData) => authAPIInstance.post('/signin', {
-        data: JSON.stringify(data),
-        headers: baseHeaders,
-    }),
+    signin: (data: SigninData) => authAPIInstance.post('/signin', getRequestBody(data)),
 
-    signup: async (data: SignupData) => authAPIInstance.post('/signup', {
-        data: JSON.stringify(data),
-        headers: baseHeaders,
-    }),
+    signup: (data: SignupData) => authAPIInstance.post('/signup', getRequestBody(data)),
 
-    getUser: () => authAPIInstance.get('/user', { headers: baseHeaders }),
+    getUser: () => authAPIInstance.get('/user', getRequestBody()),
 
-    logout: () => authAPIInstance.post('/logout', { headers: baseHeaders }),
+    logout: () => authAPIInstance.post('/logout', getRequestBody()),
 };

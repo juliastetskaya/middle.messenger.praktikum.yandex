@@ -62,6 +62,7 @@ export class ControlledInput extends Block<ControlledInputProps> {
                     onInput=onInput
                     onFocus=onFocus
                     onBlur=onBlur
+                    value=value
                 }}}
                 {{{ Error text=errorMessage ref="errorRef" }}}
             </div>

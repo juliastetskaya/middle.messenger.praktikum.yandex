@@ -1,4 +1,4 @@
-import { renderDOM } from 'core';
+import { renderDOM, Store } from 'core';
 import { Pages, getPageWithData } from 'utils/pageList';
 import { CoreRouter } from 'core/Router';
 import { PATHS } from './constants';
@@ -51,7 +51,7 @@ const routes = [
     },
 ];
 
-export const initRouter = (router: CoreRouter) => {
+export const initRouter = (router: CoreRouter, store: Store<AppState>) => {
     routes.forEach(({ path, block }) => router.use(path, () => {
         const { Block, data } = getPageWithData(block);
 
@@ -59,5 +59,9 @@ export const initRouter = (router: CoreRouter) => {
         renderDOM('#app', page);
     }));
 
-    router.start();
+    store.on('changed', (prevState: AppState, nextState: AppState) => {
+        if (!prevState.isInited && nextState.isInited) {
+            router.start();
+        }
+    });
 };

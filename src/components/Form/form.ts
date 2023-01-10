@@ -7,6 +7,8 @@ type FormProps = {
     class?: string;
     fields: InputProps[];
     button: ButtonProps;
+    error: string;
+    user: User;
 };
 
 export class Form extends Block<FormProps> {
@@ -31,6 +33,7 @@ export class Form extends Block<FormProps> {
                         </li>
                     {{/each}}
                 </ul>
+                {{{ Error class='submit-error' text=error ref="errorRef" }}}
                 {{{ Button type="submit" text=button.text onClick=button.onClick }}}
             </form>
         `;

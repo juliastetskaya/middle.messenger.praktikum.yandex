@@ -31,7 +31,7 @@ export class Input extends Block<InputProps> {
 
     render() {
         return `
-            <input class="input {{class}}" type="{{type}}" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}">
+            <input class="input {{class}}" type="{{type}}" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}" value="{{ value }}">
         `;
     }
 }

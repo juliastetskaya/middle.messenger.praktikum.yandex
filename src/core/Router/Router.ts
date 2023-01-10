@@ -24,9 +24,9 @@ export class Router implements CoreRouter {
             window.onpopstate = () => {
                 this.onRouteChange.call(this);
             };
-        }
 
-        this.onRouteChange();
+            this.onRouteChange();
+        }
     }
 
     use(pathname: string, callback: Function) {

@@ -1,15 +1,25 @@
-import Block from 'core/Block';
+import { Store, Block } from 'core';
 import { FieldProps } from 'blocks';
 import { ButtonProps } from 'components';
 
+import { withStore } from 'HOC';
 import { validateAndGetInputData } from 'utils';
+import { updatePassword } from 'services/user';
+
+type PasswordFields = {
+    oldPassword: string;
+    newPassword: string;
+    passwordCheck: string;
+};
 
 type PasswordChangePageProps = {
     button: ButtonProps;
     passwordFields: FieldProps[];
+    error: string;
+    store: Store<AppState>;
 };
 
-export class PasswordChangePage extends Block<PasswordChangePageProps> {
+class PasswordChangePage extends Block<PasswordChangePageProps> {
     static componentName = 'PasswordChangePage';
 
     constructor(props: PasswordChangePageProps) {
@@ -25,10 +35,18 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(this.props.passwordFields, this.element);
+        const values = validateAndGetInputData(this.props.passwordFields, this.element) as PasswordFields;
 
         if (values) {
-            console.log('Form is ready to send data:', values);
+            const { oldPassword, newPassword, passwordCheck } = values;
+
+            if (newPassword !== passwordCheck) {
+                this.setProps({ error: 'Пароли не совпадают' });
+            } else if (newPassword === oldPassword) {
+                this.setProps({ error: 'Старый и новый пароли должны отличаться' });
+            } else {
+                this.props.store.dispatch(updatePassword, { oldPassword, newPassword });
+            }
         }
     };
 
@@ -39,11 +57,12 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
                 <div class="profile__panel">
                     <div class="profile__content password-change">
                         {{{ Avatar }}}
-                        {{{ Form class="profile__form" fields=passwordFields button=button }}}
-
+                        {{{ Form class="profile__form" fields=passwordFields button=button error=error }}}
                     </div>
                 </div>
             </div>
         `;
     }
 }
+
+export default withStore(PasswordChangePage);

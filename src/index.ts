@@ -1,3 +1,6 @@
+import { registerComponent, Store } from 'core';
+import { Router, CoreRouter } from 'core/Router';
+import { initApp } from 'services/initApp';
 import {
     Avatar,
     AvatarPanel,
@@ -25,8 +28,6 @@ import {
     Spinner,
 } from 'components';
 
-import { registerComponent, Store } from 'core';
-import { Router, CoreRouter } from 'core/Router';
 import { defaultStore } from './store';
 import { initRouter } from './router';
 
@@ -71,5 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.router = router;
     window.store = store;
-    initRouter(router);
+
+    initRouter(router, store);
+
+    // TODO: убрать store.on
+    store.on('changed', (_: any, nextState: any) => {
+        console.log('%cstore updated', 'background: #222; color: #bada55', nextState);
+    });
+
+    store.dispatch(initApp);
 });
