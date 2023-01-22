@@ -3,6 +3,7 @@
     line-height: 11px;
     color: var(--blue-color);
     text-decoration: none;
+    cursor: pointer;
 }
 
 .link:active,

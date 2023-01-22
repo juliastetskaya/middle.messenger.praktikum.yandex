@@ -3,7 +3,7 @@ import photograph from '../static/photograph.png';
 export default ({
     searchPlaceholder: 'Поиск',
     link: {
-        href: '/profile.html',
+        to: '/profile',
         text: 'Профиль',
     },
     rightSidePlaceholder: 'Выберите чат чтобы отправить сообщение',
@@ -69,26 +69,26 @@ export default ({
     userMenu: [
         {
             text: 'Добавить пользователя',
-            href: '/',
+            to: '/',
         },
         {
             text: 'Удалить пользователя',
-            href: '/',
+            to: '/',
         },
     ],
     placeholder: 'Сообщение',
     messageMenu: [
         {
             text: 'Фото или Видео',
-            href: '/',
+            to: '/',
         },
         {
             text: 'Файл',
-            href: '/',
+            to: '/',
         },
         {
             text: 'Локация',
-            href: '/',
+            to: '/',
         },
     ],
     message: {

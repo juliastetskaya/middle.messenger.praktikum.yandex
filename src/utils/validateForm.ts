@@ -44,7 +44,7 @@ export enum ValidateType {
     SecondName = 'second_name',
     Phone = 'phone',
     Message = 'message',
-    ChatName = 'chat_name',
+    ChatName = 'display_name',
 }
 
 type ValidateRule = {

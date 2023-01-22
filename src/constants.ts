@@ -1,13 +1,13 @@
-export const PATHS = {
-    START: '/',
-    SIGNIN: '/signin.html',
-    SIGNUP: '/signup.html',
-    PROFILE: '/profile.html',
-    PROFILE_CHANGE: '/profile-change.html',
-    PASSWORD_CHANGE: '/password-change.html',
-    CHAT: '/chat-page.html',
-    NOT_FOUND: '*',
-    SERVER_ERROR: '/500.html',
-};
+export enum ROUTES {
+    START = '/',
+    SIGNIN = '/signin',
+    SIGNUP = '/signup',
+    PROFILE = '/profile',
+    PROFILE_CHANGE = '/profile-change',
+    PASSWORD_CHANGE = '/password-change',
+    CHAT = '/chat-page',
+    NOT_FOUND = '*',
+    SERVER_ERROR = '/500',
+}
 
 export const BASE_URL = 'https://ya-praktikum.tech/api/v2';

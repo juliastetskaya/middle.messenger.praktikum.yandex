@@ -5,7 +5,7 @@ import {
     updatePasswordWithErrorHandler,
     searchUsersWithErrorHandler,
 } from 'API/fetchAPI';
-import { PATHS } from '../constants';
+import { ROUTES } from '../constants';
 
 export const updateProfile: DispatchState<ProfileData> = async (dispatch, _, action) => {
     dispatch({ isLoading: true });
@@ -15,7 +15,7 @@ export const updateProfile: DispatchState<ProfileData> = async (dispatch, _, act
 
         dispatch({ user, isLoading: false, error: null });
 
-        window.router.go(PATHS.PROFILE);
+        window.router.go(ROUTES.PROFILE);
     } catch (error) {
         dispatch({ error, isLoading: false, user: null });
     }
@@ -29,7 +29,7 @@ export const updatePassword: DispatchState<PasswordData> = async (dispatch, _, a
 
         dispatch({ user, isLoading: false, error: null });
 
-        window.router.go(PATHS.PROFILE);
+        window.router.go(ROUTES.PROFILE);
     } catch (error) {
         dispatch({ error, isLoading: false, user: null });
     }

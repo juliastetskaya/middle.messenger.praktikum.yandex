@@ -1,8 +1,8 @@
-import { Store, Block } from 'core';
+import { Block } from 'core';
 import { FieldProps } from 'blocks';
 import { ButtonProps } from 'components';
 
-import { withStore } from 'HOC';
+import { withStore, WithStateProps } from 'HOC';
 import { validateAndGetInputData } from 'utils';
 import { updatePassword } from 'services/user';
 
@@ -12,12 +12,11 @@ type PasswordFields = {
     passwordCheck: string;
 };
 
-type PasswordChangePageProps = {
+interface PasswordChangePageProps extends WithStateProps {
     button: ButtonProps;
     passwordFields: FieldProps[];
     error: string;
-    store: Store<AppState>;
-};
+}
 
 class PasswordChangePage extends Block<PasswordChangePageProps> {
     static componentName = 'PasswordChangePage';

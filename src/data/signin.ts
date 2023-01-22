@@ -5,7 +5,7 @@ export default ({
     },
     link: {
         text: 'Нет аккаунта?',
-        href: '/signup.html',
+        to: '/signup',
     },
     fields: [
         {

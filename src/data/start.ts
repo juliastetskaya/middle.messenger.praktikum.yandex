@@ -2,35 +2,35 @@ export default ({
     links: [
         {
             text: 'Авторизация',
-            href: '/signin.html',
+            to: '/signin',
         },
         {
             text: 'Регистрация',
-            href: '/signup.html',
+            to: '/signup',
         },
         {
             text: 'Страница профиля',
-            href: '/profile.html',
+            to: '/profile',
         },
         {
             text: 'Страница изменения профиля',
-            href: '/profile-change.html',
+            to: '/profile-change',
         },
         {
             text: 'Страница изменения пароля',
-            href: '/password-change.html',
+            to: '/password-change',
         },
         {
             text: 'Страница с чатами',
-            href: '/chat-page.html',
+            to: '/chat-page',
         },
         {
             text: '404-я страница',
-            href: '/404.html',
+            to: '/404',
         },
         {
             text: '500-я страница',
-            href: '/500.html',
+            to: '/500',
         },
     ],
 });

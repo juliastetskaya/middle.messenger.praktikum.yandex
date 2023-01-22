@@ -2,8 +2,7 @@ import Block from 'core/Block';
 import { ButtonProps } from 'components';
 import { validateAndGetInputData } from 'utils';
 import { signin } from 'services/auth';
-import { withStore } from 'HOC';
-import { Store } from 'core';
+import { withStore, WithStateProps } from 'HOC';
 
 export type FieldProps = {
     type: string,
@@ -15,16 +14,15 @@ export type FieldProps = {
     value?: string
 };
 
-export type SignPageProps = {
+export interface SignPageProps extends WithStateProps {
     text: string;
     fields: FieldProps[];
     button: ButtonProps;
     link: {
         text: string,
-        href: string,
+        to: string,
     };
-    store: Store<AppState>;
-};
+}
 
 class SigninPage extends Block<SignPageProps> {
     static componentName = 'SigninPage';

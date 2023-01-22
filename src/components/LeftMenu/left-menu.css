@@ -6,3 +6,9 @@
     background-color: var(--main-bg-color);
     border-right: 1px solid var(--lighter-grey-color);
 }
+
+.arrow-button {
+    width: 28px;
+    height: 28px;
+    background: url('../../static/arrow_button.svg') center no-repeat;
+}
