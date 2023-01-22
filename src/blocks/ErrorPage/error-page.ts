@@ -18,7 +18,7 @@ export class ErrorPage extends Block<ErrorPageProps> {
                 <div class="error-page">
                     <h1 class="error-page__title">{{title}}</h1>
                     <p class="error-page__text">{{text}}</p>
-                    {{{ Link href=link.href text=link.text }}}
+                    {{{ Link to=link.to text=link.text }}}
                 </div>
             </div>
         `;

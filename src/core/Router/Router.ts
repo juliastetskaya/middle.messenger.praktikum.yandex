@@ -1,7 +1,7 @@
 import { CoreRouter } from './CoreRouter';
-import { PATHS } from '../../constants';
+import { ROUTES } from '../../constants';
 
-export class Router implements CoreRouter {
+class Router implements CoreRouter {
     private routes: Record<string, Function> = {};
 
     private isExist = false;
@@ -9,8 +9,8 @@ export class Router implements CoreRouter {
     private onRouteChange(pathname: string = window.location.pathname) {
         const [route] = Object.keys(this.routes).filter((path) => path === pathname);
 
-        if (!route && this.routes[PATHS.NOT_FOUND]) {
-            this.routes[PATHS.NOT_FOUND]();
+        if (!route && this.routes[ROUTES.NOT_FOUND]) {
+            this.routes[ROUTES.NOT_FOUND]();
             return;
         }
 
@@ -24,9 +24,8 @@ export class Router implements CoreRouter {
             window.onpopstate = () => {
                 this.onRouteChange.call(this);
             };
-
-            this.onRouteChange();
         }
+        this.onRouteChange();
     }
 
     use(pathname: string, callback: Function) {
@@ -48,3 +47,5 @@ export class Router implements CoreRouter {
         window.history.forward();
     }
 }
+
+export default new Router();

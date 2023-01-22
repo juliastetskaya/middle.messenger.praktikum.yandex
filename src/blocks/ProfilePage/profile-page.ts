@@ -1,13 +1,19 @@
-import { Store, Block } from 'core';
+import { Block } from 'core';
 import { FieldProps } from 'blocks';
 import { ButtonProps, LinkProps, ProfileFieldProps } from 'components';
-import { withStore, withUser } from 'HOC';
+import { updateAvatar } from 'services/user';
+import {
+    withStore,
+    withUser,
+    WithStateProps,
+    WithUserProps,
+} from 'HOC';
 
 import { logout } from 'services/auth';
 
 import './profile.css';
 
-type ProfilePageProps = {
+interface ProfilePageProps extends WithUserProps, WithStateProps {
     name: string;
     button: ButtonProps;
     fields: FieldProps[];
@@ -20,9 +26,10 @@ type ProfilePageProps = {
         link: LinkProps;
         button: ButtonProps;
     };
-    store: Store<AppState>;
-    user: User;
-};
+    changeAvatar: {
+        onClick: () => void;
+    }
+}
 
 class ProfilePage extends Block<ProfilePageProps> {
     static componentName = 'ProfilePage';
@@ -35,7 +42,8 @@ class ProfilePage extends Block<ProfilePageProps> {
                 ...link,
                 onClick: this.clickQuitLink,
             } : link)),
-            profileFields: this.props.profileFields.map((field) => ({ ...field, value: (this.props.user as any)[field.name] })),
+            profileFields: this.props.profileFields.map((field) => ({ ...field, value: (this.props.user as any || {})[field.name] })),
+            changeAvatar: { onClick: this.changeAvatarClick },
         });
     }
 
@@ -44,13 +52,18 @@ class ProfilePage extends Block<ProfilePageProps> {
         this.props.store.dispatch(logout);
     };
 
+    changeAvatarClick = () => {
+        console.log('onClick!!!!');
+        this.props.store.dispatch(updateAvatar);
+    };
+
     render() {
         return `
             <div class="profile">
                 {{{ LeftMenu }}}
                 <div class="profile__panel">
                     <div class="profile__content profile-page">
-                        {{{ Avatar class="profile__avatar" placeholder=placeholder }}}
+                        {{{ Avatar class="profile__avatar" placeholder=placeholder onClick=changeAvatar.onClick }}}
                         <p class="profile__title">{{user.first_name}}</p>
                         {{{ ProfileList fields=profileFields }}}
                         {{{ LinkList class="profile__links" links=links }}}

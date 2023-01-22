@@ -1,7 +1,5 @@
 import { BlockClass, Store } from 'core';
 
-type WithStateProps = { store: Store<AppState> };
-
 type StateType = Record<string, any>;
 
 export function withStore<P extends WithStateProps>(
@@ -30,4 +28,8 @@ export function withStore<P extends WithStateProps>(
             this.setProps({ ...this.props, store: window.store });
         };
     } as unknown as BlockClass<Omit<P, 'store'>>;
+}
+
+export interface WithStateProps {
+    store: Store<AppState>;
 }

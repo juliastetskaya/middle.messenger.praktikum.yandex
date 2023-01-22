@@ -16,7 +16,7 @@ export class AvatarPanel extends Block<AvatarPanelProps> {
         return `
             <div class="panel avatar-panel">
                 <h1 class="panel__title">{{ title }}</h1>
-                {{{ Link class="panel__link" text=link.text href=link.href }}}
+                {{{ Link class="panel__link" text=link.text to=link.to }}}
                 {{{ Button class="avatar-panel__button" text=button.text }}}
             </div>
         `;

@@ -6,10 +6,11 @@ export const initApp: DispatchState = async (dispatch) => {
     try {
         const user = await getUserWithErrorHandler();
 
-        dispatch({ user, isLoading: false, error: null });
+        dispatch({ user, error: null });
     } catch (error) {
         console.error(error);
+        dispatch({ user: null, error });
     } finally {
-        dispatch({ isInited: true });
+        dispatch({ isLoading: false });
     }
 };

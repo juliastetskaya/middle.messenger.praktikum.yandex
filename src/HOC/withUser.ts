@@ -1,8 +1,6 @@
-import { BlockClass, Store } from 'core';
+import { BlockClass } from 'core';
 
-type WithStateProps = { store: Store<AppState> };
-
-export function withUser<P extends WithStateProps>(Component: BlockClass<P>) {
+export function withUser<P extends WithUserProps>(Component: BlockClass<P>) {
     return class extends Component {
         constructor(props: P) {
             super({
@@ -28,4 +26,8 @@ export function withUser<P extends WithStateProps>(Component: BlockClass<P>) {
             }
         };
     } as unknown as BlockClass<Omit<P, 'user'>>;
+}
+
+export interface WithUserProps {
+    user: User;
 }

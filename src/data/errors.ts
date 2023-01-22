@@ -4,7 +4,7 @@ export default ({
         text: 'Не туда попали',
         link: {
             text: 'Назад к чатам',
-            href: '/',
+            to: '/',
         },
     },
     five: {
@@ -12,7 +12,7 @@ export default ({
         text: 'Мы уже фиксим',
         link: {
             text: 'Назад к чатам',
-            href: '/',
+            to: '/',
         },
     },
 });

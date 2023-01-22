@@ -1,6 +1,6 @@
 import { registerComponent, Store } from 'core';
 import { Router, CoreRouter } from 'core/Router';
-import { initApp } from 'services/initApp';
+import { getUserWithErrorHandler } from 'API/fetchAPI';
 import {
     Avatar,
     AvatarPanel,
@@ -66,19 +66,30 @@ declare global {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const router = new Router();
+document.addEventListener('DOMContentLoaded', async () => {
     const store = new Store<AppState>(defaultStore);
 
-    window.router = router;
+    window.router = Router;
     window.store = store;
 
-    initRouter(router, store);
+    initRouter(Router);
 
     // TODO: убрать store.on
     store.on('changed', (_: any, nextState: any) => {
         console.log('%cstore updated', 'background: #222; color: #bada55', nextState);
     });
 
-    store.dispatch(initApp);
+    store.dispatch({ isLoading: true });
+
+    try {
+        const user = await getUserWithErrorHandler();
+
+        store.dispatch({ user, error: null });
+    } catch (error: any) {
+        console.error(error);
+        store.dispatch({ user: null, error });
+    } finally {
+        store.dispatch({ isLoading: false });
+        Router.start();
+    }
 });

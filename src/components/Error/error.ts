@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 
 import './error.css';
 
@@ -7,7 +7,7 @@ export type ErrorProps = {
     text: string;
 };
 
-export class Error extends Block<ErrorProps> {
+class Error extends Block<ErrorProps> {
     static componentName = 'Error';
 
     render() {
@@ -16,3 +16,5 @@ export class Error extends Block<ErrorProps> {
         `;
     }
 }
+
+export default Error;

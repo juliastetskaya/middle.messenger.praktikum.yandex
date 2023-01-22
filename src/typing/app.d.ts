@@ -17,7 +17,6 @@ declare global {
         user: Nullable<User>;
         error: Nullable<string>;
         isLoading: boolean;
-        isInited: boolean;
     };
 
     type DispatchState<T = {}> = (dispatch: Dispatch<AppState>, state: AppState, action: T) => Promise<void>;

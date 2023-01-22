@@ -3,6 +3,12 @@
     flex-direction: column;
     height: 100%;
     padding: 20px;
+    overflow: overlay;
+    flex: 1;
+}
+
+.messages-area::-webkit-scrollbar {
+    display: none;
 }
 
 .message-date {

@@ -1,67 +1,62 @@
-import { renderDOM, Store } from 'core';
+import { renderDOM } from 'core';
 import { Pages, getPageWithData } from 'utils/pageList';
 import { CoreRouter } from 'core/Router';
-import { PATHS } from './constants';
+import { ROUTES } from './constants';
 
 const routes = [
     {
-        path: PATHS.START,
+        path: ROUTES.START,
         block: Pages.Start,
         shouldAuthorized: false,
     },
     {
-        path: PATHS.SIGNIN,
+        path: ROUTES.SIGNIN,
         block: Pages.Signin,
         shouldAuthorized: false,
     },
     {
-        path: PATHS.SIGNUP,
+        path: ROUTES.SIGNUP,
         block: Pages.Signup,
         shouldAuthorized: false,
     },
     {
-        path: PATHS.PROFILE,
+        path: ROUTES.PROFILE,
         block: Pages.Profile,
         shouldAuthorized: true,
     },
     {
-        path: PATHS.PROFILE_CHANGE,
+        path: ROUTES.PROFILE_CHANGE,
         block: Pages.ProfileChange,
         shouldAuthorized: true,
     },
     {
-        path: PATHS.PASSWORD_CHANGE,
+        path: ROUTES.PASSWORD_CHANGE,
         block: Pages.PasswordChange,
         shouldAuthorized: true,
     },
     {
-        path: PATHS.CHAT,
+        path: ROUTES.CHAT,
         block: Pages.Chat,
         shouldAuthorized: true,
     },
     {
-        path: PATHS.NOT_FOUND,
+        path: ROUTES.NOT_FOUND,
         block: Pages.NotFound,
         shouldAuthorized: false,
     },
     {
-        path: PATHS.SERVER_ERROR,
+        path: ROUTES.SERVER_ERROR,
         block: Pages.ServerError,
         shouldAuthorized: false,
     },
 ];
 
-export const initRouter = (router: CoreRouter, store: Store<AppState>) => {
-    routes.forEach(({ path, block }) => router.use(path, () => {
-        const { Block, data } = getPageWithData(block);
+export const initRouter = (router: CoreRouter) => {
+    routes.forEach(({ path, block }) => router
+        .use(path, () => {
+            const { Block, data } = getPageWithData(block);
 
-        const page = new Block(data);
-        renderDOM('#app', page);
-    }));
-
-    store.on('changed', (prevState: AppState, nextState: AppState) => {
-        if (!prevState.isInited && nextState.isInited) {
-            router.start();
-        }
-    });
+            const page = new Block(data);
+            renderDOM('#app', page);
+        }));
 };

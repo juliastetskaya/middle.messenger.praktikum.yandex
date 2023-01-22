@@ -5,10 +5,15 @@
 }
 
 .left-side {
-    width: 312px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--lighter-grey-color);
+    overflow: overlay;
+}
+
+.left-side::-webkit-scrollbar {
+    display: none;
 }
 
 .right-side {

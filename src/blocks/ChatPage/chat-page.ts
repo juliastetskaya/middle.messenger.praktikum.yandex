@@ -1,7 +1,12 @@
-import { Store, Block } from 'core';
+import { Block } from 'core';
 
 import { validateAndGetInputData } from 'utils';
-import { withStore } from 'HOC';
+import {
+    withStore,
+    withUser,
+    WithStateProps,
+    WithUserProps,
+} from 'HOC';
 import {
     MessageProps,
     UserChangeProps,
@@ -13,7 +18,7 @@ import {
 
 import './chat.css';
 
-type ChatPageProps = {
+interface ChatPageProps extends WithStateProps, WithUserProps {
     link: LinkProps;
     chats: MessageProps[];
     searchPlaceholder: string;
@@ -29,8 +34,7 @@ type ChatPageProps = {
     messageDate: string;
     imageMessage: ImageMessageProps;
     button: ButtonProps;
-    store: Store<AppState>;
-};
+}
 
 class ChatPage extends Block<ChatPageProps> {
     static componentName = 'ChatPage';
@@ -62,14 +66,18 @@ class ChatPage extends Block<ChatPageProps> {
                 {{else}}
                     <div class="chat">
                         <aside class="left-side">
-                            {{{ Link class="chat__profile-link" href=link.href text=link.text }}}
-                            <form action="#">
-                                <input class="chat__search-field" type="text" placeholder={{searchPlaceholder}}>
+                            {{{ Link class="chat__profile-link" to=link.to text=link.text }}}
+                            <form method="POST" onsubmit=onSubmitForm>
+                                {{{ ControlledInput
+                                    class="chat__search-field"
+                                    type="text"
+                                    placeholder=searchPlaceholder
+                                }}}
                             </form>
                             {{{ ChatList chats=chats }}}
                         </aside>
                         <div class="right-side">
-                            {{{ ChatTitle chatName=chatName userMenu=userMenu }}}
+                            {{{ ChatTitle chatName=user.display_name userMenu=userMenu }}}
                             {{{ MessageArea
                                 message=message
                                 imageMessage=imageMessage
@@ -88,4 +96,4 @@ class ChatPage extends Block<ChatPageProps> {
     }
 }
 
-export default withStore(ChatPage);
+export default withStore(withUser(ChatPage));

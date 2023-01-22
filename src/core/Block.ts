@@ -6,6 +6,7 @@ type EventType = Record<string, () => void>;
 
 export interface BlockClass<P = {}> extends Function {
     new (props: P): Block<P>;
+    componentName: string;
 }
 
 class Block<P = {}> {

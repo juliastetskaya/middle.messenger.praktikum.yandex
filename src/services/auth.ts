@@ -5,7 +5,7 @@ import {
     getUserWithErrorHandler,
     logoutWithErrorHandler,
 } from 'API/fetchAPI';
-import { PATHS } from '../constants';
+import { ROUTES } from '../constants';
 
 export const signin: DispatchState<SigninData> = async (dispatch, _, action) => {
     dispatch({ isLoading: true });
@@ -17,7 +17,7 @@ export const signin: DispatchState<SigninData> = async (dispatch, _, action) => 
 
         dispatch({ user, isLoading: false, error: null });
 
-        window.router.go(PATHS.CHAT);
+        window.router.go(ROUTES.CHAT);
     } catch (error) {
         dispatch({ error, isLoading: false, user: null });
     }
@@ -33,7 +33,7 @@ export const signup: DispatchState<SignupData> = async (dispatch, _, action) => 
 
         dispatch({ user, isLoading: false, error: null });
 
-        window.router.go(PATHS.CHAT);
+        window.router.go(ROUTES.CHAT);
     } catch (error) {
         dispatch({ error, isLoading: false, user: null });
     }
@@ -45,7 +45,7 @@ export const logout: DispatchState = async (dispatch) => {
 
         dispatch({ user: null, error: null });
 
-        window.router.go(PATHS.SIGNIN);
+        window.router.go(ROUTES.SIGNIN);
     } catch (error) {
         dispatch({ error, user: null });
     }
