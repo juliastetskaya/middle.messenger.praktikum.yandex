@@ -5,7 +5,7 @@
 }
 
 .left-side {
-    width: 400px;
+    width: 355px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--lighter-grey-color);

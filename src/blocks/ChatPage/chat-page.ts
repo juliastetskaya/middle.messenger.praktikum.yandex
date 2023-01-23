@@ -4,23 +4,24 @@ import { validateAndGetInputData } from 'utils';
 import {
     withStore,
     withUser,
+    withChats,
     WithStateProps,
     WithUserProps,
+    WithChatsProps,
 } from 'HOC';
 import {
-    MessageProps,
     UserChangeProps,
     TextMessageProps,
     ImageMessageProps,
     ButtonProps,
     LinkProps,
 } from 'components';
+import { getChats } from 'services/chats';
 
 import './chat.css';
 
-interface ChatPageProps extends WithStateProps, WithUserProps {
+interface ChatPageProps extends WithStateProps, WithUserProps, WithChatsProps {
     link: LinkProps;
-    chats: MessageProps[];
     searchPlaceholder: string;
     rightSidePlaceholder: string;
     addUser: UserChangeProps;
@@ -42,10 +43,18 @@ class ChatPage extends Block<ChatPageProps> {
     constructor(props: ChatPageProps) {
         super(props);
 
+        this.getChats();
+
         this.setProps({
             button: { onClick: this.onSubmit },
         });
     }
+
+    getChats = () => {
+        if (!this.props.chats) {
+            this.props.store.dispatch(getChats);
+        }
+    };
 
     onSubmit = (e: Event) => {
         e.preventDefault();
@@ -96,4 +105,4 @@ class ChatPage extends Block<ChatPageProps> {
     }
 }
 
-export default withStore(withUser(ChatPage));
+export default withStore(withChats(withUser(ChatPage)));
