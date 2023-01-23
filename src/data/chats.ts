@@ -7,64 +7,6 @@ export default ({
         text: 'Профиль',
     },
     rightSidePlaceholder: 'Выберите чат чтобы отправить сообщение',
-    chats: [
-        {
-            chatName: 'Андрей',
-            text: 'Изображение',
-            time: '10:49',
-            count: 2,
-        },
-        {
-            chatName: 'Киноклуб',
-            author: 'Вы',
-            text: 'стикер',
-            time: '12:00',
-            count: 5,
-        },
-        {
-            chatName: 'Илья',
-            text: 'Друзья, у меня для вас особенный выпуск новостей!...',
-            time: '15:12',
-            count: 4,
-        },
-        {
-            chatName: 'Вадим',
-            author: 'Вы',
-            text: 'Круто!',
-            time: 'Пт',
-            count: 3,
-        },
-        {
-            chatName: 'тет-а-теты',
-            text: 'И Human Interface Guidelines и Material Design рекомендуют...',
-            time: 'Ср',
-            count: 22,
-        },
-        {
-            chatName: '1, 2, 3',
-            text: 'Миллионы россиян ежедневно проводят десятки часов свое...',
-            time: 'Пн',
-            count: 12,
-        },
-        {
-            chatName: 'Design Destroyer',
-            text: 'В 2008 году художник Jon Rafman  начал собирать...',
-            time: 'Пн',
-            count: 9,
-        },
-        {
-            chatName: 'Day.',
-            text: 'Так увлёкся работой по курсу, что совсем забыл его анонсир...',
-            time: '1 Мая 2020',
-            count: 7,
-        },
-        {
-            chatName: 'Стас Рогозин',
-            text: 'Можно или сегодня или завтра вечером.',
-            time: '12 Апр 2020',
-            count: 6,
-        },
-    ],
     chatName: 'Вадим',
     userMenu: [
         {
