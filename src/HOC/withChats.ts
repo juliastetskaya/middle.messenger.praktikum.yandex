@@ -1,30 +1,10 @@
 import { BlockClass } from 'core';
+import { withStore } from 'HOC';
 
-export function withChats<P extends WithChatsProps>(Component: BlockClass<P>) {
-    return class extends Component {
-        constructor(props: P) {
-            super({
-                ...props,
-                chats: window.store.getState().chats,
-            });
-        }
+export function withChats<P>(Component: BlockClass<P>) {
+    const mapStateToProps = (state: AppState) => ({ chats: state.chats });
 
-        componentDidMount(props: P) {
-            super.componentDidMount(props);
-            window.store.on('changed', this.__onChangeStoreCallback);
-        }
-
-        componentWillUnmount() {
-            super.componentWillUnmount();
-            window.store.off('changed', this.__onChangeStoreCallback);
-        }
-
-        __onChangeStoreCallback = (prevState: AppState, nextState: AppState) => {
-            if (JSON.stringify(prevState.chats) !== JSON.stringify(nextState.chats)) {
-                this.setProps({ ...this.props, chats: nextState.chats });
-            }
-        };
-    } as unknown as BlockClass<Omit<P, 'chats'>>;
+    return withStore<P, ChatsStateProps>(mapStateToProps)(Component);
 }
 
 type LastMessage = {
@@ -33,7 +13,7 @@ type LastMessage = {
     content: string;
 };
 
-export type Chats = {
+type Chats = {
     id: number;
     title: string;
     avatar: Nullable<string>;
@@ -42,6 +22,6 @@ export type Chats = {
     unread_count: number;
 };
 
-export interface WithChatsProps {
-    chats: Chats;
+export interface ChatsStateProps {
+    chats: Nullable<Chats[]>;
 }

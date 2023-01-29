@@ -2,12 +2,14 @@ import { Block } from 'core';
 
 import { validateAndGetInputData } from 'utils';
 import {
-    withStore,
-    withUser,
     withChats,
-    WithStateProps,
-    WithUserProps,
-    WithChatsProps,
+    withLoading,
+    withDispatch,
+    withDisplayName,
+    ChatsStateProps,
+    DispatchStateProps,
+    LoadingStateProps,
+    DisplayNameStateProps,
 } from 'HOC';
 import {
     UserChangeProps,
@@ -20,7 +22,7 @@ import { getChats } from 'services/chats';
 
 import './chat.css';
 
-interface ChatPageProps extends WithStateProps, WithUserProps, WithChatsProps {
+interface ChatPageProps extends ChatsStateProps, DispatchStateProps, LoadingStateProps, DisplayNameStateProps {
     link: LinkProps;
     searchPlaceholder: string;
     rightSidePlaceholder: string;
@@ -52,7 +54,7 @@ class ChatPage extends Block<ChatPageProps> {
 
     getChats = () => {
         if (!this.props.chats) {
-            this.props.store.dispatch(getChats);
+            this.props.dispatch(getChats);
         }
     };
 
@@ -66,11 +68,9 @@ class ChatPage extends Block<ChatPageProps> {
     };
 
     render() {
-        const { isLoading } = this.props.store.getState();
-
         return `
             <div class='container'>
-                {{#if ${isLoading}}}
+                {{#if isLoading}}
                     {{{ Spinner }}}
                 {{else}}
                     <div class="chat">
@@ -86,7 +86,7 @@ class ChatPage extends Block<ChatPageProps> {
                             {{{ ChatList chats=chats }}}
                         </aside>
                         <div class="right-side">
-                            {{{ ChatTitle chatName=user.display_name userMenu=userMenu }}}
+                            {{{ ChatTitle chatName=displayName userMenu=userMenu }}}
                             {{{ MessageArea
                                 message=message
                                 imageMessage=imageMessage
@@ -105,4 +105,4 @@ class ChatPage extends Block<ChatPageProps> {
     }
 }
 
-export default withStore(withChats(withUser(ChatPage)));
+export default withDisplayName(withChats(withLoading(withDispatch(ChatPage))));

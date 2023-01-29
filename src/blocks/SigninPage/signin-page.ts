@@ -1,8 +1,13 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import { ButtonProps } from 'components';
 import { validateAndGetInputData } from 'utils';
 import { signin } from 'services/auth';
-import { withStore, WithStateProps } from 'HOC';
+import {
+    withLoading,
+    withDispatch,
+    LoadingStateProps,
+    DispatchStateProps,
+} from 'HOC';
 
 export type FieldProps = {
     type: string,
@@ -14,7 +19,7 @@ export type FieldProps = {
     value?: string
 };
 
-export interface SignPageProps extends WithStateProps {
+export interface SignPageProps extends LoadingStateProps, DispatchStateProps {
     text: string;
     fields: FieldProps[];
     button: ButtonProps;
@@ -40,13 +45,11 @@ class SigninPage extends Block<SignPageProps> {
         const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {
-            this.props.store.dispatch(signin, values);
+            this.props.dispatch(signin, values);
         }
     };
 
     render() {
-        const { isLoading } = this.props.store.getState();
-
         return `
             <div class='container'>
                 {{{ Panel
@@ -56,11 +59,11 @@ class SigninPage extends Block<SignPageProps> {
                     link=link
                     fields=fields
                     ref="panelRef"
-                    isLoading=${isLoading}
+                    isLoading=isLoading
                 }}}
             </div>
         `;
     }
 }
 
-export default withStore(SigninPage);
+export default withLoading(withDispatch(SigninPage));

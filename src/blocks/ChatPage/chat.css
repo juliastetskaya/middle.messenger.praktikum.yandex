@@ -59,10 +59,6 @@
     padding: 8px 10px;
     box-sizing: border-box;
     background-color: var(--darkish-grey-color);
-    background-image: url("../../static/search-icon.svg");
-    background-repeat: no-repeat;
-    background-position: 108px 8px;
-    width: 290px;
 }
 
 .chat__search-field::placeholder {

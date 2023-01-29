@@ -1,3 +1,4 @@
+import { router } from 'core';
 import { ProfileData, PasswordData } from 'API/user-api';
 import {
     updateProfileWithErrorHandler,
@@ -15,7 +16,7 @@ export const updateProfile: DispatchState<ProfileData> = async (dispatch, _, act
 
         dispatch({ user, isLoading: false, error: null });
 
-        window.router.go(ROUTES.PROFILE);
+        router.go(ROUTES.PROFILE);
     } catch (error) {
         dispatch({ error, isLoading: false, user: null });
     }
@@ -29,7 +30,7 @@ export const updatePassword: DispatchState<PasswordData> = async (dispatch, _, a
 
         dispatch({ user, isLoading: false, error: null });
 
-        window.router.go(ROUTES.PROFILE);
+        router.go(ROUTES.PROFILE);
     } catch (error) {
         dispatch({ error, isLoading: false, user: null });
     }

@@ -1,41 +1,45 @@
 import { Block } from 'core';
-import { withStore, WithStateProps } from 'HOC';
 
 import avatar from 'static/avatar.svg';
 
 import './avatar.css';
 
-interface AvatarProps extends WithStateProps {
+interface AvatarProps {
     class?: string;
     placeholder: string;
-    onClick?: (e: Event) => void;
-    // events: {
-    //     click?: (e: Event) => void;
-    // }
+    src: string;
+    onChange?: (e: Event) => void;
 }
 
 type AvatarBlockProps = AvatarProps & {
     events: {
-        click?: (e: Event) => void;
+        change?: (e: Event) => void;
     }
 };
 
 class Avatar extends Block<AvatarBlockProps> {
     static componentName = 'Avatar';
 
-    constructor({ onClick, ...rest }: AvatarProps) {
-        super({ events: { click: onClick }, ...rest });
+    constructor({ onChange, ...rest }: AvatarProps) {
+        super({ events: { change: onChange }, ...rest });
     }
 
     render() {
+        console.log('THIS PROPS SRC', this.props.src);
         return `
             <div class="avatar {{class}}">
-                <img src=${avatar} alt="avatar image">
+                <img
+                    id="avatar-image"
+                    src=https://ya-praktikum.tech/api/v2/resources{{src}}
+                    class="change-avatar__image"
+                    alt="avatar image"
+                    onerror="this.onerror=null;this.src='${avatar}';"
+                >
                 <div class="change-placeholder">{{placeholder}}</div>
-
+                <input id="avatar" type="file" class="change-avatar__input">
             </div>
         `;
     }
 }
 
-export default withStore(Avatar);
+export default Avatar;

@@ -1,5 +1,4 @@
-import { registerComponent, Store } from 'core';
-import { Router, CoreRouter } from 'core/Router';
+import { registerComponent, store, router } from 'core';
 import { getUserWithErrorHandler } from 'API/fetchAPI';
 import {
     Avatar,
@@ -28,7 +27,7 @@ import {
     Spinner,
 } from 'components';
 
-import { defaultStore } from './store';
+import { ROUTES } from './constants';
 import { initRouter } from './router';
 
 import './styles/colors.css';
@@ -59,20 +58,31 @@ registerComponent(Field);
 registerComponent(ProfileList);
 registerComponent(Spinner);
 
-declare global {
-    interface Window {
-        router: CoreRouter;
-        store: Store<AppState>;
-    }
-}
+// declare global {
+//     interface Window {
+//         router: CoreRouter;
+//         store: Store<AppState>;
+//     }
+// }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const store = new Store<AppState>(defaultStore);
+    // const store = new Store<AppState>(defaultStore);
 
-    window.router = Router;
-    window.store = store;
+    // window.router = Router;
+    // window.store = store;
 
-    initRouter(Router);
+    initRouter(router);
+
+    let isProtected = true;
+
+    switch (window.location.pathname) {
+        case ROUTES.SIGNIN:
+        case ROUTES.SIGNUP:
+            isProtected = false;
+            break;
+        default:
+            break;
+    }
 
     // TODO: убрать store.on
     store.on('changed', (_: any, nextState: any) => {
@@ -84,12 +94,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const user = await getUserWithErrorHandler();
 
-        store.dispatch({ user, error: null });
+        store.dispatch({ user, error: null, isLoading: false });
+
+        if (!isProtected) {
+            router.go(ROUTES.PROFILE);
+        }
     } catch (error: any) {
         console.error(error);
-        store.dispatch({ user: null, error });
-    } finally {
-        store.dispatch({ isLoading: false });
-        Router.start();
+
+        if (isProtected) {
+            router.go(ROUTES.SIGNIN);
+        }
+        store.dispatch({ user: null, isLoading: false, error });
     }
 });

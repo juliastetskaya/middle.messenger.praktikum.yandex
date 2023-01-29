@@ -1,33 +1,12 @@
 import { BlockClass } from 'core';
+import { withStore } from 'HOC';
 
-export function withUser<P extends WithUserProps>(Component: BlockClass<P>) {
-    return class extends Component {
-        constructor(props: P) {
-            super({
-                ...props,
-                user: window.store.getState().user,
-            });
-        }
+export function withUser<P>(Component: BlockClass<P>) {
+    const mapStateToProps = (state: AppState) => ({ user: state.user });
 
-        componentDidMount(props: P) {
-            super.componentDidMount(props);
-            window.store.on('changed', this.__onChangeStoreCallback);
-        }
-
-        componentWillUnmount() {
-            super.componentWillUnmount();
-            window.store.off('changed', this.__onChangeStoreCallback);
-        }
-
-        __onChangeStoreCallback = (prevState: AppState, nextState: AppState) => {
-            if (JSON.stringify(prevState.user) !== JSON.stringify(nextState.user)) {
-                console.log('USER CHANGED');
-                this.setProps({ ...this.props, user: nextState.user });
-            }
-        };
-    } as unknown as BlockClass<Omit<P, 'user'>>;
+    return withStore<P, UserStateProps>(mapStateToProps)(Component);
 }
 
-export interface WithUserProps {
-    user: User;
+export interface UserStateProps {
+    user: Nullable<User>;
 }

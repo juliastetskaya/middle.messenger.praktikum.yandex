@@ -1,9 +1,9 @@
 import Block from 'core/Block';
-import { withRouter, WithRouterProps } from 'HOC';
+import { withRouter, RouterStateProps } from 'HOC';
 
 import './link.css';
 
-export interface LinkProps extends WithRouterProps {
+export interface LinkProps extends RouterStateProps {
     class?: string;
     to: string;
     text: string;
