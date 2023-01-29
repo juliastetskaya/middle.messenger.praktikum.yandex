@@ -21,7 +21,7 @@ const userAPIInstance = new HTTPTransport(`${BASE_URL}/user`);
 export const userAPI = {
     updateProfile: (data: ProfileData) => userAPIInstance.put('/profile', getRequestBody(data)),
 
-    updateAvatar: (data: FormData) => userAPIInstance.put('/profile/avatar', { data }),
+    updateAvatar: (data: FormData) => userAPIInstance.put('/profile/avatar', { includeCredentials: true, data }),
 
     updatePassword: (data: PasswordData) => userAPIInstance.put('/password', getRequestBody(data)),
 

@@ -1,14 +1,13 @@
-import { BlockClass } from 'core';
-import { Router } from 'core/Router';
+import { BlockClass, router } from 'core';
 
 export function withRouter<P>(Component: BlockClass<P>) {
     return class extends Component {
-        constructor(props: P & WithRouterProps) {
-            super({ ...props, router: Router });
+        constructor(props: P & RouterStateProps) {
+            super({ ...props, router });
         }
-    } as unknown as BlockClass<Omit<P, 'router'>>;
+    } as BlockClass<P>;
 }
 
-export interface WithRouterProps {
-    router: typeof Router;
+export interface RouterStateProps {
+    router: typeof router;
 }

@@ -1,4 +1,4 @@
 import { CoreRouter } from './CoreRouter';
-import Router from './Router';
+import router from './Router';
 
-export { CoreRouter, Router };
+export { CoreRouter, router };

@@ -1,8 +1,8 @@
 import { Block } from 'core';
-import { FieldProps } from 'blocks';
+import { FieldProps } from 'blocks/SigninPage';
 import { ButtonProps } from 'components';
 
-import { withStore, WithStateProps } from 'HOC';
+import { withDispatch, DispatchStateProps } from 'HOC';
 import { validateAndGetInputData } from 'utils';
 import { updatePassword } from 'services/user';
 
@@ -12,7 +12,7 @@ type PasswordFields = {
     passwordCheck: string;
 };
 
-interface PasswordChangePageProps extends WithStateProps {
+interface PasswordChangePageProps extends DispatchStateProps {
     button: ButtonProps;
     passwordFields: FieldProps[];
     error: string;
@@ -44,7 +44,7 @@ class PasswordChangePage extends Block<PasswordChangePageProps> {
             } else if (newPassword === oldPassword) {
                 this.setProps({ error: 'Старый и новый пароли должны отличаться' });
             } else {
-                this.props.store.dispatch(updatePassword, { oldPassword, newPassword });
+                this.props.dispatch(updatePassword, { oldPassword, newPassword });
             }
         }
     };
@@ -64,4 +64,4 @@ class PasswordChangePage extends Block<PasswordChangePageProps> {
     }
 }
 
-export default withStore(PasswordChangePage);
+export default withDispatch(PasswordChangePage);

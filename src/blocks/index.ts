@@ -1,5 +1,4 @@
-export { default as StartPage } from './StartPage';
-export { default as SigninPage, FieldProps } from './SigninPage';
+export { default as SigninPage } from './SigninPage';
 export { default as SignupPage } from './SignupPage';
 export { default as ProfilePage } from './ProfilePage';
 export { default as ProfileChangePage } from './ProfileChangePage';

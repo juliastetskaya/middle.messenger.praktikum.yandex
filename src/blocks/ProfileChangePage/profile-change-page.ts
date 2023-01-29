@@ -1,16 +1,16 @@
 import { Block } from 'core';
 import { validateAndGetInputData } from 'utils';
 import { ButtonProps } from 'components';
-import { FieldProps } from 'blocks';
+import { FieldProps } from 'blocks/SigninPage';
 import { updateProfile } from 'services/user';
 import {
-    withStore,
     withUser,
-    WithStateProps,
-    WithUserProps,
+    withDispatch,
+    UserStateProps,
+    DispatchStateProps,
 } from 'HOC';
 
-interface ProfilePageProps extends WithStateProps, WithUserProps {
+interface ProfilePageProps extends UserStateProps, DispatchStateProps {
     button: ButtonProps;
     fields: FieldProps[];
 }
@@ -34,7 +34,7 @@ class ProfileChangePage extends Block<ProfilePageProps> {
 
         if (values) {
             console.log('Form is ready to send data:', values);
-            this.props.store.dispatch(updateProfile, values);
+            this.props.dispatch(updateProfile, values);
         }
     };
 
@@ -53,4 +53,4 @@ class ProfileChangePage extends Block<ProfilePageProps> {
     }
 }
 
-export default withStore(withUser(ProfileChangePage));
+export default withUser(withDispatch(ProfileChangePage));

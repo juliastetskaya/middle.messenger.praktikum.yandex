@@ -1,35 +1,40 @@
-import { BlockClass, Store } from 'core';
+import { BlockClass, store } from 'core';
 
 type StateType = Record<string, any>;
 
-export function withStore<P extends WithStateProps>(
-    Component: BlockClass<P>,
-    mapStateToProps?: (state: StateType) => StateType,
-) {
-    return class extends Component {
-        constructor(props: P) {
-            super({
-                ...props,
-                store: mapStateToProps ? mapStateToProps(window.store.getState()) : window.store,
-            });
-        }
+type MapStateToProps<MappedProps> = (state: AppState) => MappedProps;
 
-        componentDidMount(props: P) {
-            super.componentDidMount(props);
-            window.store.on('changed', this.__onChangeStoreCallback);
-        }
+export function withStore<P, MappedProps = any>(mapStateToProps?: MapStateToProps<MappedProps>) {
+    return (Component: BlockClass<P>) => {
+        let currentState: Nullable<StateType> = {};
 
-        componentWillUnmount() {
-            super.componentWillUnmount();
-            window.store.off('changed', this.__onChangeStoreCallback);
-        }
+        return class extends Component {
+            constructor(props: P) {
+                const state = store.getState();
+                currentState = (mapStateToProps && mapStateToProps(state)) || {};
+                super({ ...props, ...currentState });
+            }
 
-        __onChangeStoreCallback = () => {
-            this.setProps({ ...this.props, store: window.store });
-        };
-    } as unknown as BlockClass<Omit<P, 'store'>>;
-}
+            componentDidMount(props: P) {
+                super.componentDidMount(props);
+                store.on('changed', this.__onChangeStoreCallback);
+            }
 
-export interface WithStateProps {
-    store: Store<AppState>;
+            componentWillUnmount() {
+                super.componentWillUnmount();
+                store.off('changed', this.__onChangeStoreCallback);
+            }
+
+            __onChangeStoreCallback = () => {
+                const state = store.getState();
+                const propsFromState = (mapStateToProps && mapStateToProps(state)) || {};
+                console.log('CURRENT_STATE', currentState);
+                console.log('PROPS_FROM_STATE', propsFromState);
+                if (JSON.stringify(currentState) !== JSON.stringify(propsFromState)) {
+                    console.log('SET_PROPS');
+                    this.setProps({ ...propsFromState });
+                }
+            };
+        } as BlockClass<P>;
+    };
 }

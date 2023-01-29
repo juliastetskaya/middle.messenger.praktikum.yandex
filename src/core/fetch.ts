@@ -13,6 +13,7 @@ type OptionProps = {
     data?: XMLHttpRequestBodyInit;
     headers?: Record<string, string>;
     withCredentials?: boolean;
+    includeCredentials?: boolean;
 };
 
 class HTTPTransport {

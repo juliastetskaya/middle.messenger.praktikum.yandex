@@ -1,6 +1,5 @@
 import { BlockClass } from 'core';
 import {
-    StartPage,
     SigninPage,
     SignupPage,
     ProfilePage,
@@ -14,14 +13,12 @@ import {
 import {
     signinData,
     chatsData,
-    startData,
     signupData,
     profileData,
     errorData,
 } from 'data';
 
 export enum Pages {
-    Start = 'start',
     Signin = 'signin',
     Signup = 'signup',
     Profile = 'profile',
@@ -33,7 +30,6 @@ export enum Pages {
 }
 
 const pagesMapping: Record<Pages, BlockClass<any>> = {
-    [Pages.Start]: StartPage,
     [Pages.Signin]: SigninPage,
     [Pages.Signup]: SignupPage,
     [Pages.Profile]: ProfilePage,
@@ -45,7 +41,6 @@ const pagesMapping: Record<Pages, BlockClass<any>> = {
 };
 
 const dataMapping: Record<Pages, Record<string, unknown>> = {
-    [Pages.Start]: startData,
     [Pages.Signin]: signinData,
     [Pages.Signup]: signupData,
     [Pages.Profile]: profileData,

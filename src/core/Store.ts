@@ -1,10 +1,11 @@
 import { EventBus } from 'core';
+import { defaultStore } from '../store';
 
 export type Dispatch<State> = (nextStateOrAction: Partial<State> | Action<State>, payload?: any) => void;
 
 export type Action<State> = (dispatch: Dispatch<State>, state: State, payload: any) => void;
 
-class Store<State extends Record<string, unknown>> extends EventBus {
+export class Store<State extends Record<string, unknown>> extends EventBus {
     private state: State = {} as State;
 
     constructor(defaultState: State) {
@@ -26,6 +27,7 @@ class Store<State extends Record<string, unknown>> extends EventBus {
     }
 
     public dispatch(nextStateOrAction: Partial<State> | Action<State>, payload?: any) {
+        console.log('THIS', this);
         if (typeof nextStateOrAction === 'function') {
             nextStateOrAction(this.dispatch.bind(this), this.state, payload);
         } else {
@@ -34,4 +36,4 @@ class Store<State extends Record<string, unknown>> extends EventBus {
     }
 }
 
-export default Store;
+export default new Store(defaultStore);

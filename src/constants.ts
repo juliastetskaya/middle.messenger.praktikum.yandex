@@ -1,6 +1,5 @@
 export enum ROUTES {
-    START = '/',
-    SIGNIN = '/signin',
+    SIGNIN = '/',
     SIGNUP = '/signup',
     PROFILE = '/profile',
     PROFILE_CHANGE = '/profile-change',
