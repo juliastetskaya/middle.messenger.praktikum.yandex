@@ -47,8 +47,7 @@ class ProfilePage extends Block<ProfilePageProps> {
         });
     }
 
-    clickQuitLink = (event: Event) => {
-        event.preventDefault();
+    clickQuitLink = () => {
         this.props.dispatch(logout);
     };
 

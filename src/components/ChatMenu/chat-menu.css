@@ -5,6 +5,7 @@
     border-radius: 12px;
     padding: 15px 15px 15px 52px;
     background-color: var(--white-color);
+    text-align: left;
 }
 
 .chat-menu .link,
@@ -28,13 +29,18 @@
 }
 
 .user-menu {
-    /* display: none; */
     top: 65px;
     right: -9px;
 }
 
-.user-menu .chat-menu__item:nth-child(1)::before,
-.user-menu .chat-menu__item:nth-child(2)::before {
+.active-menu {
+    display: block;
+}
+
+.user-menu .chat-menu__item:nth-child(1) button::before,
+.user-menu .chat-menu__item:nth-child(2) button::before,
+.user-menu .chat-menu__item:nth-child(3) button::before,
+.user-menu .chat-menu__item:nth-child(4) button::before {
     content: "";
     position: absolute;
     top: 0;
@@ -46,11 +52,13 @@
     border-radius: 50%;
 }
 
-.user-menu .chat-menu__item:nth-child(1)::before {
+.user-menu .chat-menu__item:nth-child(1) button::before {
     background: url("../../static/plus.svg") no-repeat center;
 }
 
-.user-menu .chat-menu__item:nth-child(2)::before {
+.user-menu .chat-menu__item:nth-child(2) button::before,
+.user-menu .chat-menu__item:nth-child(3) button::before,
+.user-menu .chat-menu__item:nth-child(4) button::before {
     background: url("../../static/cross.svg") no-repeat center;
 }
 
@@ -82,4 +90,20 @@
 
 .message-menu .chat-menu__item:nth-child(3)::before {
     background: url("../../static/location.svg") no-repeat center;
+}
+
+.menu-item__button {
+    border: 0;
+    padding: 0;
+    width: fit-content;
+    background-color: white;
+    color: var(--light-black-color);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.menu-item__button:hover {
+    background-color: transparent;
+    color: var(--hover-blue-color);
 }

@@ -48,16 +48,12 @@ export const updateAvatar: DispatchState = async (dispatch, _, action) => {
     }
 };
 
-export const searchUsers: DispatchState = async (dispatch, _, action) => {
-    dispatch({ isLoading: true });
-
+export const searchUsers = async (action: { login: string }) => {
     try {
-        const users = await searchUsersWithErrorHandler(action);
-
-        console.log('users', users);
-
-        dispatch({ isLoading: false, error: null });
+        return await searchUsersWithErrorHandler(action);
     } catch (error) {
-        dispatch({ error, isLoading: false });
+        console.error(error);
+
+        return null;
     }
 };

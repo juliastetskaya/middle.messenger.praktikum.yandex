@@ -6,7 +6,7 @@ export default ({
         to: '/profile',
         text: 'Профиль',
     },
-    rightSidePlaceholder: 'Выберите чат чтобы отправить сообщение',
+    rightSidePlaceholder: 'Выберите чат чтобы отправить сообщение или создайте новый',
     chatName: 'Вадим',
     userMenu: [
         {
@@ -16,6 +16,12 @@ export default ({
         {
             text: 'Удалить пользователя',
             to: '/',
+        },
+        {
+            text: 'Закрыть чат',
+        },
+        {
+            text: 'Удалить чат',
         },
     ],
     placeholder: 'Сообщение',
@@ -52,9 +58,9 @@ export default ({
             text: 'Добавить',
         },
         input: {
-            label: 'Логин',
-            name: 'login',
-            placeholder: 'ivanivanov',
+            label: 'ID пользователя',
+            name: 'user_id',
+            placeholder: '56486',
         },
     },
     removeUser: {
@@ -63,9 +69,20 @@ export default ({
             text: 'Удалить',
         },
         input: {
-            label: 'Логин',
-            name: 'login',
-            placeholder: 'ivanivanov',
+            label: 'ID пользователя',
+            name: 'user_id',
+            placeholder: '56486',
+        },
+    },
+    createChat: {
+        title: 'Создать новый чат',
+        button: {
+            text: 'Создать',
+        },
+        input: {
+            label: 'Название чата',
+            name: 'title',
+            placeholder: 'Мой новый чат',
         },
     },
 });

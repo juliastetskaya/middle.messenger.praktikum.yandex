@@ -25,6 +25,9 @@ import {
     Panel,
     ProfileList,
     Spinner,
+    ChatItem,
+    SearchInput,
+    Overlay,
 } from 'components';
 
 import { ROUTES } from './constants';
@@ -57,6 +60,9 @@ registerComponent(UserChange);
 registerComponent(Field);
 registerComponent(ProfileList);
 registerComponent(Spinner);
+registerComponent(ChatItem);
+registerComponent(SearchInput);
+registerComponent(Overlay);
 
 // declare global {
 //     interface Window {

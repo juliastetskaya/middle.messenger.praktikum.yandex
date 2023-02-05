@@ -1,0 +1,13 @@
+.chat__search-field {
+    margin: 23px 10px 0;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    background-color: var(--darkish-grey-color);
+}
+
+.chat__search-field::placeholder {
+    text-align: center;
+    color: var(--grey-color);
+}

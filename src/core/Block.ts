@@ -77,7 +77,6 @@ class Block<P = {}> {
     }
 
     setProps = (nextProps: Partial<P>) => {
-        console.log('NEXT___PROPS', nextProps);
         if (!nextProps) {
             return;
         }

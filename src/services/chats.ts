@@ -1,67 +1,88 @@
 import {
     getChatsWithErrorHandler,
-    createChatWithErrorHandler,
+    getTokenWithErrorHandler,
     deleteChatWithErrorHandler,
-    addUsersToChatWithErrorHandler,
-    deleteUsersToChatWithErrorHandler,
+    createChatWithErrorHandler,
+    addUserToChatWithErrorHandler,
+    deleteUsersWithErrorHandler,
+    getChatsByTitleWithErrorHandler,
 } from 'API/fetchAPI';
+import { ActionType } from 'blocks/ChatPage';
+import { Chat } from 'HOC/withChats';
 
-export const getChats: DispatchState = async (dispatch, _, action) => {
+export const getChats: DispatchState = async (dispatch) => {
     dispatch({ isLoading: true });
 
     try {
-        const chats = await getChatsWithErrorHandler(action);
+        const chats = await getChatsWithErrorHandler();
 
         dispatch({ chats, isLoading: false, error: null });
     } catch (error) {
-        dispatch({ error, isLoading: false, chats: null });
+        dispatch({ error, isLoading: false });
     }
 };
 
-export const createChat: DispatchState = async (dispatch, _, action) => {
-    dispatch({ isLoading: true });
-
+export const createChat: DispatchState<{ title: string }> = async (dispatch, _, action) => {
     try {
         await createChatWithErrorHandler(action);
 
-        dispatch({ isLoading: false, error: null });
+        const chats = await getChatsWithErrorHandler();
+        const [activeChat] = await getChatsByTitleWithErrorHandler(action.title);
+
+        dispatch({ chats, activeChat });
     } catch (error) {
-        dispatch({ error, isLoading: false });
+        console.log(error);
     }
 };
 
-export const deleteChat: DispatchState = async (dispatch, _, action) => {
-    dispatch({ isLoading: true });
-
+export const deleteChat: DispatchState = async (dispatch, state, id) => {
     try {
-        await deleteChatWithErrorHandler(action);
+        await deleteChatWithErrorHandler({ chatId: id });
 
-        dispatch({ isLoading: false, error: null });
+        const chats = state.chats?.filter((chat) => chat.id !== id);
+
+        dispatch({ chats, activeChat: null });
     } catch (error) {
-        dispatch({ error, isLoading: false });
+        console.error(error);
     }
 };
 
-export const addUsersToChat: DispatchState = async (dispatch, _, action) => {
-    dispatch({ isLoading: true });
-
+export const addUserToChat = async (action: ActionType) => {
     try {
-        await addUsersToChatWithErrorHandler(action);
-
-        dispatch({ isLoading: false, error: null });
+        await addUserToChatWithErrorHandler(action);
     } catch (error) {
-        dispatch({ error, isLoading: false });
+        console.error(error);
     }
 };
 
-export const deleteUsersToChat: DispatchState = async (dispatch, _, action) => {
-    dispatch({ isLoading: true });
-
+export const deleteUsers = async (action: ActionType) => {
     try {
-        await deleteUsersToChatWithErrorHandler(action);
+        await deleteUsersWithErrorHandler(action);
 
-        dispatch({ isLoading: false, error: null });
+        return await getChatsWithErrorHandler();
     } catch (error) {
-        dispatch({ error, isLoading: false });
+        console.error(error);
+
+        return null;
+    }
+};
+
+export const getToken: DispatchState<Chat> = async (dispatch, _, chat) => {
+    try {
+        const token = await getTokenWithErrorHandler(chat.id);
+
+        dispatch({ activeChat: { ...chat, token } });
+    } catch (error) {
+        dispatch({ error });
+    }
+};
+
+export const getChatsByTitle: DispatchState = async (dispatch, _, action) => {
+    try {
+        const chats = await getChatsByTitleWithErrorHandler(action);
+
+        dispatch({ chats });
+    } catch (error) {
+        console.error(error);
     }
 };

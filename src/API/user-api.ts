@@ -25,5 +25,5 @@ export const userAPI = {
 
     updatePassword: (data: PasswordData) => userAPIInstance.put('/password', getRequestBody(data)),
 
-    searchUsers: (data: { login: string }) => userAPIInstance.get('/search', getRequestBody(data)),
+    searchUsers: (data: { login: string }) => userAPIInstance.post('/search', getRequestBody(data)),
 };

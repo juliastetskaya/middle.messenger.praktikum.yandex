@@ -28,10 +28,7 @@ export function withStore<P, MappedProps = any>(mapStateToProps?: MapStateToProp
             __onChangeStoreCallback = () => {
                 const state = store.getState();
                 const propsFromState = (mapStateToProps && mapStateToProps(state)) || {};
-                console.log('CURRENT_STATE', currentState);
-                console.log('PROPS_FROM_STATE', propsFromState);
                 if (JSON.stringify(currentState) !== JSON.stringify(propsFromState)) {
-                    console.log('SET_PROPS');
                     this.setProps({ ...propsFromState });
                 }
             };

@@ -1,4 +1,4 @@
-import { Chats } from '../HOC/withChats';
+import { Chat } from '../HOC/withChats';
 
 declare global {
     export type Nullable<T> = T | null;
@@ -20,7 +20,8 @@ declare global {
         user: Nullable<User>;
         error: Nullable<string>;
         isLoading: boolean;
-        chats: Nullable<Array<Chats>>;
+        chats: Nullable<Array<Chat>>;
+        activeChat: Nullable<Chat>;
     };
 
     type DispatchState<T = {}> = (dispatch: Dispatch<AppState>, state: AppState, action: T) => Promise<void>;

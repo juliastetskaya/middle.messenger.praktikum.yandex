@@ -13,7 +13,7 @@ type LastMessage = {
     content: string;
 };
 
-type Chats = {
+export type Chat = {
     id: number;
     title: string;
     avatar: Nullable<string>;
@@ -23,5 +23,5 @@ type Chats = {
 };
 
 export interface ChatsStateProps {
-    chats: Nullable<Chats[]>;
+    chats: Nullable<Chat[]>;
 }

@@ -22,3 +22,6 @@ export { default as ProfileList, ProfileFieldProps } from './ProfileList';
 export { default as Spinner } from './Spinner';
 export { default as TextMessage, TextMessageProps } from './TextMessage';
 export { default as UserChange, UserChangeProps } from './UserChange';
+export { ChatItem } from './ChatItem';
+export { SearchInput } from './SearchInput';
+export { Overlay } from './Overlay';
