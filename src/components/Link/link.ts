@@ -7,9 +7,7 @@ export interface LinkProps extends RouterStateProps {
     class?: string;
     to: string;
     text: string;
-    events?: {
-        click: () => void;
-    }
+    onClick: () => void;
 }
 
 type LinkBlockProps = LinkProps & {
@@ -24,15 +22,12 @@ export class BaseLink extends Block<LinkBlockProps> {
         super({
             ...props,
             events: {
-                click: () => this.navigate(),
+                click: props.onClick || (() => this.navigate()),
             },
         });
     }
 
     navigate() {
-        console.log('CLICK!!!');
-        console.log('this.props', this.props);
-
         this.props.router.go(this.props.to);
     }
 

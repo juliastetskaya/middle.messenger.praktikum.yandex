@@ -3,4 +3,5 @@ export const defaultStore = {
     error: null,
     isLoading: false,
     chats: null,
+    activeChat: null,
 };

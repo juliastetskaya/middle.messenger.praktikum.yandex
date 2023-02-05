@@ -3,6 +3,7 @@ import Block from 'core/Block';
 import './message.css';
 
 export type MessageProps = {
+    id: number;
     chatName: string;
     time: string;
     text: string;

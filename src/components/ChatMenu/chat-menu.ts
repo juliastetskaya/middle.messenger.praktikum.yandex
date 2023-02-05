@@ -18,7 +18,7 @@ export class ChatMenu extends Block<ChatMenuProps> {
                 <ul class="chat-menu__list">
                     {{#each links}}
                         <li class="chat-menu__item">
-                            {{{ Link to=to text=text }}}
+                            {{{ Button class="menu-item__button" text=text onClick=onClick }}}
                         </li>
                     {{/each}}
                 </ul>

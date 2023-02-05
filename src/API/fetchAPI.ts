@@ -14,7 +14,9 @@ export const updatePasswordWithErrorHandler = withErrorHandler(userAPI.updatePas
 export const searchUsersWithErrorHandler = withErrorHandler(userAPI.searchUsers);
 
 export const getChatsWithErrorHandler = withErrorHandler(chatsAPI.getChats);
+export const getChatsByTitleWithErrorHandler = withErrorHandler(chatsAPI.getChatsByTitle);
+export const getTokenWithErrorHandler = withErrorHandler(chatsAPI.getToken);
 export const createChatWithErrorHandler = withErrorHandler(chatsAPI.createChat);
 export const deleteChatWithErrorHandler = withErrorHandler(chatsAPI.deleteChat);
-export const addUsersToChatWithErrorHandler = withErrorHandler(chatsAPI.addUsersToChat);
-export const deleteUsersToChatWithErrorHandler = withErrorHandler(chatsAPI.deleteUsersToChat);
+export const addUserToChatWithErrorHandler = withErrorHandler(chatsAPI.addUserToChat);
+export const deleteUsersWithErrorHandler = withErrorHandler(chatsAPI.deleteUsers);

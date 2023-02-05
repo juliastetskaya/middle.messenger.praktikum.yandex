@@ -45,6 +45,8 @@ export enum ValidateType {
     Phone = 'phone',
     Message = 'message',
     ChatName = 'display_name',
+    UserId = 'user_id',
+    Title = 'title',
 }
 
 type ValidateRule = {
@@ -60,6 +62,7 @@ export const validateForm = (rules: ValidateRule[]): string => {
 
         switch (type) {
             case ValidateType.Login:
+            case ValidateType.Title:
                 if (isEmpty(value)) {
                     errorMessage = EMPTY_FIELD;
                 } else if (isLessThan(value, 3)) {
@@ -146,6 +149,11 @@ export const validateForm = (rules: ValidateRule[]): string => {
                     errorMessage = NO_WHITESPACES;
                 } else if (!value.match(/^[A-ZА-Яa-zа-я-]{0,}$/g)) {
                     errorMessage = NO_SPECIAL_SYMBOLS;
+                }
+                break;
+            case ValidateType.UserId:
+                if (hasLetters(value)) {
+                    errorMessage = ONLY_DIGITS;
                 }
                 break;
             default:

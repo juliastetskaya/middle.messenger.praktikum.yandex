@@ -5,4 +5,3 @@ export { withChats, ChatsStateProps } from './withChats';
 export { withErrorHandler } from './withErrorHandler';
 export { withDispatch, DispatchStateProps } from './withDispatch';
 export { withLoading, LoadingStateProps } from './withLoading';
-export { withDisplayName, DisplayNameStateProps } from './withDisplayName';

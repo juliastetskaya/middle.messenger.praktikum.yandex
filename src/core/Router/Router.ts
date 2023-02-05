@@ -14,9 +14,6 @@ class Router implements CoreRouter {
             return;
         }
 
-        console.log('this.routes', this.routes);
-        console.log('routes', route);
-
         this.routes[route]();
     }
 

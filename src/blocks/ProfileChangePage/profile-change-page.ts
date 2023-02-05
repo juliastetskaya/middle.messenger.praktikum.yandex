@@ -29,7 +29,6 @@ class ProfileChangePage extends Block<ProfilePageProps> {
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        console.log('this.props.fields', this.props.fields);
         const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {

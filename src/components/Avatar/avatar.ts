@@ -25,7 +25,6 @@ class Avatar extends Block<AvatarBlockProps> {
     }
 
     render() {
-        console.log('THIS PROPS SRC', this.props.src);
         return `
             <div class="avatar {{class}}">
                 <img

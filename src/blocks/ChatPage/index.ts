@@ -1,1 +1,1 @@
-export { default } from './chat-page';
+export { default, ActionType } from './chat-page';
