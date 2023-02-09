@@ -4,13 +4,13 @@
 
 ## Задеплоенная версия
 
-https://grand-basbousa-d4cc02.netlify.app/index.html
+https://grand-basbousa-d4cc02.netlify.app
 
 ## Setup
 
 Clone the repo:
 
-    git clone https://github.com/juliastetskaya/middle.messenger.praktikum.yandex.git -b sprint_2
+    git clone https://github.com/juliastetskaya/middle.messenger.praktikum.yandex.git -b sprint_3
 
 Move to the project path:
 
