@@ -26,5 +26,7 @@ export const chatsAPI = {
 
     deleteUsers: (data: { users: Array<string>, chatId: number }) => chatsAPIInstance.delete('/users', getRequestBody(data)),
 
+    getChatUsers: (chatId: number) => chatsAPIInstance.get(`/${chatId}/users`, getRequestBody()),
+
     getToken: (chatId: number) => chatsAPIInstance.post(`/token/${chatId}`, getRequestBody()),
 };

@@ -1,6 +1,4 @@
 import { Block } from 'core';
-
-import { validateAndGetInputData } from 'utils';
 import { Chat } from 'HOC/withChats';
 import { withDispatch, withStore, DispatchStateProps } from 'HOC';
 import {
@@ -34,9 +32,10 @@ export type ActionType = {
 };
 
 interface ChatStateProps {
-    chats: Chat[],
-    isLoading: boolean,
-    activeChat: Nullable<Chat>,
+    user: User;
+    chats: Chat[];
+    isLoading: boolean;
+    activeChat: Nullable<Chat>;
 }
 
 interface ChatPageProps extends DispatchStateProps, ChatStateProps {
@@ -73,8 +72,6 @@ class ChatPage extends Block<ChatPageProps> {
     constructor(props: ChatPageProps) {
         super(props);
 
-        this.getChats();
-
         this.userMenuActions = {
             [UserMenuActions.CLOSE_CHAT]: this.closeActiveChat,
             [UserMenuActions.DELETE_CHAT]: this.deleteChat,
@@ -83,11 +80,8 @@ class ChatPage extends Block<ChatPageProps> {
         };
 
         this.setProps({
-            button: { onClick: this.onSubmit },
             userMenu: this.props.userMenu.map((item) => ({ ...item, onClick: this.userMenuActions[item.text] })),
-            getToken: (chat: Chat) => () => {
-                this.props.dispatch(getToken, chat);
-            },
+            getToken: this.getToken,
             createNewChat: this.createChat,
             addUserToChat: this.addUserToChat,
             onSearchInput: this.onSearchInput,
@@ -97,18 +91,16 @@ class ChatPage extends Block<ChatPageProps> {
         });
     }
 
-    getChats = () => {
+    componentDidMount() {
         if (!this.props.chats) {
             this.props.dispatch(getChats);
         }
-    };
+    }
 
-    onSubmit = (e: Event) => {
-        e.preventDefault();
-        const values = validateAndGetInputData([{ name: 'message' }], this.element);
-
-        if (values) {
-            console.log('Form is ready to send data:', values);
+    getToken = (chat: Chat) => () => {
+        if (chat.id !== this.props.activeChat?.id) {
+            this.props.dispatch(getToken, chat);
+            this.updateChats(chat);
         }
     };
 
@@ -118,6 +110,11 @@ class ChatPage extends Block<ChatPageProps> {
         const newChats = this.props.chats?.filter((chat) => chat.title.includes(value.trim()));
 
         this.refs.chatListRef.setProps({ chats: newChats });
+    };
+
+    updateChats = (chat: Chat) => {
+        const currentChatIndex = this.props.chats.findIndex((item) => item.id === chat.id);
+        this.props.chats[currentChatIndex] = { ...chat, unread_count: 0 };
     };
 
     handleChatMenu = () => {
@@ -217,14 +214,13 @@ class ChatPage extends Block<ChatPageProps> {
                             </aside>
                             <div class="right-side">
                                 {{#if activeChat}}
-                                    {{{ ChatTitle chat=activeChat userMenu=userMenu onClick=handleChatMenu }}}
-                                    {{{ MessageArea
-                                        message=message
-                                        imageMessage=imageMessage
-                                        myMessage=myMessage
-                                        messageDate=messageDate
+                                    {{{ ChatArea
+                                        userMenu=userMenu
+                                        handleChatMenu=handleChatMenu
+                                        messageMenu=messageMenu
+                                        placeholder=placeholder
+                                        button=button
                                     }}}
-                                    {{{ ChatMessage messageMenu=messageMenu placeholder=placeholder button=button }}}
                                 {{else}}
                                     <div>
                                         {{rightSidePlaceholder}}
@@ -267,6 +263,7 @@ class ChatPage extends Block<ChatPageProps> {
 }
 
 const mapStateToProps = (state: AppState) => ({
+    user: state.user,
     chats: state.chats,
     isLoading: state.isLoading,
     activeChat: state.activeChat,

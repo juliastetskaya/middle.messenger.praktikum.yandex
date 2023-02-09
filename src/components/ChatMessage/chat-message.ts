@@ -11,6 +11,11 @@ type ChatMessageProps = {
 export class ChatMessage extends Block<ChatMessageProps> {
     static componentName = 'ChatMessage';
 
+    componentDidMount() {
+        const messageInputEl = document.querySelector('.chat-message__input') as HTMLInputElement;
+        messageInputEl?.focus();
+    }
+
     render() {
         return `
             <div class="chat-message">
@@ -23,7 +28,7 @@ export class ChatMessage extends Block<ChatMessageProps> {
                         name="message"
                         placeholder=placeholder
                     }}}
-                    {{{ Button type="button" class="chat-message__sent-button" onClick=button.onClick }}}
+                    {{{ Button type="submit" class="chat-message__sent-button" onClick=button.onClick }}}
                 </form>
                 {{{ ChatMenu class="message-menu" links=messageMenu }}}
             </div>

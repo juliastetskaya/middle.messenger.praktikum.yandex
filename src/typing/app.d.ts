@@ -7,6 +7,7 @@ declare global {
     export type Values<T extends Record<string, unknown>> = T[Keys<T>];
 
     export type User = {
+        id: number;
         login: string;
         first_name: string;
         second_name: string;

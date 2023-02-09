@@ -25,7 +25,7 @@ export class ChatList extends Block<ChatListProps> {
                         id=id
                         chatName=title
                         time=time
-                        text=last_message
+                        text=last_message.content
                         count=unread_count
                         onClick=onClick
                     }}}

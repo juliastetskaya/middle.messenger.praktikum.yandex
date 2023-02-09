@@ -3,45 +3,45 @@ import { WS_URL } from '../constants';
 
 enum WsEvents {
     GET_OLD = 'get old',
-    PING = 'ping',
+    MESSAGE = 'message',
 }
 
 export class WebSocketTransport extends EventBus {
     private _socket: WebSocket;
 
-    private isKeepConnection: boolean;
-
-    constructor(userId: string, chatId: number, token: string) {
+    constructor(userId: number, chatId: number, token: string) {
         super();
+
         this._socket = new WebSocket(`${WS_URL}/chats/${userId}/${chatId}/${token}`);
 
-        this.isKeepConnection = false;
+        this._socket.addEventListener('open', () => {
+            console.log('Соединение установлено');
 
-        this.addListeners();
-    }
+            this.getOldMessages();
+        });
 
-    pingConnection = (timeout: number = 2000) => {
-        setTimeout(() => {
-            this._socket.send(
-                JSON.stringify({
-                    type: WsEvents.PING,
-                }),
-            );
+        this._socket.addEventListener('message', (event) => {
+            console.log('Получены данные', event.data);
 
-            if (this.isKeepConnection) {
-                this.pingConnection();
+            const dataToJSON = JSON.parse(event.data);
+
+            this.emit('message-arrived', dataToJSON);
+        });
+
+        this._socket.addEventListener('close', (event) => {
+            if (event.wasClean) {
+                console.log('Соединение закрыто чисто');
+            } else {
+                console.log('Обрыв соединения');
             }
-        }, timeout);
-    };
 
-    start = () => {
-        this.isKeepConnection = true;
-        this.pingConnection();
-    };
+            console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+        });
 
-    stop = () => {
-        this.isKeepConnection = false;
-    };
+        this._socket.addEventListener('error', (event) => {
+            console.log('Ошибка', event);
+        });
+    }
 
     public getOldMessages = (content: string = '0') => {
         this._socket.send(
@@ -52,42 +52,12 @@ export class WebSocketTransport extends EventBus {
         );
     };
 
-    private _onOpen = () => {
-        this._socket.onopen = () => {
-            console.log('Соединение установлено');
-
-            this.getOldMessages();
-        };
-    };
-
-    private _onError = () => {
-        this._socket.onerror = (event) => {
-            console.log(`Ошибка: ${event}`);
-        };
-    };
-
-    private _onClose = () => {
-        this._socket.onclose = (event) => {
-            if (event.wasClean) {
-                console.log('Соединение закрыто чисто');
-            } else {
-                console.log('Обрыв соединения');
-            }
-
-            console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-        };
-    };
-
-    private _onMessage = () => {
-        this._socket.onmessage = (event) => {
-            console.log(`Получены данные: ${event.data}`);
-        };
-    };
-
-    addListeners = () => {
-        this._onOpen();
-        this._onMessage();
-        this._onError();
-        this._onClose();
+    send = (message: string) => {
+        this._socket.send(
+            JSON.stringify({
+                content: message,
+                type: WsEvents.MESSAGE,
+            }),
+        );
     };
 }

@@ -14,6 +14,7 @@ class Block<P = {}> {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_CDU: 'flow:component-did-update',
+        FLOW_CWU: 'flow:component-will-unmount',
         FLOW_RENDER: 'flow:render',
     } as const;
 
@@ -43,10 +44,26 @@ class Block<P = {}> {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
+    /**
+     * Хелпер, который проверяет, находится ли элемент в DOM дереве
+     * И есть нет, триггерит событие COMPONENT_WILL_UNMOUNT
+     */
+    _checkInDom() {
+        const elementInDOM = document.body.contains(this._element);
+
+        if (elementInDOM) {
+            setTimeout(() => this._checkInDom(), 1000);
+            return;
+        }
+
+        this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
+    }
+
     _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
@@ -55,11 +72,16 @@ class Block<P = {}> {
     }
 
     _componentDidMount(props: P) {
+        this._checkInDom();
+
         this.componentDidMount(props);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    componentDidMount(_props: P) {
+    componentDidMount(_props: P) {}
+
+    _componentWillUnmount() {
+        this.eventBus().destroy();
+        this.componentWillUnmount();
     }
 
     componentWillUnmount() {}

@@ -22,6 +22,7 @@ export function withStore<P, MappedProps = any>(mapStateToProps?: MapStateToProp
 
             componentWillUnmount() {
                 super.componentWillUnmount();
+
                 store.off('changed', this.__onChangeStoreCallback);
             }
 

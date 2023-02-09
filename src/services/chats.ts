@@ -6,6 +6,7 @@ import {
     addUserToChatWithErrorHandler,
     deleteUsersWithErrorHandler,
     getChatsByTitleWithErrorHandler,
+    getChatUsersWithErrorHandler,
 } from 'API/fetchAPI';
 import { ActionType } from 'blocks/ChatPage';
 import { Chat } from 'HOC/withChats';
@@ -22,6 +23,27 @@ export const getChats: DispatchState = async (dispatch) => {
     }
 };
 
+export const getChatUsers = async (chatId: number) => {
+    try {
+        return await getChatUsersWithErrorHandler(chatId);
+    } catch (error) {
+        console.error(error);
+
+        return null;
+    }
+};
+
+export const getToken: DispatchState<Chat> = async (dispatch, _, chat) => {
+    try {
+        const { token } = await getTokenWithErrorHandler(chat.id);
+        const users = await getChatUsers(chat.id);
+
+        dispatch({ activeChat: { ...chat, token, users } });
+    } catch (error) {
+        dispatch({ error });
+    }
+};
+
 export const createChat: DispatchState<{ title: string }> = async (dispatch, _, action) => {
     try {
         await createChatWithErrorHandler(action);
@@ -29,7 +51,9 @@ export const createChat: DispatchState<{ title: string }> = async (dispatch, _, 
         const chats = await getChatsWithErrorHandler();
         const [activeChat] = await getChatsByTitleWithErrorHandler(action.title);
 
-        dispatch({ chats, activeChat });
+        dispatch(getToken, activeChat);
+
+        dispatch({ chats });
     } catch (error) {
         console.log(error);
     }
@@ -64,16 +88,6 @@ export const deleteUsers = async (action: ActionType) => {
         console.error(error);
 
         return null;
-    }
-};
-
-export const getToken: DispatchState<Chat> = async (dispatch, _, chat) => {
-    try {
-        const token = await getTokenWithErrorHandler(chat.id);
-
-        dispatch({ activeChat: { ...chat, token } });
-    } catch (error) {
-        dispatch({ error });
     }
 };
 
