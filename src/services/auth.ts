@@ -44,7 +44,9 @@ export const logout: DispatchState = async (dispatch) => {
     try {
         await logoutWithErrorHandler();
 
-        dispatch({ user: null, error: null });
+        dispatch({
+            user: null, error: null, activeChat: null, chats: null,
+        });
 
         router.go(ROUTES.SIGNIN);
     } catch (error) {

@@ -13,8 +13,9 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background-color: var(--darkish-grey-color);
     margin-right: 10px;
+    background: url("../../static/chat_avatar.svg") center no-repeat;
+    background-color: var(--darkish-grey-color);
 }
 
 .chat-title__button {

@@ -11,9 +11,10 @@
 .message__avatar {
     width: 47px;
     height: 47px;
-    background-color: var(--darkish-grey-color);
     margin-right: 11px;
     border-radius: 50%;
+    background: url("../../static/chat_avatar.svg") center no-repeat;
+    background-color: var(--darkish-grey-color);
 }
 
 .message__info {

@@ -1,5 +1,6 @@
 import { registerComponent, store, router } from 'core';
 import { getUserWithErrorHandler } from 'API/fetchAPI';
+import Handlebars, { HelperOptions } from 'handlebars';
 import {
     Avatar,
     AvatarPanel,
@@ -28,6 +29,8 @@ import {
     ChatItem,
     SearchInput,
     Overlay,
+    ChatArea,
+    Messages,
 } from 'components';
 
 import { ROUTES } from './constants';
@@ -63,20 +66,17 @@ registerComponent(Spinner);
 registerComponent(ChatItem);
 registerComponent(SearchInput);
 registerComponent(Overlay);
+registerComponent(ChatArea);
+registerComponent(Messages);
 
-// declare global {
-//     interface Window {
-//         router: CoreRouter;
-//         store: Store<AppState>;
-//     }
-// }
+Handlebars.registerHelper(
+    'ifEquals',
+    function register(this: unknown, arg1: string, arg2: string, options: HelperOptions) {
+        return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
+    },
+);
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // const store = new Store<AppState>(defaultStore);
-
-    // window.router = Router;
-    // window.store = store;
-
     initRouter(router);
 
     let isProtected = true;
@@ -90,11 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             break;
     }
 
-    // TODO: убрать store.on
-    store.on('changed', (_: any, nextState: any) => {
-        console.log('%cstore updated', 'background: #222; color: #bada55', nextState);
-    });
-
     store.dispatch({ isLoading: true });
 
     try {
@@ -106,8 +101,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             router.go(ROUTES.PROFILE);
         }
     } catch (error: any) {
-        console.error(error);
-
         if (isProtected) {
             router.go(ROUTES.SIGNIN);
         }

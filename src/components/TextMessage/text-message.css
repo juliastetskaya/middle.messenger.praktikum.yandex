@@ -1,7 +1,6 @@
 .text-message {
     position: relative;
     display: inline-block;
-    min-width: 110px;
     max-width: 400px;
     line-height: 15px;
     color: var(--light-black-color);
@@ -9,6 +8,9 @@
     border-radius: 0 12px 12px;
     padding: 11px;
     margin-top: 10px;
+    width: fit-content;
+    text-align: left;
+    padding-right: 50px;
 }
 
 .my-message {
@@ -33,13 +35,19 @@
 }
 
 .check-icon {
-    display: none;
+    display: block;
     width: 11px;
     height: 5px;
     background: url("../../static/check.svg") no-repeat center;
-    margin: auto 24px 1px auto;
+    margin: auto -15px 1px auto;
 }
 
 .my-message .check-icon {
-    display: block;
+    margin-left: 10px;
+}
+
+.message-author {
+    font-size: 10px;
+    margin-bottom: 5px;
+    color: var(--blue-color);
 }

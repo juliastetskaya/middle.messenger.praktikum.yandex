@@ -25,3 +25,5 @@ export { default as UserChange, UserChangeProps } from './UserChange';
 export { ChatItem } from './ChatItem';
 export { SearchInput } from './SearchInput';
 export { Overlay } from './Overlay';
+export { ChatArea } from './ChatArea';
+export { Messages } from './Messages';

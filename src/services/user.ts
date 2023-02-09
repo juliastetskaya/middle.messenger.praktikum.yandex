@@ -4,7 +4,7 @@ import {
     updateProfileWithErrorHandler,
     updateAvatarWithErrorHandler,
     updatePasswordWithErrorHandler,
-    searchUsersWithErrorHandler,
+    getUserByIdWithErrorHandler,
 } from 'API/fetchAPI';
 import { ROUTES } from '../constants';
 
@@ -48,9 +48,9 @@ export const updateAvatar: DispatchState = async (dispatch, _, action) => {
     }
 };
 
-export const searchUsers = async (action: { login: string }) => {
+export const getUserById = async (action: number) => {
     try {
-        return await searchUsersWithErrorHandler(action);
+        return await getUserByIdWithErrorHandler(action);
     } catch (error) {
         console.error(error);
 

@@ -20,6 +20,8 @@ export type Chat = {
     created_by: number;
     lastMessage: LastMessage;
     unread_count: number;
+    token: string;
+    users: User[];
 };
 
 export interface ChatsStateProps {
