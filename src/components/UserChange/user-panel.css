@@ -9,6 +9,7 @@
     height: 257px;
     padding: 40px 30px;
     justify-content: space-between;
+    z-index: 5;
 }
 
 .user-panel .input {
@@ -22,4 +23,8 @@
 
 .user-panel .controlled-input {
     margin-top: 16px;
+}
+
+.active-user-panel {
+    display: flex;
 }

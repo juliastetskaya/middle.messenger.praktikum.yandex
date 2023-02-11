@@ -24,7 +24,10 @@
     "blocks": "./src/blocks",
     "data": "./src/data",
     "static": "./src/static",
-    "utils": "./src/utils"
+    "utils": "./src/utils",
+    "API": "./src/API",
+    "services": "./src/services",
+    "HOC": "./src/HOC"
   },
   "dependencies": {
     "express": "4.18.1",

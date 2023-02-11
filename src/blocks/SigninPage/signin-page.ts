@@ -1,16 +1,13 @@
-import Block from 'core/Block';
-import { ButtonProps } from 'components/Button';
-
-import data from 'data/signin';
-
+import { Block } from 'core';
+import { ButtonProps } from 'components';
 import { validateAndGetInputData } from 'utils';
-
-const {
-    button,
-    fields,
-    text,
-    link,
-} = data;
+import { signin } from 'services/auth';
+import {
+    withLoading,
+    withDispatch,
+    LoadingStateProps,
+    DispatchStateProps,
+} from 'HOC';
 
 export type FieldProps = {
     type: string,
@@ -19,40 +16,36 @@ export type FieldProps = {
     placeholder: string,
     errorMessage?: string,
     class?: string,
+    value?: string
 };
 
-export type SignPageProps = {
+export interface SignPageProps extends LoadingStateProps, DispatchStateProps {
     text: string;
     fields: FieldProps[];
     button: ButtonProps;
     link: {
         text: string,
-        href: string,
+        to: string,
     };
-};
+}
 
-export class SigninPage extends Block<SignPageProps> {
+class SigninPage extends Block<SignPageProps> {
     static componentName = 'SigninPage';
 
-    constructor() {
-        super({
-            text,
-            fields,
-            button,
-            link,
-        } as SignPageProps);
+    constructor(props: SignPageProps) {
+        super(props);
 
         this.setProps({
-            button: { ...button, onClick: this.onSubmit },
+            button: { ...this.props.button, onClick: this.onSubmit },
         });
     }
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(fields, this.element);
+        const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {
-            console.log('Form is ready to send data:', values);
+            this.props.dispatch(signin, values);
         }
     };
 
@@ -66,8 +59,11 @@ export class SigninPage extends Block<SignPageProps> {
                     link=link
                     fields=fields
                     ref="panelRef"
+                    isLoading=isLoading
                 }}}
             </div>
         `;
     }
 }
+
+export default withLoading(withDispatch(SigninPage));

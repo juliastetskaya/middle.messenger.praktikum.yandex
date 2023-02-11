@@ -1,1 +1,1 @@
-export { SigninPage as default, SignPageProps, FieldProps } from './signin-page';
+export { default, SignPageProps, FieldProps } from './signin-page';

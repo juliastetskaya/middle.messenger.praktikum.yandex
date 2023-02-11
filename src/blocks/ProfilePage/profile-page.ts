@@ -1,24 +1,20 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import { FieldProps } from 'blocks/SigninPage';
-import { ButtonProps } from 'components/Button';
-import { LinkProps } from 'components/Link';
-import { ProfileFieldProps } from 'components/ProfileList';
+import { ButtonProps, LinkProps, ProfileFieldProps } from 'components';
+import { updateAvatar } from 'services/user';
+import {
+    withUser,
+    withLoading,
+    withDispatch,
+    DispatchStateProps,
+    LoadingStateProps,
+} from 'HOC';
 
-import data from 'data/profile';
+import { logout } from 'services/auth';
 
 import './profile.css';
 
-const {
-    name,
-    button,
-    fields,
-    links,
-    profileFields,
-    passwordFields,
-    placeholder,
-} = data;
-
-type ProfilePageProps = {
+interface ProfilePageProps extends DispatchStateProps, LoadingStateProps {
     name: string;
     button: ButtonProps;
     fields: FieldProps[];
@@ -26,37 +22,68 @@ type ProfilePageProps = {
     profileFields: ProfileFieldProps[];
     passwordFields: FieldProps[];
     placeholder: string;
-};
+    avatar: {
+        title: string;
+        link: LinkProps;
+        button: ButtonProps;
+    };
+    changeAvatar: {
+        onChange: (e: Event) => void;
+    }
+}
 
-export class ProfilePage extends Block<ProfilePageProps> {
+class ProfilePage extends Block<ProfilePageProps> {
     static componentName = 'ProfilePage';
 
-    constructor() {
-        super({
-            name,
-            button,
-            fields,
-            links,
-            profileFields,
-            passwordFields,
-            placeholder,
-        } as ProfilePageProps);
+    constructor(props: ProfilePageProps) {
+        super(props);
+
+        this.setProps({
+            links: this.props.links.map((link) => (link.text === 'Выйти' ? {
+                ...link,
+                onClick: this.clickQuitLink,
+            } : link)),
+            changeAvatar: { onChange: this.changeAvatar },
+        });
     }
+
+    clickQuitLink = () => {
+        this.props.dispatch(logout);
+    };
+
+    changeAvatar = (e: Event) => {
+        const inputEl = e.target as HTMLInputElement;
+        const avatar = inputEl!.files![0];
+
+        const avatarImageEl = document.getElementById('avatar-image') as HTMLImageElement;
+        avatarImageEl.src = window.URL.createObjectURL(avatar);
+
+        const form = new FormData();
+        form.append('avatar', avatar);
+
+        this.props.dispatch(updateAvatar, form);
+    };
 
     render() {
         return `
-            <div class="profile">
-                {{{ LeftMenu }}}
-                <div class="profile__panel">
-                    <div class="profile__content profile-page">
-                        {{{ Avatar class="profile__avatar" placeholder=placeholder }}}
-                        <p class="profile__title">{{name}}</p>
-                        {{{ ProfileList fields=profileFields }}}
-                        {{{ LinkList class="profile__links" links=links }}}
-                        {{{ AvatarPanel }}}
+            {{#if isLoading}}
+                {{{ Spinner }}}
+            {{else}}
+                <div class="profile">
+                    {{{ LeftMenu }}}
+                    <div class="profile__panel">
+                        <div class="profile__content profile-page">
+                            {{{ Avatar class="profile__avatar" placeholder=placeholder onChange=changeAvatar.onChange src=user.avatar }}}
+                            <p class="profile__title">{{user.first_name}}</p>
+                            {{{ ProfileList fields=profileFields user=user }}}
+                            {{{ LinkList class="profile__links" links=links }}}
+                            {{{ AvatarPanel link=avatar.link button=avatar.button title=avatar.title }}}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {{/if}}
         `;
     }
 }
+
+export default withUser(withLoading(withDispatch(ProfilePage)));

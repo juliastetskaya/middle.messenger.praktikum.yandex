@@ -1,22 +1,28 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import { FieldProps } from 'blocks/SigninPage';
-import { ButtonProps } from 'components/Button';
+import { ButtonProps } from 'components';
 
-import data from 'data/profile';
+import { withDispatch, DispatchStateProps } from 'HOC';
 import { validateAndGetInputData } from 'utils';
+import { updatePassword } from 'services/user';
 
-const { button, passwordFields } = data;
-
-type PasswordChangePageProps = {
-    button: ButtonProps;
-    passwordFields: FieldProps[];
+type PasswordFields = {
+    oldPassword: string;
+    newPassword: string;
+    passwordCheck: string;
 };
 
-export class PasswordChangePage extends Block<PasswordChangePageProps> {
+interface PasswordChangePageProps extends DispatchStateProps {
+    button: ButtonProps;
+    passwordFields: FieldProps[];
+    error: string;
+}
+
+class PasswordChangePage extends Block<PasswordChangePageProps> {
     static componentName = 'PasswordChangePage';
 
-    constructor() {
-        super({ button, passwordFields } as PasswordChangePageProps);
+    constructor(props: PasswordChangePageProps) {
+        super(props);
 
         this.setProps({
             button: {
@@ -28,10 +34,18 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(passwordFields, this.element);
+        const values = validateAndGetInputData(this.props.passwordFields, this.element) as PasswordFields;
 
         if (values) {
-            console.log('Form is ready to send data:', values);
+            const { oldPassword, newPassword, passwordCheck } = values;
+
+            if (newPassword !== passwordCheck) {
+                this.setProps({ error: 'Пароли не совпадают' });
+            } else if (newPassword === oldPassword) {
+                this.setProps({ error: 'Старый и новый пароли должны отличаться' });
+            } else {
+                this.props.dispatch(updatePassword, { oldPassword, newPassword });
+            }
         }
     };
 
@@ -42,11 +56,12 @@ export class PasswordChangePage extends Block<PasswordChangePageProps> {
                 <div class="profile__panel">
                     <div class="profile__content password-change">
                         {{{ Avatar }}}
-                        {{{ Form class="profile__form" fields=passwordFields button=button }}}
-
+                        {{{ Form class="profile__form" fields=passwordFields button=button error=error }}}
                     </div>
                 </div>
             </div>
         `;
     }
 }
+
+export default withDispatch(PasswordChangePage);

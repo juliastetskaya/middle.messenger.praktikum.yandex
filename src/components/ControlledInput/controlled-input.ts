@@ -1,5 +1,4 @@
 import Block from 'core/Block';
-import { validateForm } from 'utils';
 
 import './controlled-input.css';
 
@@ -24,30 +23,12 @@ export class ControlledInput extends Block<ControlledInputProps> {
         super(props);
 
         this.setProps({
-            onBlur: this.onBlur,
             onInput: this.onInput,
-            onFocus: this.onFocus,
         });
     }
 
     onInput = () => {
         this.refs.errorRef.setProps({ text: '' });
-    };
-
-    onFocus = (e: Event) => {
-        const inputEl = e.target as HTMLInputElement;
-
-        const error = validateForm([{ type: inputEl.name, value: inputEl.value }]);
-
-        this.refs.errorRef.setProps({ text: error });
-    };
-
-    onBlur = (e: Event) => {
-        const inputEl = e.target as HTMLInputElement;
-
-        const error = validateForm([{ type: inputEl.name, value: inputEl.value }]);
-
-        this.refs.errorRef.setProps({ text: error });
     };
 
     render() {
@@ -62,6 +43,7 @@ export class ControlledInput extends Block<ControlledInputProps> {
                     onInput=onInput
                     onFocus=onFocus
                     onBlur=onBlur
+                    value=value
                 }}}
                 {{{ Error text=errorMessage ref="errorRef" }}}
             </div>

@@ -3,6 +3,7 @@ import Block from 'core/Block';
 import './message.css';
 
 export type MessageProps = {
+    id: number;
     chatName: string;
     time: string;
     text: string;
@@ -23,7 +24,7 @@ export class Message extends Block<MessageProps> {
                     </div>
                     <div class="second-row">
                         <div class="message__text">{{ text }}</div>
-                        <div class="message__count">{{ count }}</div>
+                        {{#if count}}<div class="message__count">{{ count }}</div>{{/if}}
                     </div>
                 </div>
             </div>

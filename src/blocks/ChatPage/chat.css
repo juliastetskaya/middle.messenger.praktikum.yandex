@@ -5,10 +5,15 @@
 }
 
 .left-side {
-    width: 312px;
+    width: 355px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--lighter-grey-color);
+    overflow: overlay;
+}
+
+.left-side::-webkit-scrollbar {
+    display: none;
 }
 
 .right-side {
@@ -20,6 +25,7 @@
     font-size: 12px;
     line-height: 12px;
     color: var(--grey-color);
+    text-align: center;
 }
 
 .chat__profile-link {
@@ -47,24 +53,6 @@
     color: var(--grey-color);
 }
 
-.chat__search-field {
-    margin: 23px 10px 0;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 10px;
-    box-sizing: border-box;
-    background-color: var(--darkish-grey-color);
-    background-image: url("../../static/search-icon.svg");
-    background-repeat: no-repeat;
-    background-position: 108px 8px;
-    width: 290px;
-}
-
-.chat__search-field::placeholder {
-    text-align: center;
-    color: var(--grey-color);
-}
-
 .chat-list {
     margin-top: 16px;
 }
@@ -79,4 +67,9 @@
     height: 1px;
     background-color: var(--lighter-grey-color);
     margin: 0 10px 2px;
+}
+
+.here-link {
+    font-size: 12px;
+    line-height: 12px;
 }

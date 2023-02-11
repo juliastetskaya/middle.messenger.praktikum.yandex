@@ -8,18 +8,31 @@ enum METHOD {
 }
 
 type OptionProps = {
-    method: METHOD;
+    method?: METHOD;
     timeout?: number;
-    data: XMLHttpRequestBodyInit;
+    data?: XMLHttpRequestBodyInit;
     headers?: Record<string, string>;
+    withCredentials?: boolean;
+    includeCredentials?: boolean;
 };
 
-export class HTTPTransport {
+class HTTPTransport {
+    private baseUrl: string;
+
+    constructor(baseUrl: string) {
+        this.baseUrl = baseUrl;
+    }
+
     get = (url: string, options: OptionProps) => {
         const { data } = options;
-        const transformData = queryStringify(data!);
 
-        return this.request(`${url}${transformData}`, { ...options, method: METHOD.GET }, options.timeout);
+        if (data) {
+            const transformData = queryStringify(data);
+
+            return this.request(`${url}${transformData}`, { ...options, method: METHOD.GET }, options.timeout);
+        }
+
+        return this.request(url, { ...options, method: METHOD.GET }, options.timeout);
     };
 
     put = (url: string, options: OptionProps) => this.request(url, {
@@ -37,13 +50,18 @@ export class HTTPTransport {
         method: METHOD.DELETE,
     }, options.timeout);
 
-    request = (url: string, options: OptionProps, timeout = 5000) => {
-        const { data, method } = options;
+    request = (path: string, options: OptionProps, timeout = 5000) => {
+        const url = `${this.baseUrl}${path}`;
+        const {
+            data, method = METHOD.GET, withCredentials = true, headers = {},
+        } = options;
 
-        return new Promise((resolve, reject) => {
+        return new Promise<XMLHttpRequest>((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url);
             xhr.timeout = timeout;
+            xhr.withCredentials = withCredentials;
+            Object.entries(headers).forEach(([key, value]) => xhr.setRequestHeader(key, value));
 
             xhr.onload = () => resolve(xhr);
 
@@ -59,3 +77,5 @@ export class HTTPTransport {
         });
     };
 }
+
+export default HTTPTransport;

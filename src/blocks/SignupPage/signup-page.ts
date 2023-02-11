@@ -1,38 +1,27 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 
-import data from 'data/signup';
 import { SignPageProps } from 'blocks/SigninPage';
 import { validateAndGetInputData } from 'utils';
+import { signup } from 'services/auth';
+import { withLoading, withDispatch } from 'HOC';
 
-const {
-    text,
-    button,
-    link,
-    fields,
-} = data;
-
-export class SignupPage extends Block<SignPageProps> {
+class SignupPage extends Block<SignPageProps> {
     static componentName = 'SignupPage';
 
-    constructor() {
-        super({
-            text,
-            button,
-            link,
-            fields,
-        } as SignPageProps);
+    constructor(props: SignPageProps) {
+        super(props);
 
         this.setProps({
-            button: { ...button, onClick: this.onSubmit },
+            button: { ...this.props.button, onClick: this.onSubmit },
         });
     }
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(fields, this.element);
+        const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {
-            console.log('Form is ready to send data:', values);
+            this.props.dispatch(signup, values);
         }
     };
 
@@ -45,8 +34,11 @@ export class SignupPage extends Block<SignPageProps> {
                     button=button
                     link=link
                     fields=fields
+                    isLoading=isLoading
                 }}}
             </div>
         `;
     }
 }
+
+export default withLoading(withDispatch(SignupPage));

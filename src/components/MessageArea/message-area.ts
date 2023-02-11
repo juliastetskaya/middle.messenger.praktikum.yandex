@@ -1,15 +1,11 @@
-import Block from 'core/Block';
-
-import { TextMessageProps } from '../TextMessage';
-import { ImageMessageProps } from '../ImageMessage';
+import { Block } from 'core';
+import { ChatMessage } from '../ChatArea/chat-area';
 
 import './message-area.css';
 
 export type MessageAreaProps = {
-    messageDate: string;
-    message: TextMessageProps;
-    imageMessage: ImageMessageProps;
-    myMessage: TextMessageProps;
+    messages: ChatMessage[];
+    isLoading: boolean;
 };
 
 export class MessageArea extends Block<MessageAreaProps> {
@@ -18,10 +14,16 @@ export class MessageArea extends Block<MessageAreaProps> {
     render() {
         return `
             <div class="messages-area">
-                <div class="message-date">{{messageDate}}</div>
-                {{{ TextMessage message=message }}}
-                {{{ ImageMessage imageMessage=imageMessage }}}
-                {{{ TextMessage class="my-message" message=myMessage }}}
+                {{#if isLoading}}
+                    {{{ Spinner }}}
+                {{else}}
+                    {{#each dates as |date|}}
+                        <div class="message-date">{{date}}</div>
+                        {{#each ../messages as |message|}}
+                            {{#ifEquals date message.date}}{{{ TextMessage message=message }}}{{/ifEquals}}
+                        {{/each}}
+                    {{/each}}
+                {{/if}}
             </div>
         `;
     }

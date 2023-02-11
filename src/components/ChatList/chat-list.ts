@@ -1,22 +1,34 @@
 import Block from 'core/Block';
-
-import { MessageProps } from '../Message';
+import { Chat } from 'HOC/withChats';
 
 type ChatListProps = {
-    chats: MessageProps[];
+    chats: Chat[];
+    getToken: (chat: Chat) => void;
 };
 
 export class ChatList extends Block<ChatListProps> {
     static componentName = 'ChatList';
 
+    constructor(props: ChatListProps) {
+        super(props);
+
+        this.setProps({
+            chats: this.props.chats?.map((chat) => ({ ...chat, onClick: this.props.getToken && this.props.getToken(chat) })),
+        });
+    }
+
     render() {
         return `
             <ul class="chat-list">
                 {{#each chats}}
-                    <li class="chat-list__item">
-                        <div class="line"></div>
-                        {{{ Message chatName=chatName time=time text=text count=count }}}
-                    </li>
+                    {{{ ChatItem
+                        id=id
+                        chatName=title
+                        time=time
+                        text=last_message.content
+                        count=unread_count
+                        onClick=onClick
+                    }}}
                 {{/each}}
             </ul>
         `;

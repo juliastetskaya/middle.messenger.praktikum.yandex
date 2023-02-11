@@ -12,7 +12,7 @@
         "max-len": "off",
         "no-underscore-dangle": ["error", { "allowAfterThis": true }],
         "no-param-reassign": ["error", { "props": false }],
-        "no-unused-vars": ["error", { "args": "none" }],
+        "no-unused-vars": "off",
         "class-methods-use-this": "off"
     },
     "env": {

@@ -1,5 +1,4 @@
 export default {
-    name: 'Иван',
     button: {
         text: 'Сохранить',
     },
@@ -30,7 +29,7 @@ export default {
         },
         {
             type: 'text',
-            name: 'chat_name',
+            name: 'display_name',
             label: 'Имя в чате',
             placeholder: 'Иван',
         },
@@ -44,42 +43,41 @@ export default {
     links: [
         {
             text: 'Изменить данные',
-            href: '/profile-change.html',
+            to: '/profile-change',
         },
         {
             text: 'Изменить пароль',
-            href: '/password-change.html',
+            to: '/password-change',
         },
         {
             text: 'Выйти',
-            href: '/',
             class: 'quit',
         },
     ],
     profileFields: [
         {
             label: 'Почта',
-            value: 'pochta@yandex.ru',
+            name: 'email',
         },
         {
             label: 'Логин',
-            value: 'ivanivanov',
+            name: 'login',
         },
         {
             label: 'Имя',
-            value: 'Иван',
+            name: 'first_name',
         },
         {
             label: 'Фамилия',
-            value: 'Иванов',
+            name: 'second_name',
         },
         {
             label: 'Имя в чате',
-            value: 'Иван',
+            name: 'display_name',
         },
         {
             label: 'Телефон',
-            value: '+7(909)9673030',
+            name: 'phone',
         },
     ],
     passwordFields: [
@@ -103,4 +101,14 @@ export default {
         },
     ],
     placeholder: 'Поменять аватар',
+    avatar: {
+        title: 'Загрузите файл',
+        link: {
+            text: 'Выбрать файл на компьютере',
+            to: '/',
+        },
+        button: {
+            text: 'Поменять',
+        },
+    },
 };

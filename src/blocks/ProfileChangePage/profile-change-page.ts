@@ -1,33 +1,39 @@
-import Block from 'core/Block';
-import data from 'data/profile';
+import { Block } from 'core';
 import { validateAndGetInputData } from 'utils';
-import { ButtonProps } from 'components/Button';
-import { FieldProps } from '../SigninPage';
+import { ButtonProps } from 'components';
+import { FieldProps } from 'blocks/SigninPage';
+import { updateProfile } from 'services/user';
+import {
+    withUser,
+    withDispatch,
+    UserStateProps,
+    DispatchStateProps,
+} from 'HOC';
 
-const { button, fields } = data;
-
-type ProfilePageProps = {
+interface ProfilePageProps extends UserStateProps, DispatchStateProps {
     button: ButtonProps;
     fields: FieldProps[];
-};
+}
 
-export class ProfileChangePage extends Block<ProfilePageProps> {
+class ProfileChangePage extends Block<ProfilePageProps> {
     static componentName = 'ProfileChangePage';
 
-    constructor() {
-        super({ button, fields } as ProfilePageProps);
+    constructor(props: ProfilePageProps) {
+        super(props);
 
         this.setProps({
-            button: { ...button, onClick: this.onSubmit },
+            button: { ...this.props.button, onClick: this.onSubmit },
+            fields: this.props.fields.map((field) => ({ ...field, value: (this.props.user as any || {})[field.name] })),
         });
     }
 
     onSubmit = (e: Event) => {
         e.preventDefault();
-        const values = validateAndGetInputData(fields, this.element);
+        const values = validateAndGetInputData(this.props.fields, this.element);
 
         if (values) {
             console.log('Form is ready to send data:', values);
+            this.props.dispatch(updateProfile, values);
         }
     };
 
@@ -45,3 +51,5 @@ export class ProfileChangePage extends Block<ProfilePageProps> {
         `;
     }
 }
+
+export default withUser(withDispatch(ProfileChangePage));

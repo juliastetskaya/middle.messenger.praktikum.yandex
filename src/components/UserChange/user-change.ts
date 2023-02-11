@@ -1,18 +1,21 @@
 import Block from 'core/Block';
-import { ButtonProps } from 'components/Button';
+import { ButtonProps } from 'components';
 import { validateAndGetInputData } from 'utils';
 
 import './user-panel.css';
 
 export type UserChangeProps = {
     class?: string;
+    inputValue?: string;
     title: string;
     button: ButtonProps;
+    chatId: string;
     input: {
         label: string;
         name: string;
         placeholder: string;
     };
+    request: (values: {}) => void;
 };
 
 export class UserChange extends Block<UserChangeProps> {
@@ -24,27 +27,29 @@ export class UserChange extends Block<UserChangeProps> {
         this.setProps({
             button: {
                 ...this.props.button,
-                onClick: this.onSubmit,
+                onClick: this.onClick,
             },
         });
     }
 
-    onSubmit = (e: Event) => {
+    onClick = (e: Event) => {
         e.preventDefault();
         const values = validateAndGetInputData([{ name: this.props.input.name }], this.element);
 
         if (values) {
-            console.log('Form is ready to send data:', values);
+            this.props.request(values);
         }
     };
 
     render() {
         return `
-            <div class="panel user-panel">
+            <div class="panel user-panel {{class}}">
                 <h1 class="panel__title">{{ title }}</h1>
-                {{{ ControlledInput type="text" label=input.label name=input.name placeholder=input.placeholder }}}
+                {{{ ControlledInput type="text" label=input.label name=input.name placeholder=input.placeholder value=inputValue }}}
                 {{{ Button type="button" class="avatar-panel__button" text=button.text onClick=button.onClick }}}
             </div>
         `;
     }
 }
+
+export default UserChange;
