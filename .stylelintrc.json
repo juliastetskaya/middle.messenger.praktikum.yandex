@@ -7,6 +7,6 @@
         "color-function-notation": "legacy"
     },
     "ignoreFiles": [
-        "dist/*"
+        "build/*"
     ]
-} 
+}
