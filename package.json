@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
+    "build:container": "docker build -t messenger .",
     "start": "npm run build && node ./server.js",
     "lint": "npx stylelint '**/*.css' && eslint .",
     "check": "tsc --noEmit",
