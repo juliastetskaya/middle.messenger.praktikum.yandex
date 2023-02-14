@@ -106,6 +106,8 @@ class Block<P = {}> {
         Object.assign(this.props as {}, nextProps);
     };
 
+    getProps = () => this.props;
+
     get element() {
         return this._element;
     }
@@ -195,6 +197,7 @@ class Block<P = {}> {
 
         //  Рендерим шаблон
         const template = Handlebars.compile(this.render());
+
         fragment.innerHTML = template({ ...this.props, children: this.children, refs: this.refs });
 
         // Заменяем заглушки на компоненты

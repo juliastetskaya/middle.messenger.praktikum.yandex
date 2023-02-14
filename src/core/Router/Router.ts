@@ -1,12 +1,12 @@
 import { CoreRouter } from './CoreRouter';
 import { ROUTES } from '../../constants';
 
-class Router implements CoreRouter {
+export class Router implements CoreRouter {
     private routes: Record<string, Function> = {};
 
     private isExist = false;
 
-    private onRouteChange(pathname: string = window.location.pathname) {
+    onRouteChange(pathname: string = window.location.pathname) {
         const [route] = Object.keys(this.routes).filter((path) => path === pathname);
 
         if (!route && this.routes[ROUTES.NOT_FOUND]) {
