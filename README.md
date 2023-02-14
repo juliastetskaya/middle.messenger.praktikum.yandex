@@ -6,11 +6,15 @@
 
 https://grand-basbousa-d4cc02.netlify.app
 
+## Версия на render.com
+
+https://messenger-app-iksl.onrender.com/
+
 ## Setup
 
 Clone the repo:
 
-    git clone https://github.com/juliastetskaya/middle.messenger.praktikum.yandex.git -b sprint_3
+    git clone https://github.com/juliastetskaya/middle.messenger.praktikum.yandex.git -b sprint_4
 
 Move to the project path:
 
