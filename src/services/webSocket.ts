@@ -29,7 +29,6 @@ export class WebSocketTransport extends EventBus {
             if (dataToJSON.type === WsEvents.USER_CONNECTED) {
                 return;
             }
-
             this.emit('message-arrived', dataToJSON);
         });
 
