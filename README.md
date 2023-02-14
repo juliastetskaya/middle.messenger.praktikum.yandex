@@ -26,6 +26,10 @@ Install dependencies:
 
 Run the project:
 
-    npm run start
+    npm start
+    
+Run tests:
 
+    npm test
+  
 Project will be available at http://localhost:3000
