@@ -9,7 +9,7 @@
     "types": ["node", "jest"],
     "declaration": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

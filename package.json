@@ -69,6 +69,7 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
+    "modulePathIgnorePatterns": ["<rootDir>/build/"],
     "moduleNameMapper": {
       "\\.(css|svg|png)$": "identity-obj-proxy",
       "^core(.*)$": "<rootDir>/src/core$1",
