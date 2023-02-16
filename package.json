@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel src/index.html --no-cache",
-    "build": "parcel build src/index.html --public-url ./",
+    "dev": "webpack-dev-server",
+    "build": "webpack",
+    "build:container": "docker build -t messenger .",
     "start": "npm run build && node ./server.js",
     "lint": "npx stylelint '**/*.css' && eslint .",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "test": "jest",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -30,28 +33,54 @@
     "HOC": "./src/HOC"
   },
   "dependencies": {
+    "css-loader": "6.7.3",
     "express": "4.18.1",
-    "handlebars": "^4.7.7",
-    "uuid": "^9.0.0"
+    "handlebars": "4.7.7",
+    "html-webpack-plugin": "5.5.0",
+    "identity-obj-proxy": "3.0.0",
+    "mini-css-extract-plugin": "2.7.2",
+    "npm-run-all": "4.1.5",
+    "ts-loader": "9.4.2",
+    "uuid": "9.0.0",
+    "webpack-dev-server": "4.11.1"
   },
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
-    "@parcel/transformer-inline-string": "^2.6.0",
-    "@parcel/validator-typescript": "^2.7.0",
-    "@types/express": "^4.17.14",
-    "@types/node": "^18.11.9",
-    "@types/uuid": "^8.3.4",
+    "@babel/core": "7.20.12",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-typescript": "7.18.6",
+    "@types/express": "4.17.14",
+    "@types/jest": "27.5.2",
+    "@types/node": "18.11.9",
+    "@types/uuid": "8.3.4",
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
     "eslint": "8.24.0",
     "eslint-config-airbnb": "19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "parcel": "^2.7.0",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "husky": "8.0.3",
+    "jest": "27.5.1",
     "postcss-import": "15.0.0",
     "stylelint": "14.13.0",
     "stylelint-config-standard": "28.0.0",
     "ts-node": "10.9.1",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "webpack": "5.75.0",
+    "webpack-cli": "5.0.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "modulePathIgnorePatterns": ["<rootDir>/build/"],
+    "moduleNameMapper": {
+      "\\.(css|svg|png)$": "identity-obj-proxy",
+      "^core(.*)$": "<rootDir>/src/core$1",
+      "^components(.*)$": "<rootDir>/src/components$1",
+      "^blocks(.*)$": "<rootDir>/src/blocks$1",
+      "^data(.*)$": "<rootDir>/src/data$1",
+      "^static(.*)$": "<rootDir>/src/static$1",
+      "^utils(.*)$": "<rootDir>/src/utils$1",
+      "^API(.*)$": "<rootDir>/src/API$1",
+      "^services(.*)$": "<rootDir>/src/services$1",
+      "^HOC(.*)$": "<rootDir>/src/HOC$1"
+    }
   }
 }

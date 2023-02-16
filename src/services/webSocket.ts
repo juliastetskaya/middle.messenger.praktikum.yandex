@@ -4,6 +4,7 @@ import { WS_URL } from '../constants';
 enum WsEvents {
     GET_OLD = 'get old',
     MESSAGE = 'message',
+    USER_CONNECTED = 'user connected',
 }
 
 export class WebSocketTransport extends EventBus {
@@ -25,6 +26,9 @@ export class WebSocketTransport extends EventBus {
 
             const dataToJSON = JSON.parse(event.data);
 
+            if (dataToJSON.type === WsEvents.USER_CONNECTED) {
+                return;
+            }
             this.emit('message-arrived', dataToJSON);
         });
 
