@@ -43,9 +43,13 @@ module.exports = {
         exclude: /(node_modules)/
       },
       {
-        test: /\.(?:png|jpg|jpeg|woff(2)?|eot|ttf|otf|svg)$/i,
+        test: /\.(?:png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
+      {
+            test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+            type: 'asset/inline',
+        },
       {
         test: /\.css$/i,
         use: [

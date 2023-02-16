@@ -25,14 +25,17 @@ class Avatar extends Block<AvatarBlockProps> {
     }
 
     render() {
+        const { src } = this.props;
+
+        const avatarSrc = src ? `https://ya-praktikum.tech/api/v2/resources${src}` : avatar;
+
         return `
             <div class="avatar {{class}}">
                 <img
                     id="avatar-image"
-                    src=https://ya-praktikum.tech/api/v2/resources{{src}}
+                    src="${avatarSrc}"
                     class="change-avatar__image"
                     alt="avatar image"
-                    onerror="this.onerror=null;this.src='${avatar}';"
                 >
                 <div class="change-placeholder">{{placeholder}}</div>
                 <input id="avatar" type="file" class="change-avatar__input">

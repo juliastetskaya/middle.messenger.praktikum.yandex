@@ -26,9 +26,9 @@ export const updatePassword: DispatchState<PasswordData> = async (dispatch, _, a
     dispatch({ isLoading: true });
 
     try {
-        const user = await updatePasswordWithErrorHandler(action);
+        await updatePasswordWithErrorHandler(action);
 
-        dispatch({ user, isLoading: false, error: null });
+        dispatch({ isLoading: false, error: null });
 
         router.go(ROUTES.PROFILE);
     } catch (error) {

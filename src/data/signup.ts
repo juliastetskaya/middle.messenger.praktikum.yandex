@@ -5,7 +5,7 @@ export default ({
     },
     link: {
         text: 'Войти',
-        to: '/signin',
+        to: '/',
     },
     fields: [
         {
